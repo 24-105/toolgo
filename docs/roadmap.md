@@ -52,6 +52,8 @@ Next.jsの静的export環境、Tailwind CSS、shadcn/ui方針、共通コンポ�
 
 Phase 1では、Next.js App Router、TypeScript、Tailwind CSS v4、ESLint、Prettier、静的export、GitHub Actions CIの最小構成を実装済みです。`src/app/page.tsx` は基盤確認用のプレースホルダであり、ツール本体はまだ含みません。
 
+Phase 2では、デザイントークン、ライト・ダークテーマ、Button、Input、Textarea、Label、Card、Badgeを実装済みです。共通部品は `src/components/ui` に集約し、トップページで実際の利用例を確認できます。
+
 ### Phase 4〜5: 発見性とツール基盤
 
 各ツールのmetadataを一元管理し、一覧ページ、カテゴリ、静的ルート生成、OGP、サイトマップへ接続します。ツールは独立したモジュールとして追加できるようにします。
@@ -77,4 +79,4 @@ Phase 1では、Next.js App Router、TypeScript、Tailwind CSS v4、ESLint、Pre
 
 ## 次に実施すべきPhase
 
-次は **Phase 1: Next.js基盤** です。設計書に記載したディレクトリ構成、TypeScript、静的export、Lint、Prettier、GitHub Actionsの最小構成を実装します。
+次は **Phase 3: 共通レイアウト** です。ヘッダー、フッター、ナビゲーション、ToolLayoutを実装します。
