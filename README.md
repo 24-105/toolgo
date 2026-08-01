@@ -44,7 +44,12 @@ npm install
 npm run dev
 ```
 
-本番用静的ファイルの生成と確認方法は、Next.js基盤導入時にREADMEへ追記します。
+静的ファイルを生成して確認する場合は、次を実行します。
+
+```bash
+npm run build
+npm run start
+```
 
 ## ライセンス
 
