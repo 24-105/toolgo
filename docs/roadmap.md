@@ -54,6 +54,8 @@ Phase 1では、Next.js App Router、TypeScript、Tailwind CSS v4、ESLint、Pre
 
 Phase 2では、デザイントークン、ライト・ダークテーマ、Button、Input、Textarea、Label、Card、Badgeを実装済みです。共通部品は `src/components/ui` に集約し、トップページで実際の利用例を確認できます。
 
+Phase 3では、SiteHeader、SiteFooter、ナビゲーション、レスポンシブな`ToolLayout`を実装済みです。`/tools` に共通レイアウトの利用例を置き、パンくず、プライバシー表示、使い方枠、関連ツール枠を確認できるようにしています。
+
 ### Phase 4〜5: 発見性とツール基盤
 
 各ツールのmetadataを一元管理し、一覧ページ、カテゴリ、静的ルート生成、OGP、サイトマップへ接続します。ツールは独立したモジュールとして追加できるようにします。
@@ -79,4 +81,4 @@ Phase 2では、デザイントークン、ライト・ダークテーマ、Butt
 
 ## 次に実施すべきPhase
 
-次は **Phase 3: 共通レイアウト** です。ヘッダー、フッター、ナビゲーション、ToolLayoutを実装します。
+次は **Phase 4: SEO・OGP・サイトマップ** です。ページごとのmetadata、OGP、robots、sitemap、canonicalを実装します。
