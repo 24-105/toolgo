@@ -86,24 +86,27 @@ export type ToolMetadata = {
   description: string;
   category: string;
   keywords: string[];
-  icon?: string;
+  icon: ToolIcon;
   isMvp: boolean;
+  status: "planned" | "available";
 };
 ```
 
-`slug` は英小文字とハイフンに統一し、変更時はリダイレクトまたは旧URLの扱いを決めます。SEO文言を画面コンポーネントへ重複記述せず、metadataを情報源にします。
+`slug` は英小文字とハイフンに統一し、変更時はリダイレクトまたは旧URLの扱いを決めます。SEO文言を画面コンポーネントへ重複記述せず、metadataを情報源にします。`status` は `planned` と `available` を持ち、実装前のMVPツールも同じregistryで公開予定として扱えます。
+
+`src/features/tools/registry.ts` が一覧、カテゴリ、動的ルート、metadata、sitemapの共通情報源です。ツール画面は `ToolDefinition.component` に登録し、未実装の場合は詳細ページが準備中表示を出します。新しいツールの追加で `app/tools/page.tsx` や `sitemap.ts` を個別に変更しないことを基準にします。
 
 ## SEO設計
 
 ツールごとに一意のtitle、description、canonical、OGPを生成します。静的exportで生成できる情報のみを使い、ユーザー入力をmetadataへ含めません。共通のURL生成とページmetadataは `src/lib/seo.ts` に集約します。
 
-`src/app/sitemap.ts` と `src/app/robots.ts` は公開対象の静的ルートから生成します。現在の公開対象はホーム、ツール一覧、カテゴリです。ツールがregistry化された後は、registryから静的URLを追加します。noindexにすべき内部ページは公開対象へ追加しません。
+`src/app/sitemap.ts` と `src/app/robots.ts` は公開対象の静的ルートから生成します。現在の公開対象はホーム、ツール一覧、カテゴリ、registryに登録されたツール詳細ページです。noindexにすべき内部ページは公開対象へ追加しません。
 
 canonical、OGP、sitemap、robotsの絶対URLは `NEXT_PUBLIC_SITE_URL` と `NEXT_PUBLIC_BASE_PATH` から生成します。GitHub Pagesへ公開するときは `.env.example` を参考に本番URLを設定し、ローカルでは未設定時の `http://localhost:3000` を使います。
 
 ## Static Export方針
 
-Next.jsの `output: 'export'` を使用し、サーバー専用機能、API Routes、Server Actions、動的な外部データ取得に依存しません。動的ルートはビルド時に全ツールのslugから静的生成します。GitHub Pagesのサブパス配信を考慮して `basePath` と `assetPrefix` を環境変数で管理し、リンクにはNext.jsのルーティングを使います。
+Next.jsの `output: 'export'` を使用し、サーバー専用機能、API Routes、Server Actions、動的な外部データ取得に依存しません。動的ルートはビルド時にregistryの全slugから静的生成します。GitHub Pagesのサブパス配信を考慮して `basePath` と `assetPrefix` を環境変数で管理し、リンクにはNext.jsのルーティングを使います。
 
 ブラウザAPIを使う処理はClient Component内で実行し、SSR時に `window` や `navigator` を参照しません。重い処理は必要に応じて遅延ロードまたはWeb Workerへ分離します。
 

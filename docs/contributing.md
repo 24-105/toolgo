@@ -40,7 +40,9 @@ src/features/tools/<slug>/
 
 ### 6. registryへ登録する
 
-`src/features/tools/registry.ts` にmetadataと画面を登録します。登録によって一覧、静的ルート、サイトマップ、関連ツールに接続される設計とし、ページ側にツール固有の分岐を追加しないことを目指します。
+`src/features/tools/registry.ts` の配列へmetadataを追加し、実装済みなら `component` に画面コンポーネントを指定します。`slug`、`name`、`description`、`category`、`keywords`、`icon`、`isMvp`、`status`を必ず設定します。登録によって一覧、詳細ページ、静的ルート、SEO、サイトマップへ接続されるため、ページ側にツール固有の分岐を追加しません。
+
+実装前に掲載だけしたい場合は `status: "planned"` のまま登録できます。実装が完了したら `status: "available"` に変更し、`component` を追加します。
 
 ### 7. テストを書く
 

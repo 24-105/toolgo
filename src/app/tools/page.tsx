@@ -1,6 +1,8 @@
 import { Badge, Card, CardContent, CardHeader, CardTitle } from "@/components/ui";
 import { ToolLayout } from "@/components/layout";
+import { getTools } from "@/features/tools/registry";
 import { createPageMetadata } from "@/lib/seo";
+import Link from "next/link";
 
 export const metadata = createPageMetadata({
   title: "ツール一覧",
@@ -8,14 +10,6 @@ export const metadata = createPageMetadata({
   path: "/tools/",
   keywords: ["ツール一覧", "無料オンラインツール"],
 });
-
-const plannedTools = [
-  "JSON整形",
-  "パスワード生成",
-  "QRコード生成",
-  "文字数カウント",
-  "年齢計算",
-];
 
 export default function ToolsPage() {
   return (
@@ -38,11 +32,18 @@ export default function ToolsPage() {
         </CardHeader>
         <CardContent>
           <div className="tool-list" aria-label="公開予定のツール一覧">
-            {plannedTools.map((tool) => (
-              <div key={tool} className="tool-list-item">
-                <span>{tool}</span>
-                <Badge>公開予定</Badge>
-              </div>
+            {getTools().map((tool) => (
+              <Link
+                key={tool.slug}
+                href={`/tools/${tool.slug}/`}
+                className="tool-list-item"
+              >
+                <span>
+                  {tool.name}
+                  <span className="tool-list-item-description">{tool.description}</span>
+                </span>
+                <Badge>{tool.status === "available" ? "利用可能" : "公開予定"}</Badge>
+              </Link>
             ))}
           </div>
         </CardContent>

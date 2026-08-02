@@ -2,6 +2,7 @@ import { FolderTree } from "lucide-react";
 
 import { ToolLayout } from "@/components/layout";
 import { Badge, Card, CardContent, CardHeader, CardTitle } from "@/components/ui";
+import { getCategories, getToolsByCategory } from "@/features/tools/registry";
 import { createPageMetadata } from "@/lib/seo";
 
 export const metadata = createPageMetadata({
@@ -11,13 +12,13 @@ export const metadata = createPageMetadata({
   keywords: ["ツールカテゴリ", "無料ツール"],
 });
 
-const categories = [
-  { name: "開発", description: "コードやデータの整形・変換", count: 1 },
-  { name: "セキュリティ", description: "安全な文字列や認証情報の生成", count: 1 },
-  { name: "生成", description: "QRコードなどの生成ツール", count: 1 },
-  { name: "文章", description: "文章の確認や文字数の計測", count: 1 },
-  { name: "計算", description: "日付や数値の計算", count: 1 },
-];
+const categoryDescriptions: Record<string, string> = {
+  開発: "コードやデータの整形・変換",
+  セキュリティ: "安全な文字列や認証情報の生成",
+  生成: "QRコードなどの生成ツール",
+  文章: "文章の確認や文字数の計測",
+  計算: "日付や数値の計算",
+};
 
 export default function CategoriesPage() {
   return (
@@ -27,19 +28,19 @@ export default function CategoriesPage() {
       category="ツール一覧"
     >
       <div className="category-grid" aria-label="ツールカテゴリ一覧">
-        {categories.map((category) => (
-          <Card key={category.name}>
+        {getCategories().map((category) => (
+          <Card key={category}>
             <CardHeader className="category-card-header">
               <span className="category-icon" aria-hidden="true">
                 <FolderTree size={17} strokeWidth={1.8} />
               </span>
               <div>
-                <CardTitle>{category.name}</CardTitle>
-                <p className="category-description">{category.description}</p>
+                <CardTitle>{category}</CardTitle>
+                <p className="category-description">{categoryDescriptions[category]}</p>
               </div>
             </CardHeader>
             <CardContent>
-              <Badge>{category.count}件・公開予定</Badge>
+              <Badge>{getToolsByCategory(category).length}件・公開予定</Badge>
             </CardContent>
           </Card>
         ))}

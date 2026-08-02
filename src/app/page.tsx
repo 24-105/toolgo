@@ -1,4 +1,5 @@
 import { Badge, Card, CardContent, CardHeader, CardTitle } from "@/components/ui";
+import { getTools } from "@/features/tools/registry";
 import {
   ArrowRight,
   CalendarDays,
@@ -8,10 +9,19 @@ import {
   ShieldCheck,
   Type,
 } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import Link from "next/link";
-import type { ReactNode } from "react";
 
 import { createPageMetadata } from "@/lib/seo";
+import type { ToolIcon } from "@/features/tools/types";
+
+const iconMap = {
+  code: Code2,
+  key: KeyRound,
+  qr: QrCode,
+  text: Type,
+  calendar: CalendarDays,
+} satisfies Record<ToolIcon, LucideIcon>;
 
 export const metadata = createPageMetadata({
   title: "ホーム",
@@ -36,8 +46,16 @@ export default function HomePage() {
         </header>
 
         <section className="metric-grid" aria-label="概要">
-          <MetricCard label="利用できるツール" value="5" note="MVPで公開予定" />
-          <MetricCard label="カテゴリ" value="5" note="開発・文章・生成・計算など" />
+          <MetricCard
+            label="利用できるツール"
+            value={String(getTools().length)}
+            note="MVPで公開予定"
+          />
+          <MetricCard
+            label="カテゴリ"
+            value={String(new Set(getTools().map((tool) => tool.category)).size)}
+            note="開発・文章・生成・計算など"
+          />
           <MetricCard label="プライバシー" value="100%" note="ブラウザ内処理" />
         </section>
 
@@ -54,15 +72,9 @@ export default function HomePage() {
             </CardHeader>
             <CardContent>
               <div className="quick-tool-list">
-                <QuickTool icon={<Code2 />} name="JSON整形" category="開発" />
-                <QuickTool
-                  icon={<KeyRound />}
-                  name="パスワード生成"
-                  category="セキュリティ"
-                />
-                <QuickTool icon={<QrCode />} name="QRコード生成" category="生成" />
-                <QuickTool icon={<Type />} name="文字数カウント" category="文章" />
-                <QuickTool icon={<CalendarDays />} name="年齢計算" category="計算" />
+                {getTools().map((tool) => (
+                  <QuickTool key={tool.slug} tool={tool} />
+                ))}
               </div>
             </CardContent>
           </Card>
@@ -108,23 +120,17 @@ function MetricCard({
   );
 }
 
-function QuickTool({
-  icon,
-  name,
-  category,
-}: {
-  icon: ReactNode;
-  name: string;
-  category: string;
-}) {
+function QuickTool({ tool }: { tool: ReturnType<typeof getTools>[number] }) {
+  const Icon = iconMap[tool.icon];
+
   return (
-    <div className="quick-tool-item">
+    <Link href={`/tools/${tool.slug}/`} className="quick-tool-item">
       <span className="quick-tool-icon" aria-hidden="true">
-        {icon}
+        <Icon />
       </span>
-      <span className="quick-tool-name">{name}</span>
-      <span className="quick-tool-category">{category}</span>
-      <Badge>公開予定</Badge>
-    </div>
+      <span className="quick-tool-name">{tool.name}</span>
+      <span className="quick-tool-category">{tool.category}</span>
+      <Badge>{tool.status === "available" ? "利用可能" : "公開予定"}</Badge>
+    </Link>
   );
 }

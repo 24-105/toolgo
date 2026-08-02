@@ -628,6 +628,16 @@ a {
   color: var(--foreground);
   font-size: 0.85rem;
   font-weight: 650;
+  text-decoration: none;
+}
+
+.tool-list-item-description {
+  display: block;
+  margin-top: 0.25rem;
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 450;
+  line-height: 1.45;
 }
 
 .category-grid {
