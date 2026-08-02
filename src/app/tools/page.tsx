@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export const metadata = createPageMetadata({
   title: "ツール一覧",
-  description: "ToolGoで公開予定の無料オンラインツール一覧。",
+  description: "ToolGoで使える無料ツールの一覧です。",
   path: "/tools/",
   keywords: ["ツール一覧", "無料オンラインツール"],
 });
@@ -15,7 +15,7 @@ export default function ToolsPage() {
   return (
     <ToolLayout
       title="ツール一覧"
-      description="日常の作業をすばやく片付ける、無料のブラウザツールを準備しています。"
+      description="目的に合う無料のブラウザツールを、ここから選べます。"
       category="ツール一覧"
       help={
         <p className="text-sm leading-6 text-muted">
@@ -26,12 +26,12 @@ export default function ToolsPage() {
       <Card>
         <CardHeader>
           <div className="flex flex-wrap items-center justify-between gap-3">
-            <CardTitle>公開予定のツール</CardTitle>
-            <Badge variant="warning">準備中</Badge>
+            <CardTitle>使えるツール</CardTitle>
+            <Badge variant="success">5種類</Badge>
           </div>
         </CardHeader>
         <CardContent>
-          <div className="tool-list" aria-label="公開予定のツール一覧">
+          <div className="tool-list" aria-label="使えるツールの一覧">
             {getTools().map((tool) => (
               <Link
                 key={tool.slug}
@@ -42,7 +42,7 @@ export default function ToolsPage() {
                   {tool.name}
                   <span className="tool-list-item-description">{tool.description}</span>
                 </span>
-                <Badge>{tool.status === "available" ? "利用可能" : "公開予定"}</Badge>
+                <Badge>{tool.status === "available" ? "利用できます" : "準備中"}</Badge>
               </Link>
             ))}
           </div>

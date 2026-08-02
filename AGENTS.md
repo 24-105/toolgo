@@ -30,6 +30,7 @@ ToolGoは、ブラウザ内だけで処理を完結する無料のWebツール�
 - ディレクトリ・レイヤー・静的export: `docs/architecture.md`
 - UI・ブランド・アクセシビリティの方針: `docs/design-principles.md`
 - UI文言、日本語化、専門用語の扱い: `docs/language-policy.md`
+- 自然な日本語、画面文言のレビュー: `docs/japanese-writing-guidelines.md`
 - ツール追加・レビュー・品質ルール: `docs/contributing.md`
 
 対象ディレクトリに、より深い階層の`AGENTS.md`が追加された場合は、その指示を優先して確認します。

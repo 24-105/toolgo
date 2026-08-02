@@ -58,11 +58,11 @@ Phase 3では、永続左サイドバー、検索・テーマ切替を備えたT
 
 Phase 4では、ページmetadata、canonical、OGP、favicon、`sitemap.xml`、`robots.txt`を静的生成する仕組みを実装済みです。公開URLは`NEXT_PUBLIC_SITE_URL`と`NEXT_PUBLIC_BASE_PATH`で切り替えられます。
 
-Phase 5では、`src/features/tools/registry.ts` と `types.ts` を追加し、5つのMVPツールをmetadataとして登録しました。registryを情報源に、ツール一覧、ツール詳細の静的ルート、SEO metadata、sitemapを自動生成します。現時点ではツール本体を実装していないため、詳細ページは準備中表示を出します。Phase 6では各ツールの画面コンポーネントをregistryへ接続します。
+Phase 5では、`src/features/tools/registry.ts` と `types.ts` を追加し、5つのMVPツールをmetadataとして登録しました。registryを情報源に、ツール一覧、ツール詳細の静的ルート、SEO metadata、sitemapを自動生成します。Phase 6では各ツールの画面コンポーネントをregistryへ接続し、MVPの5ツールを公開できる状態にしました。
 
-### Phase 4〜5: 発見性とツール基盤
+### Phase 4〜6: 発見性とツール基盤・MVPツール
 
-各ツールのmetadataを一元管理し、一覧ページ、カテゴリ、静的ルート生成、OGP、サイトマップへ接続します。ツールは独立したモジュールとして追加できるようにします。
+各ツールのmetadataを一元管理し、一覧ページ、カテゴリ、静的ルート生成、OGP、サイトマップへ接続します。Phase 6では、5つのMVPツールをブラウザ内で実装し、入力検証、コピー・ダウンロード、エラー表示、主要なキーボード操作に対応しました。ツールは独立したモジュールとして追加できるようにしています。
 
 ### Phase 6〜8: MVP完成・公開
 
@@ -85,4 +85,4 @@ Phase 5では、`src/features/tools/registry.ts` と `types.ts` を追加し、5
 
 ## 次に実施すべきPhase
 
-次は **Phase 6: 最初の5ツール** です。registryへ登録済みのMVPツールに、個別の画面、ロジック、入力検証、テストを追加します。
+次は **Phase 7: 広告導入** です。プライバシー、表示速度、操作性を損なわない広告方針を検証します。広告はユーザー入力を外部へ送信する仕組みと分離します。

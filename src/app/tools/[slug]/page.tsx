@@ -47,7 +47,7 @@ export default async function ToolPage({ params }: ToolPageProps) {
       category={tool.category}
       help={
         <p className="text-sm leading-6 text-muted">
-          入力データはこのブラウザ内だけで処理され、サーバーへ送信されません。
+          入力データを外部へ送信せず、このブラウザだけで処理します。
         </p>
       }
     >
@@ -63,7 +63,7 @@ export default async function ToolPage({ params }: ToolPageProps) {
           </CardHeader>
           <CardContent>
             <p className="text-sm leading-6 text-muted">
-              このツールはMVPで公開予定です。もうしばらくお待ちください。
+              このツールは準備中です。公開までお待ちください。
             </p>
           </CardContent>
         </Card>

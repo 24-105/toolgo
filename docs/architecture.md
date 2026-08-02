@@ -96,6 +96,8 @@ export type ToolMetadata = {
 
 `src/features/tools/registry.ts` が一覧、カテゴリ、動的ルート、metadata、sitemapの共通情報源です。ツール画面は `ToolDefinition.component` に登録し、未実装の場合は詳細ページが準備中表示を出します。新しいツールの追加で `app/tools/page.tsx` や `sitemap.ts` を個別に変更しないことを基準にします。
 
+QRコード生成には `qrcode` を使います。エンコードとPNG生成をブラウザ内で行い、外部APIや入力データの送信に依存しません。その他のMVPツールはブラウザ標準APIと純粋なTypeScriptロジックで実装します。
+
 ## SEO設計
 
 ツールごとに一意のtitle、description、canonical、OGPを生成します。静的exportで生成できる情報のみを使い、ユーザー入力をmetadataへ含めません。共通のURL生成とページmetadataは `src/lib/seo.ts` に集約します。

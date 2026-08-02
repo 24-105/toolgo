@@ -25,7 +25,7 @@ const iconMap = {
 
 export const metadata = createPageMetadata({
   title: "ホーム",
-  description: "ToolGoの無料ブラウザツールを探して、すぐに使えます。",
+  description: "ToolGoの無料ツールを、ブラウザですぐに使えます。",
   path: "/",
   keywords: ["無料ツール", "オンラインツール", "ブラウザツール"],
 });
@@ -38,28 +38,28 @@ export default function HomePage() {
           <div>
             <p className="eyebrow">ホーム</p>
             <h1 id="page-title" className="page-title">
-              ToolGo ホーム
+              ToolGo
             </h1>
-            <p className="lede">よく使うブラウザツールへ、すばやくアクセスできます。</p>
+            <p className="lede">無料のブラウザツールを、ここからすぐに使えます。</p>
           </div>
-          <Badge variant="success">正常に利用できます</Badge>
+          <Badge variant="success">ブラウザで利用できます</Badge>
         </header>
 
         <section className="metric-grid" aria-label="概要">
           <MetricCard
-            label="利用できるツール"
+            label="ツール数"
             value={String(getTools().length)}
-            note="MVPで公開予定"
+            note="すべて利用できます"
           />
           <MetricCard
             label="カテゴリ"
             value={String(new Set(getTools().map((tool) => tool.category)).size)}
             note="開発・文章・生成・計算など"
           />
-          <MetricCard label="プライバシー" value="100%" note="ブラウザ内処理" />
+          <MetricCard label="データ送信" value="なし" note="入力は外部へ送信しません" />
         </section>
 
-        <section className="dashboard-grid" aria-label="よく使うツールとサービスの状態">
+        <section className="dashboard-grid" aria-label="よく使うツールとデータの扱い">
           <Card className="dashboard-tools-card">
             <CardHeader className="card-header-row">
               <div>
@@ -81,15 +81,15 @@ export default function HomePage() {
 
           <Card>
             <CardHeader>
-              <p className="section-kicker">サービスの状態</p>
-              <CardTitle>入力データを送信しません</CardTitle>
+              <p className="section-kicker">データの扱い</p>
+              <CardTitle>入力データを外部へ送信しません</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="status-summary">
                 <ShieldCheck size={22} strokeWidth={1.8} aria-hidden="true" />
                 <div>
-                  <strong>入力データはこのブラウザ内に留まります。</strong>
-                  <p>ToolGoはツールへの入力をサーバーへ送信しません。</p>
+                  <strong>入力データはこのブラウザだけで処理します。</strong>
+                  <p>入力内容がToolGoのサーバーへ送られることはありません。</p>
                 </div>
               </div>
             </CardContent>
@@ -130,7 +130,7 @@ function QuickTool({ tool }: { tool: ReturnType<typeof getTools>[number] }) {
       </span>
       <span className="quick-tool-name">{tool.name}</span>
       <span className="quick-tool-category">{tool.category}</span>
-      <Badge>{tool.status === "available" ? "利用可能" : "公開予定"}</Badge>
+      <Badge>{tool.status === "available" ? "利用できます" : "準備中"}</Badge>
     </Link>
   );
 }

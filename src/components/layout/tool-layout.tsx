@@ -47,17 +47,22 @@ export function ToolLayout({
   help,
   relatedTools,
 }: ToolLayoutProps) {
+  const breadcrumbItems =
+    breadcrumbs.at(-1)?.label === title
+      ? breadcrumbs
+      : [...breadcrumbs, { label: title }];
+
   return (
     <main className="tool-layout">
       <div className="site-container">
-        <Breadcrumbs items={[...breadcrumbs, { label: title }]} />
+        <Breadcrumbs items={breadcrumbItems} />
         <header className="tool-header">
           {category && <p className="eyebrow">{category}</p>}
           <h1 className="tool-title">{title}</h1>
           <p className="tool-description">{description}</p>
           <p className="privacy-note">
             <span aria-hidden="true">●</span>{" "}
-            入力データはこのブラウザ内だけで処理されます。
+            入力データを外部へ送信せず、このブラウザだけで処理します。
           </p>
         </header>
 

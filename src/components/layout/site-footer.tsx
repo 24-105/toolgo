@@ -9,7 +9,7 @@ export function SiteFooter() {
           <Link href="/">ホーム</Link>
           <Link href="/tools">ツール一覧</Link>
         </nav>
-        <p>データはブラウザ内で処理されます。</p>
+        <p>入力データは外部へ送信しません。</p>
       </div>
     </footer>
   );

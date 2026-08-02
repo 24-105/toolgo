@@ -7,16 +7,16 @@ import { createPageMetadata } from "@/lib/seo";
 
 export const metadata = createPageMetadata({
   title: "カテゴリ",
-  description: "ToolGoのツールをカテゴリから探す。",
+  description: "ToolGoのツールを、目的に合うカテゴリから探せます。",
   path: "/categories/",
   keywords: ["ツールカテゴリ", "無料ツール"],
 });
 
 const categoryDescriptions: Record<string, string> = {
   開発: "コードやデータの整形・変換",
-  セキュリティ: "安全な文字列や認証情報の生成",
+  セキュリティ: "パスワードなどを安全に作成",
   生成: "QRコードなどの生成ツール",
-  文章: "文章の確認や文字数の計測",
+  文章: "文章の文字数や行数を確認",
   計算: "日付や数値の計算",
 };
 
@@ -24,7 +24,7 @@ export default function CategoriesPage() {
   return (
     <ToolLayout
       title="カテゴリ"
-      description="目的に近いツールをカテゴリから探せます。"
+      description="目的に合うツールをカテゴリから探せます。"
       category="ツール一覧"
     >
       <div className="category-grid" aria-label="ツールカテゴリ一覧">
@@ -40,7 +40,7 @@ export default function CategoriesPage() {
               </div>
             </CardHeader>
             <CardContent>
-              <Badge>{getToolsByCategory(category).length}件・公開予定</Badge>
+              <Badge>{getToolsByCategory(category).length}件のツール</Badge>
             </CardContent>
           </Card>
         ))}

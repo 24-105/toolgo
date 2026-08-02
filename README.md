@@ -13,19 +13,21 @@
 - [アーキテクチャ設計](docs/architecture.md)
 - [UI・ブランド方針](docs/design-principles.md)
 - [日本語UI文言方針](docs/language-policy.md)
+- [自然な日本語の書き方](docs/japanese-writing-guidelines.md)
 - [開発・ツール追加ルール](docs/contributing.md)
 - [docs全体の目次](docs/README.md)
 
 ### 目的別の読み方
 
-| 作業内容                         | 最初に読む文書                                         |
-| -------------------------------- | ------------------------------------------------------ |
-| Phaseやリリース計画を確認する    | [docs/roadmap.md](docs/roadmap.md)                     |
-| MVPツールを実装する              | [docs/mvp.md](docs/mvp.md)                             |
-| ディレクトリや共通基盤を変更する | [docs/architecture.md](docs/architecture.md)           |
-| UI、ロゴ、レイアウトを変更する   | [docs/design-principles.md](docs/design-principles.md) |
-| UI文言や日本語化を変更する       | [docs/language-policy.md](docs/language-policy.md)     |
-| 新しいツールを追加する           | [docs/contributing.md](docs/contributing.md)           |
+| 作業内容                           | 最初に読む文書                                                             |
+| ---------------------------------- | -------------------------------------------------------------------------- |
+| Phaseやリリース計画を確認する      | [docs/roadmap.md](docs/roadmap.md)                                         |
+| MVPツールを実装する                | [docs/mvp.md](docs/mvp.md)                                                 |
+| ディレクトリや共通基盤を変更する   | [docs/architecture.md](docs/architecture.md)                               |
+| UI、ロゴ、レイアウトを変更する     | [docs/design-principles.md](docs/design-principles.md)                     |
+| UI文言や日本語化を変更する         | [docs/language-policy.md](docs/language-policy.md)                         |
+| 自然な日本語の文言を追加・修正する | [docs/japanese-writing-guidelines.md](docs/japanese-writing-guidelines.md) |
+| 新しいツールを追加する             | [docs/contributing.md](docs/contributing.md)                               |
 
 ## プロジェクト概要
 
@@ -41,11 +43,11 @@ ToolGoは、一般ユーザー、エンジニア、デザイナー、学生が�
 
 最初のMVPでは、次の5ツールを提供します。
 
-- JSON Formatter
-- Password Generator
-- QR Code Generator
-- Character Counter
-- Age Calculator
+- JSON整形
+- パスワード生成
+- QRコード生成
+- 文字数カウント
+- 年齢計算
 
 ## ローカル開発
 
@@ -77,7 +79,7 @@ npm run build
 
 ## 開発方針
 
-ツールごとにmetadata、入力UI、ロジック、テストを分離し、`src/features/tools/registry.ts` へ登録します。共通レイアウトとデザインシステムを再利用し、新しいツールの追加で既存ツールや一覧ページを変更する必要がないことを重要な設計基準とします。
+MVPの5ツールは実装済みです。ツールごとにmetadata、入力UI、ロジック、テストを分離し、`src/features/tools/registry.ts` へ登録します。共通レイアウトとデザインシステムを再利用し、新しいツールの追加で既存ツールや一覧ページを変更する必要がないことを重要な設計基準とします。
 
 ## ライセンス
 
