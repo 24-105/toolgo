@@ -11,6 +11,15 @@ import {
 import Link from "next/link";
 import type { ReactNode } from "react";
 
+import { createPageMetadata } from "@/lib/seo";
+
+export const metadata = createPageMetadata({
+  title: "ホーム",
+  description: "ToolGoの無料ブラウザツールを探して、すぐに使えます。",
+  path: "/",
+  keywords: ["無料ツール", "オンラインツール", "ブラウザツール"],
+});
+
 export default function HomePage() {
   return (
     <main className="dashboard-page">

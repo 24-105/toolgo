@@ -63,6 +63,8 @@ npm run build
 npm run start
 ```
 
+本番のcanonical、OGP、sitemap、robotsのURLを正しく生成するには、`.env.example` を参考に `NEXT_PUBLIC_SITE_URL` と `NEXT_PUBLIC_BASE_PATH` を設定します。
+
 品質確認には次を使用します。
 
 ```bash

@@ -2,11 +2,14 @@ import { FolderTree } from "lucide-react";
 
 import { ToolLayout } from "@/components/layout";
 import { Badge, Card, CardContent, CardHeader, CardTitle } from "@/components/ui";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata = {
+export const metadata = createPageMetadata({
   title: "カテゴリ",
   description: "ToolGoのツールをカテゴリから探す。",
-};
+  path: "/categories/",
+  keywords: ["ツールカテゴリ", "無料ツール"],
+});
 
 const categories = [
   { name: "開発", description: "コードやデータの整形・変換", count: 1 },

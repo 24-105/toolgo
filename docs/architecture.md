@@ -95,7 +95,11 @@ export type ToolMetadata = {
 
 ## SEO設計
 
-ツールごとに一意のtitle、description、canonical、OGPを生成します。静的exportで生成できる情報のみを使い、ユーザー入力をmetadataへ含めません。`sitemap.ts` と `robots.ts` は公開対象の静的ルートから生成し、noindexにすべき内部ページは明示します。
+ツールごとに一意のtitle、description、canonical、OGPを生成します。静的exportで生成できる情報のみを使い、ユーザー入力をmetadataへ含めません。共通のURL生成とページmetadataは `src/lib/seo.ts` に集約します。
+
+`src/app/sitemap.ts` と `src/app/robots.ts` は公開対象の静的ルートから生成します。現在の公開対象はホーム、ツール一覧、カテゴリです。ツールがregistry化された後は、registryから静的URLを追加します。noindexにすべき内部ページは公開対象へ追加しません。
+
+canonical、OGP、sitemap、robotsの絶対URLは `NEXT_PUBLIC_SITE_URL` と `NEXT_PUBLIC_BASE_PATH` から生成します。GitHub Pagesへ公開するときは `.env.example` を参考に本番URLを設定し、ローカルでは未設定時の `http://localhost:3000` を使います。
 
 ## Static Export方針
 

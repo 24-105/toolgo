@@ -1,10 +1,13 @@
 import { Badge, Card, CardContent, CardHeader, CardTitle } from "@/components/ui";
 import { ToolLayout } from "@/components/layout";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata = {
+export const metadata = createPageMetadata({
   title: "ツール一覧",
   description: "ToolGoで公開予定の無料オンラインツール一覧。",
-};
+  path: "/tools/",
+  keywords: ["ツール一覧", "無料オンラインツール"],
+});
 
 const plannedTools = [
   "JSON整形",
