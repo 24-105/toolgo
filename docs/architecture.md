@@ -18,7 +18,7 @@ src/
     sitemap.ts
     robots.ts
   components/
-    layout/          # Header, Footer, ToolLayout
+    layout/          # AppShell, Sidebar, Topbar, Footer, ToolLayout
     ui/              # Button, Input, Card, Tabsなど
     tools/           # ツール画面の共通補助UI
   features/
@@ -57,6 +57,10 @@ public/
 ## コンポーネント設計
 
 共通UIは見た目とアクセシビリティを一元管理します。フォーム部品はlabel、フォーカス表示、エラー表示、キーボード操作を標準で持たせます。ツール固有の状態管理は各ツール内に置き、グローバル状態管理は必要になるまで導入しません。
+
+アプリケーション全体は `AppShell`、永続左サイドバー、Topbar、コンテンツ領域、Footerで構成します。サイドバーは情報階層と現在地を示し、Topbarは検索とテーマ切替を提供します。通知やユーザーメニューなど実体のないSaaS要素は追加せず、繰り返し利用する操作を短い導線で提供します。
+
+画面固有のアイコンはLucide Iconsを使い、意味を持たない装飾アイコンには `aria-hidden` を付けます。配色はToolGo固有のBlue/Cyanを基準にし、既存サービスのブランド表現を模倣しません。
 
 ## ToolLayout
 
