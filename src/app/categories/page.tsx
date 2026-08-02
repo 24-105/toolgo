@@ -9,11 +9,11 @@ export const metadata = {
 };
 
 const categories = [
-  { name: "Developer", description: "コードやデータの整形・変換", count: 1 },
-  { name: "Security", description: "安全な文字列や認証情報の生成", count: 1 },
-  { name: "Generator", description: "QRコードなどの生成ツール", count: 1 },
-  { name: "Text", description: "文章の確認や文字数の計測", count: 1 },
-  { name: "Calculator", description: "日付や数値の計算", count: 1 },
+  { name: "開発", description: "コードやデータの整形・変換", count: 1 },
+  { name: "セキュリティ", description: "安全な文字列や認証情報の生成", count: 1 },
+  { name: "生成", description: "QRコードなどの生成ツール", count: 1 },
+  { name: "文章", description: "文章の確認や文字数の計測", count: 1 },
+  { name: "計算", description: "日付や数値の計算", count: 1 },
 ];
 
 export default function CategoriesPage() {
@@ -21,7 +21,7 @@ export default function CategoriesPage() {
     <ToolLayout
       title="カテゴリ"
       description="目的に近いツールをカテゴリから探せます。"
-      category="Tool Library"
+      category="ツール一覧"
     >
       <div className="category-grid" aria-label="ツールカテゴリ一覧">
         {categories.map((category) => (
@@ -36,7 +36,7 @@ export default function CategoriesPage() {
               </div>
             </CardHeader>
             <CardContent>
-              <Badge>{category.count} tool planned</Badge>
+              <Badge>{category.count}件・公開予定</Badge>
             </CardContent>
           </Card>
         ))}

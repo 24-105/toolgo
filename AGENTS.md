@@ -29,6 +29,7 @@ ToolGoは、ブラウザ内だけで処理を完結する無料のWebツール�
 - MVPの機能要件: `docs/mvp.md`
 - ディレクトリ・レイヤー・静的export: `docs/architecture.md`
 - UI・ブランド・アクセシビリティの方針: `docs/design-principles.md`
+- UI文言、日本語化、専門用語の扱い: `docs/language-policy.md`
 - ツール追加・レビュー・品質ルール: `docs/contributing.md`
 
 対象ディレクトリに、より深い階層の`AGENTS.md`が追加された場合は、その指示を優先して確認します。
@@ -66,6 +67,7 @@ ToolGoは、ブラウザ内だけで処理を完結する無料のWebツール�
 - ディレクトリやコンポーネント構成
 - npm scripts、依存関係、環境変数
 - デザイン、ブランド、アクセシビリティ方針
+- UI文言や対応言語
 - ツール追加やレビュー手順
 
 大きな設計判断を行った場合は、まず既存の`docs/`文書へ記録します。将来ADRが必要な規模になった場合は`docs/architecture/adr/`を作成して追加します。

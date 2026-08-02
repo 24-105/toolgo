@@ -13,9 +13,9 @@ type NavigationItem = {
 };
 
 const primaryNavigation: NavigationItem[] = [
-  { label: "Dashboard", href: "/", icon: LayoutDashboard },
-  { label: "Tool Library", href: "/tools", icon: Wrench },
-  { label: "Categories", href: "/categories", icon: Grid2X2 },
+  { label: "ホーム", href: "/", icon: LayoutDashboard },
+  { label: "ツール一覧", href: "/tools", icon: Wrench },
+  { label: "カテゴリ", href: "/categories", icon: Grid2X2 },
 ];
 
 export function AppSidebar() {
@@ -24,15 +24,15 @@ export function AppSidebar() {
   return (
     <aside className="app-sidebar" aria-label="アプリケーションナビゲーション">
       <div className="sidebar-brand-wrap">
-        <Link className="sidebar-brand" href="/" aria-label="ToolGo Dashboard">
+        <Link className="sidebar-brand" href="/" aria-label="ToolGoホーム">
           <MascotMark priority />
           <span>ToolGo</span>
         </Link>
-        <span className="sidebar-version">BETA</span>
+        <span className="sidebar-version">試験版</span>
       </div>
 
       <nav className="sidebar-nav" aria-label="メインナビゲーション">
-        <p className="sidebar-section-label">Browse</p>
+        <p className="sidebar-section-label">探す</p>
         {primaryNavigation.map((item) => (
           <SidebarLink key={item.href} item={item} active={pathname === item.href} />
         ))}

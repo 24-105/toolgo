@@ -12,6 +12,7 @@
 - [MVP要件](docs/mvp.md)
 - [アーキテクチャ設計](docs/architecture.md)
 - [UI・ブランド方針](docs/design-principles.md)
+- [日本語UI文言方針](docs/language-policy.md)
 - [開発・ツール追加ルール](docs/contributing.md)
 - [docs全体の目次](docs/README.md)
 
@@ -23,6 +24,7 @@
 | MVPツールを実装する              | [docs/mvp.md](docs/mvp.md)                             |
 | ディレクトリや共通基盤を変更する | [docs/architecture.md](docs/architecture.md)           |
 | UI、ロゴ、レイアウトを変更する   | [docs/design-principles.md](docs/design-principles.md) |
+| UI文言や日本語化を変更する       | [docs/language-policy.md](docs/language-policy.md)     |
 | 新しいツールを追加する           | [docs/contributing.md](docs/contributing.md)           |
 
 ## プロジェクト概要

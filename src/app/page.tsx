@@ -17,66 +17,58 @@ export default function HomePage() {
       <div className="content-container">
         <header className="content-heading">
           <div>
-            <p className="eyebrow">Dashboard</p>
+            <p className="eyebrow">ホーム</p>
             <h1 id="page-title" className="page-title">
-              ToolGo Dashboard
+              ToolGo ホーム
             </h1>
             <p className="lede">よく使うブラウザツールへ、すばやくアクセスできます。</p>
           </div>
-          <Badge variant="success">All systems operational</Badge>
+          <Badge variant="success">正常に利用できます</Badge>
         </header>
 
         <section className="metric-grid" aria-label="概要">
-          <MetricCard label="Available tools" value="5" note="MVPで公開予定" />
-          <MetricCard label="Categories" value="4" note="開発・テキスト・生成・計算" />
-          <MetricCard label="Privacy" value="100%" note="ブラウザ内処理" />
+          <MetricCard label="利用できるツール" value="5" note="MVPで公開予定" />
+          <MetricCard label="カテゴリ" value="5" note="開発・文章・生成・計算など" />
+          <MetricCard label="プライバシー" value="100%" note="ブラウザ内処理" />
         </section>
 
-        <section className="dashboard-grid" aria-label="Quick access and system status">
+        <section className="dashboard-grid" aria-label="よく使うツールとサービスの状態">
           <Card className="dashboard-tools-card">
             <CardHeader className="card-header-row">
               <div>
-                <p className="section-kicker">Quick access</p>
-                <CardTitle>Popular tools</CardTitle>
+                <p className="section-kicker">よく使うツール</p>
+                <CardTitle>ツール一覧</CardTitle>
               </div>
               <Link className="text-link" href="/tools">
-                View all <ArrowRight size={15} aria-hidden="true" />
+                すべて見る <ArrowRight size={15} aria-hidden="true" />
               </Link>
             </CardHeader>
             <CardContent>
               <div className="quick-tool-list">
-                <QuickTool icon={<Code2 />} name="JSON Formatter" category="Developer" />
+                <QuickTool icon={<Code2 />} name="JSON整形" category="開発" />
                 <QuickTool
                   icon={<KeyRound />}
-                  name="Password Generator"
-                  category="Security"
+                  name="パスワード生成"
+                  category="セキュリティ"
                 />
-                <QuickTool
-                  icon={<QrCode />}
-                  name="QR Code Generator"
-                  category="Generator"
-                />
-                <QuickTool icon={<Type />} name="Character Counter" category="Text" />
-                <QuickTool
-                  icon={<CalendarDays />}
-                  name="Age Calculator"
-                  category="Calculator"
-                />
+                <QuickTool icon={<QrCode />} name="QRコード生成" category="生成" />
+                <QuickTool icon={<Type />} name="文字数カウント" category="文章" />
+                <QuickTool icon={<CalendarDays />} name="年齢計算" category="計算" />
               </div>
             </CardContent>
           </Card>
 
           <Card>
             <CardHeader>
-              <p className="section-kicker">System status</p>
-              <CardTitle>Privacy by default</CardTitle>
+              <p className="section-kicker">サービスの状態</p>
+              <CardTitle>入力データを送信しません</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="status-summary">
                 <ShieldCheck size={22} strokeWidth={1.8} aria-hidden="true" />
                 <div>
-                  <strong>Your data stays in your browser.</strong>
-                  <p>ToolGo does not send tool inputs to a server.</p>
+                  <strong>入力データはこのブラウザ内に留まります。</strong>
+                  <p>ToolGoはツールへの入力をサーバーへ送信しません。</p>
                 </div>
               </div>
             </CardContent>
@@ -123,7 +115,7 @@ function QuickTool({
       </span>
       <span className="quick-tool-name">{name}</span>
       <span className="quick-tool-category">{category}</span>
-      <Badge>Planned</Badge>
+      <Badge>公開予定</Badge>
     </div>
   );
 }

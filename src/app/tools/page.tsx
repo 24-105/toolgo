@@ -7,11 +7,11 @@ export const metadata = {
 };
 
 const plannedTools = [
-  "JSON Formatter",
-  "Password Generator",
-  "QR Code Generator",
-  "Character Counter",
-  "Age Calculator",
+  "JSON整形",
+  "パスワード生成",
+  "QRコード生成",
+  "文字数カウント",
+  "年齢計算",
 ];
 
 export default function ToolsPage() {
@@ -19,7 +19,7 @@ export default function ToolsPage() {
     <ToolLayout
       title="ツール一覧"
       description="日常の作業をすばやく片付ける、無料のブラウザツールを準備しています。"
-      category="ToolGo"
+      category="ツール一覧"
       help={
         <p className="text-sm leading-6 text-muted">
           ツールはすべてブラウザ内で処理されます。
@@ -38,7 +38,7 @@ export default function ToolsPage() {
             {plannedTools.map((tool) => (
               <div key={tool} className="tool-list-item">
                 <span>{tool}</span>
-                <Badge>Coming soon</Badge>
+                <Badge>公開予定</Badge>
               </div>
             ))}
           </div>
