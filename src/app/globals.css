@@ -372,6 +372,32 @@ a {
   margin: 0;
 }
 
+.ad-slot {
+  max-width: 56rem;
+  margin: 1.5rem auto 0;
+  border: 1px solid var(--border);
+  background: var(--surface-muted);
+  color: var(--muted);
+  text-align: center;
+}
+
+.ad-slot-label {
+  margin: 0;
+  padding: 0.35rem 0.75rem;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.ad-slot-content {
+  min-height: 5rem;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  font-size: 0.75rem;
+}
+
 .site-footer-nav {
   display: flex;
   gap: 1rem;

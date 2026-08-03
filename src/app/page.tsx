@@ -1,4 +1,5 @@
 import { Badge, Card, CardContent, CardHeader, CardTitle } from "@/components/ui";
+import { AdSlot } from "@/components/ads";
 import { getTools } from "@/features/tools/registry";
 import {
   ArrowRight,
@@ -95,6 +96,8 @@ export default function HomePage() {
             </CardContent>
           </Card>
         </section>
+
+        <AdSlot placement="home-bottom" />
       </div>
     </main>
   );

@@ -24,6 +24,7 @@
 | [design-principles.md](design-principles.md)                     | 公開WebツールとしてのUI、ブランド、ナビゲーション、マスコット利用方針 |
 | [language-policy.md](language-policy.md)                         | 日本語UIを基本とする文言、翻訳、専門用語の扱い                        |
 | [japanese-writing-guidelines.md](japanese-writing-guidelines.md) | AIエージェント向けの自然な日本語、UI文言のレビュー基準                |
+| [advertising-policy.md](advertising-policy.md)                   | 広告の掲載場所、プライバシー方針、人間側の導入確認事項                |
 
 ## ルール・手順
 

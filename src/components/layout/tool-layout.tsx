@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 
+import { AdSlot } from "@/components/ads";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui";
 
 type ToolBreadcrumb = {
@@ -67,6 +68,8 @@ export function ToolLayout({
         </header>
 
         <div className="tool-content">{children}</div>
+
+        <AdSlot placement="tool-bottom" />
 
         {(help || relatedTools) && (
           <div className="tool-support-grid">

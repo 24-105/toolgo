@@ -14,6 +14,7 @@
 - [UI・ブランド方針](docs/design-principles.md)
 - [日本語UI文言方針](docs/language-policy.md)
 - [自然な日本語の書き方](docs/japanese-writing-guidelines.md)
+- [広告方針](docs/advertising-policy.md)
 - [開発・ツール追加ルール](docs/contributing.md)
 - [docs全体の目次](docs/README.md)
 
