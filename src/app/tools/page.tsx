@@ -26,12 +26,12 @@ export default function ToolsPage() {
       <Card>
         <CardHeader>
           <div className="flex flex-wrap items-center justify-between gap-3">
-            <CardTitle>使えるツール</CardTitle>
+            <CardTitle>ツール一覧</CardTitle>
             <Badge variant="success">5種類</Badge>
           </div>
         </CardHeader>
         <CardContent>
-          <div className="tool-list" aria-label="使えるツールの一覧">
+          <div className="tool-list" aria-label="ツール一覧">
             {getTools().map((tool) => (
               <Link
                 key={tool.slug}
@@ -42,7 +42,7 @@ export default function ToolsPage() {
                   {tool.name}
                   <span className="tool-list-item-description">{tool.description}</span>
                 </span>
-                <Badge>{tool.status === "available" ? "利用できます" : "準備中"}</Badge>
+                {tool.status === "planned" && <Badge>準備中</Badge>}
               </Link>
             ))}
           </div>

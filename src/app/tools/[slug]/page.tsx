@@ -41,7 +41,12 @@ export default async function ToolPage({ params }: ToolPageProps) {
   const ToolComponent = tool.component;
 
   return (
-    <ToolLayout title={tool.name} description={tool.description} category={tool.category}>
+    <ToolLayout
+      title={tool.name}
+      description={tool.description}
+      category={tool.category}
+      details={tool.details}
+    >
       {ToolComponent ? (
         <ToolComponent metadata={tool} />
       ) : (

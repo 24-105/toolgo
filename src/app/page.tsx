@@ -1,15 +1,8 @@
 import { Badge, Card, CardContent, CardHeader, CardTitle } from "@/components/ui";
 import { AdSlot } from "@/components/ads";
+import { PrivacyNote } from "@/components/layout";
 import { getTools } from "@/features/tools/registry";
-import {
-  ArrowRight,
-  CalendarDays,
-  Code2,
-  KeyRound,
-  QrCode,
-  ShieldCheck,
-  Type,
-} from "lucide-react";
+import { ArrowRight, CalendarDays, Code2, KeyRound, QrCode, Type } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import Link from "next/link";
 
@@ -26,7 +19,7 @@ const iconMap = {
 
 export const metadata = createPageMetadata({
   title: "ホーム",
-  description: "ToolGoの無料ツールを、ブラウザですぐに使えます。",
+  description: "ToolGoは、ブラウザで使える手軽な便利ツール集です。",
   path: "/",
   keywords: ["無料ツール", "オンラインツール", "ブラウザツール"],
 });
@@ -41,26 +34,25 @@ export default function HomePage() {
             <h1 id="page-title" className="page-title">
               ToolGo
             </h1>
-            <p className="lede">無料のブラウザツールを、ここからすぐに使えます。</p>
+            <p className="lede">手軽な便利ツールを、ブラウザですぐに使えます。</p>
+            <PrivacyNote />
           </div>
-          <Badge variant="success">ブラウザで利用できます</Badge>
         </header>
 
         <section className="metric-grid" aria-label="概要">
           <MetricCard
             label="ツール数"
             value={String(getTools().length)}
-            note="すべて利用できます"
+            note="開発・文章・生成・計算など"
           />
           <MetricCard
             label="カテゴリ"
             value={String(new Set(getTools().map((tool) => tool.category)).size)}
             note="開発・文章・生成・計算など"
           />
-          <MetricCard label="料金" value="無料" note="登録やログインは不要です" />
         </section>
 
-        <section className="dashboard-grid" aria-label="よく使うツールと使い方">
+        <section className="dashboard-grid" aria-label="よく使うツール">
           <Card className="dashboard-tools-card">
             <CardHeader className="card-header-row">
               <div>
@@ -76,22 +68,6 @@ export default function HomePage() {
                 {getTools().map((tool) => (
                   <QuickTool key={tool.slug} tool={tool} />
                 ))}
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <p className="section-kicker">使い方</p>
-              <CardTitle>入力して、ボタンを押すだけ</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="status-summary">
-                <ShieldCheck size={22} strokeWidth={1.8} aria-hidden="true" />
-                <div>
-                  <strong>結果はその場で確認できます。</strong>
-                  <p>5つのツールを、登録なしですぐに使えます。</p>
-                </div>
               </div>
             </CardContent>
           </Card>
@@ -133,7 +109,7 @@ function QuickTool({ tool }: { tool: ReturnType<typeof getTools>[number] }) {
       </span>
       <span className="quick-tool-name">{tool.name}</span>
       <span className="quick-tool-category">{tool.category}</span>
-      <Badge>{tool.status === "available" ? "利用できます" : "準備中"}</Badge>
+      {tool.status === "planned" && <Badge>準備中</Badge>}
     </Link>
   );
 }

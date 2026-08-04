@@ -11,6 +11,8 @@
 | [roadmap.md](roadmap.md)                     | Phase 0〜10、MVP、将来拡張、次に実施するPhase |
 | [mvp.md](mvp.md)                             | MVP対象5ツールの必須機能、対象外、将来機能    |
 | [release-checklist.md](release-checklist.md) | GitHub Pages公開前後の確認項目                |
+| [terms.md](terms.md)                         | ToolGo利用規約の本文と公開時の確認事項        |
+| [privacy-policy.md](privacy-policy.md)       | ToolGoプライバシーポリシーの本文と確認事項    |
 
 ## 設計書
 

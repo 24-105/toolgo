@@ -7,7 +7,7 @@ function formatJsonError(error: unknown) {
   }
 
   const message = error.message.replace(/^JSON\.parse:\s*/u, "");
-  return `JSONの構文を確認してください。${message}`;
+  return `JSONの構文を確認してください。\n${message}`;
 }
 
 export function formatJson(input: string, indent: number): JsonFormatResult {

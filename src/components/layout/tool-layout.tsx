@@ -3,6 +3,9 @@ import type { ReactNode } from "react";
 
 import { AdSlot } from "@/components/ads";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui";
+import type { ToolDetails } from "@/features/tools/types";
+
+import { PrivacyNote } from "./privacy-note";
 
 type ToolBreadcrumb = {
   label: string;
@@ -16,6 +19,7 @@ export type ToolLayoutProps = {
   breadcrumbs?: ToolBreadcrumb[];
   children: ReactNode;
   help?: ReactNode;
+  details?: ToolDetails;
   relatedTools?: ReactNode;
 };
 
@@ -46,6 +50,7 @@ export function ToolLayout({
   ],
   children,
   help,
+  details,
   relatedTools,
 }: ToolLayoutProps) {
   const breadcrumbItems =
@@ -59,15 +64,14 @@ export function ToolLayout({
         <Breadcrumbs items={breadcrumbItems} />
         <header className="tool-header">
           {category && <p className="eyebrow">{category}</p>}
-          <h1 className="tool-title">{title}</h1>
+          <h1 className="page-title">{title}</h1>
           <p className="tool-description">{description}</p>
-          <p className="privacy-note">
-            <span aria-hidden="true">●</span>{" "}
-            入力データを外部へ送信せず、このブラウザだけで処理します。
-          </p>
+          <PrivacyNote />
         </header>
 
         <div className="tool-content">{children}</div>
+
+        {details && <ToolExplanation title={title} details={details} />}
 
         <AdSlot placement="tool-bottom" />
 
@@ -93,5 +97,73 @@ export function ToolLayout({
         )}
       </div>
     </main>
+  );
+}
+
+function ToolExplanation({ title, details }: { title: string; details: ToolDetails }) {
+  const faqSchema = details.faq?.length
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: details.faq.map((item) => ({
+          "@type": "Question",
+          name: item.question,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: item.answer,
+          },
+        })),
+      }
+    : null;
+
+  return (
+    <section className="tool-explanation" aria-label={`${title}の詳しい説明`}>
+      <details>
+        <summary>詳しい説明を見る</summary>
+        <div className="tool-explanation-content">
+          <section>
+            <h2>{title}とは</h2>
+            <p>{details.overview}</p>
+          </section>
+
+          <section>
+            <h2>使い方</h2>
+            <ol>
+              {details.howToUse.map((step) => (
+                <li key={step}>{step}</li>
+              ))}
+            </ol>
+          </section>
+
+          {details.notes && (
+            <section>
+              <h2>知っておきたいこと</h2>
+              <ul>
+                {details.notes.map((note) => (
+                  <li key={note}>{note}</li>
+                ))}
+              </ul>
+            </section>
+          )}
+
+          {details.faq && details.faq.length > 0 && (
+            <section>
+              <h2>よくある質問</h2>
+              <div className="tool-faq-list">
+                {details.faq.map((item) => (
+                  <details key={item.question} className="tool-faq-item">
+                    <summary>{item.question}</summary>
+                    <p>{item.answer}</p>
+                  </details>
+                ))}
+              </div>
+            </section>
+          )}
+        </div>
+      </details>
+      {faqSchema && (
+        <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
+      )}
+    </section>
   );
 }

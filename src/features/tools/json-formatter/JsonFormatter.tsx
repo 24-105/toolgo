@@ -87,7 +87,10 @@ export function JsonFormatter({}: ToolComponentProps) {
             </div>
           </div>
           {error && (
-            <p role="alert" className="text-sm font-semibold text-danger">
+            <p
+              role="alert"
+              className="whitespace-pre-line text-sm font-semibold text-danger"
+            >
               {error}
             </p>
           )}

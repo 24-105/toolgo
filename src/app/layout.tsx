@@ -27,7 +27,7 @@ export const metadata: Metadata = {
         url: absoluteUrl("/og/toolgo.svg"),
         width: 1200,
         height: 630,
-        alt: "ToolGo - ブラウザだけで使える無料ツール集",
+        alt: "ToolGo｜手軽な便利ツール",
       },
     ],
   },

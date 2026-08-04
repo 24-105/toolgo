@@ -67,7 +67,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                   {tool.name}
                   <span className="tool-list-item-description">{tool.description}</span>
                 </span>
-                <Badge>{tool.status === "available" ? "利用できます" : "準備中"}</Badge>
+                {tool.status === "planned" && <Badge>準備中</Badge>}
               </Link>
             ))}
           </div>

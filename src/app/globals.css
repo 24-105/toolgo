@@ -108,6 +108,11 @@ body {
   color: var(--foreground);
   font-family:
     Inter,
+    "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans",
+    "Yu Gothic",
+    YuGothic,
+    Meiryo,
     ui-sans-serif,
     system-ui,
     -apple-system,
@@ -320,7 +325,6 @@ a {
 
 .icon-button:focus-visible,
 .sidebar-link:focus-visible,
-.brand:focus-visible,
 .sidebar-brand:focus-visible,
 .text-link:focus-visible {
   outline: 2px solid var(--ring);
@@ -423,11 +427,11 @@ a {
   text-transform: uppercase;
 }
 
-.page-title,
-.tool-title {
+.page-title {
   margin: 0;
   color: var(--foreground);
   font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 750;
   letter-spacing: -0.035em;
   line-height: 1.15;
 }
@@ -443,7 +447,7 @@ a {
 
 .metric-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
   margin-bottom: 1rem;
 }
@@ -472,6 +476,10 @@ a {
   display: grid;
   grid-template-columns: minmax(0, 1.4fr) minmax(18rem, 0.8fr);
   gap: 1rem;
+}
+
+.dashboard-tools-card {
+  grid-column: 1 / -1;
 }
 
 .card-header-row {
@@ -550,26 +558,6 @@ a {
   font-size: 0.75rem;
 }
 
-.status-summary {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
-  color: var(--success);
-}
-
-.status-summary strong {
-  display: block;
-  color: var(--foreground);
-  font-size: 0.85rem;
-}
-
-.status-summary p {
-  margin: 0.375rem 0 0;
-  color: var(--muted);
-  font-size: 0.8rem;
-  line-height: 1.55;
-}
-
 .tool-layout {
   padding-top: 1.5rem;
 }
@@ -617,8 +605,85 @@ a {
 }
 
 .tool-content,
-.tool-support-grid {
+.tool-support-grid,
+.tool-explanation {
   max-width: 56rem;
+}
+
+.tool-explanation {
+  margin-top: 1rem;
+}
+
+.tool-explanation > details {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.tool-explanation summary {
+  cursor: pointer;
+  padding: 1rem 1.125rem;
+  color: var(--foreground);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.tool-explanation summary::marker {
+  color: var(--primary);
+}
+
+.tool-explanation-content {
+  display: grid;
+  gap: 1.5rem;
+  padding: 0 1.125rem 1.25rem;
+  color: var(--muted);
+  font-size: 0.875rem;
+  line-height: 1.8;
+}
+
+.tool-explanation-content section + section {
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+}
+
+.tool-explanation-content h2 {
+  margin: 0 0 0.5rem;
+  color: var(--foreground);
+  font-size: 1rem;
+  font-weight: 750;
+}
+
+.tool-explanation-content p,
+.tool-explanation-content ol,
+.tool-explanation-content ul {
+  margin: 0;
+}
+
+.tool-explanation-content ol,
+.tool-explanation-content ul {
+  padding-left: 1.25rem;
+}
+
+.tool-explanation-content li + li {
+  margin-top: 0.375rem;
+}
+
+.tool-faq-list {
+  border-top: 1px solid var(--border);
+}
+
+.tool-faq-item {
+  border-bottom: 1px solid var(--border);
+}
+
+.tool-faq-item summary {
+  padding: 0.75rem 0;
+  font-size: 0.875rem;
+}
+
+.tool-faq-item p {
+  padding: 0 0 0.875rem;
 }
 
 .tool-support-grid {
@@ -691,6 +756,60 @@ a {
   line-height: 1.5;
 }
 
+.legal-page {
+  min-height: calc(100vh - 7.75rem);
+  padding: 2rem 1.5rem 3rem;
+}
+
+.legal-updated {
+  margin: 0.75rem 0 0;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.legal-document {
+  max-width: 48rem;
+  margin-top: 2rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.85;
+}
+
+.legal-document section + section {
+  margin-top: 2rem;
+}
+
+.legal-document h2 {
+  margin: 0 0 0.625rem;
+  color: var(--foreground);
+  font-size: 1.1rem;
+  font-weight: 750;
+}
+
+.legal-document p,
+.legal-document ul {
+  margin: 0;
+}
+
+.legal-document p + p {
+  margin-top: 0.75rem;
+}
+
+.legal-document ul {
+  padding-left: 1.25rem;
+}
+
+.legal-document li + li {
+  margin-top: 0.375rem;
+}
+
+.legal-document a {
+  color: var(--primary);
+  overflow-wrap: anywhere;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
 @media (max-width: 60rem) {
   .app-sidebar {
     width: 13.5rem;
@@ -726,7 +845,6 @@ a {
   }
 
   .sidebar-section-label,
-  .sidebar-bottom,
   .sidebar-link-disabled {
     display: none;
   }
@@ -751,7 +869,8 @@ a {
   }
 
   .dashboard-page,
-  .tool-layout {
+  .tool-layout,
+  .legal-page {
     min-height: auto;
     padding: 1.5rem 1rem 2.5rem;
   }
@@ -774,11 +893,6 @@ a {
 @media (max-width: 32rem) {
   .content-heading {
     display: block;
-  }
-
-  .content-heading > .badge {
-    display: inline-flex;
-    margin-top: 0.75rem;
   }
 
   .quick-tool-category {

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const siteName = "ToolGo";
 export const siteDescription =
-  "ブラウザだけで使える、無料・高速・プライバシー重視のオンラインツール集。";
+  "ToolGo｜手軽な便利ツール。ブラウザだけで使える無料ツール集です。";
 export const siteOrigin = (
   process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"
 ).replace(/\/+$/, "");
@@ -50,7 +50,7 @@ export function createPageMetadata({
           url: image,
           width: 1200,
           height: 630,
-          alt: "ToolGo - ブラウザだけで使える無料ツール集",
+          alt: "ToolGo｜手軽な便利ツール",
         },
       ],
     },
