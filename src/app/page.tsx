@@ -57,10 +57,10 @@ export default function HomePage() {
             value={String(new Set(getTools().map((tool) => tool.category)).size)}
             note="開発・文章・生成・計算など"
           />
-          <MetricCard label="データ送信" value="なし" note="入力は外部へ送信しません" />
+          <MetricCard label="料金" value="無料" note="登録やログインは不要です" />
         </section>
 
-        <section className="dashboard-grid" aria-label="よく使うツールとデータの扱い">
+        <section className="dashboard-grid" aria-label="よく使うツールと使い方">
           <Card className="dashboard-tools-card">
             <CardHeader className="card-header-row">
               <div>
@@ -82,15 +82,15 @@ export default function HomePage() {
 
           <Card>
             <CardHeader>
-              <p className="section-kicker">データの扱い</p>
-              <CardTitle>入力データを外部へ送信しません</CardTitle>
+              <p className="section-kicker">使い方</p>
+              <CardTitle>入力して、ボタンを押すだけ</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="status-summary">
                 <ShieldCheck size={22} strokeWidth={1.8} aria-hidden="true" />
                 <div>
-                  <strong>入力データはこのブラウザだけで処理します。</strong>
-                  <p>入力内容がToolGoのサーバーへ送られることはありません。</p>
+                  <strong>結果はその場で確認できます。</strong>
+                  <p>5つのツールを、登録なしですぐに使えます。</p>
                 </div>
               </div>
             </CardContent>

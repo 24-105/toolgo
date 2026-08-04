@@ -1,4 +1,5 @@
 import { FolderTree } from "lucide-react";
+import Link from "next/link";
 
 import { ToolLayout } from "@/components/layout";
 import { Badge, Card, CardContent, CardHeader, CardTitle } from "@/components/ui";
@@ -12,14 +13,6 @@ export const metadata = createPageMetadata({
   keywords: ["ツールカテゴリ", "無料ツール"],
 });
 
-const categoryDescriptions: Record<string, string> = {
-  開発: "コードやデータの整形・変換",
-  セキュリティ: "パスワードなどを安全に作成",
-  生成: "QRコードなどの生成ツール",
-  文章: "文章の文字数や行数を確認",
-  計算: "日付や数値の計算",
-};
-
 export default function CategoriesPage() {
   return (
     <ToolLayout
@@ -29,20 +22,26 @@ export default function CategoriesPage() {
     >
       <div className="category-grid" aria-label="ツールカテゴリ一覧">
         {getCategories().map((category) => (
-          <Card key={category}>
-            <CardHeader className="category-card-header">
-              <span className="category-icon" aria-hidden="true">
-                <FolderTree size={17} strokeWidth={1.8} />
-              </span>
-              <div>
-                <CardTitle>{category}</CardTitle>
-                <p className="category-description">{categoryDescriptions[category]}</p>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <Badge>{getToolsByCategory(category).length}件のツール</Badge>
-            </CardContent>
-          </Card>
+          <Link
+            key={category.slug}
+            href={`/categories/${category.slug}/`}
+            className="category-card-link"
+          >
+            <Card>
+              <CardHeader className="category-card-header">
+                <span className="category-icon" aria-hidden="true">
+                  <FolderTree size={17} strokeWidth={1.8} />
+                </span>
+                <div>
+                  <CardTitle>{category.name}</CardTitle>
+                  <p className="category-description">{category.description}</p>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <Badge>{getToolsByCategory(category.name).length}件のツール</Badge>
+              </CardContent>
+            </Card>
+          </Link>
         ))}
       </div>
     </ToolLayout>

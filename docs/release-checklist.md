@@ -30,10 +30,10 @@ Phase 8では、広告を無効にした状態でToolGoをGitHub Pagesへ公開�
 標準設定では、プロジェクトサイトとして次のURLを使います。
 
 ```text
-https://<GitHubユーザー名>.github.io/<リポジトリ名>/
+https://toolgo.jp/
 ```
 
-独自ドメインを使う場合は、デプロイワークフローの `NEXT_PUBLIC_SITE_URL` と `NEXT_PUBLIC_BASE_PATH` を変更し、GitHub PagesのCustom domainも設定します。canonical、OGP、sitemap、robotsのURLが本番URLになっていることを確認します。
+独自ドメイン `toolgo.jp` を使う場合は、デプロイワークフローの `NEXT_PUBLIC_SITE_URL` を `https://toolgo.jp` に設定し、`NEXT_PUBLIC_BASE_PATH` は空にします。GitHub PagesのCustom domainにも `toolgo.jp` を設定し、canonical、OGP、sitemap、robotsのURLが本番URLになっていることを確認します。
 
 ## 公開後のブラウザ確認
 

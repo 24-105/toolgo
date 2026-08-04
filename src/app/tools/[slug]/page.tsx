@@ -41,16 +41,7 @@ export default async function ToolPage({ params }: ToolPageProps) {
   const ToolComponent = tool.component;
 
   return (
-    <ToolLayout
-      title={tool.name}
-      description={tool.description}
-      category={tool.category}
-      help={
-        <p className="text-sm leading-6 text-muted">
-          入力データを外部へ送信せず、このブラウザだけで処理します。
-        </p>
-      }
-    >
+    <ToolLayout title={tool.name} description={tool.description} category={tool.category}>
       {ToolComponent ? (
         <ToolComponent metadata={tool} />
       ) : (

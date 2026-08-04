@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-import { getTools } from "@/features/tools/registry";
+import { getCategories, getTools } from "@/features/tools/registry";
 import { absoluteUrl } from "@/lib/seo";
 
 export const dynamic = "force-static";
@@ -36,5 +36,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: tool.isMvp ? 0.8 : 0.6,
   }));
 
-  return [...staticRoutes, ...toolRoutes];
+  const categoryRoutes: MetadataRoute.Sitemap = getCategories().map((category) => ({
+    url: absoluteUrl(`/categories/${category.slug}/`),
+    lastModified,
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }));
+
+  return [...staticRoutes, ...categoryRoutes, ...toolRoutes];
 }

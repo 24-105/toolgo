@@ -28,7 +28,6 @@ export function AppSidebar() {
           <MascotMark priority />
           <span>ToolGo</span>
         </Link>
-        <span className="sidebar-version">試験版</span>
       </div>
 
       <nav className="sidebar-nav" aria-label="メインナビゲーション">
@@ -37,10 +36,6 @@ export function AppSidebar() {
           <SidebarLink key={item.href} item={item} active={pathname === item.href} />
         ))}
       </nav>
-
-      <div className="sidebar-bottom">
-        <p className="sidebar-note">入力データを外部へ送信しません。</p>
-      </div>
     </aside>
   );
 }

@@ -5,6 +5,14 @@ import { PasswordGenerator } from "./password-generator/PasswordGenerator";
 import { QrCodeGenerator } from "./qr-code-generator/QrCodeGenerator";
 import type { ToolDefinition } from "./types";
 
+export const categoryRegistry = [
+  { slug: "development", name: "開発", description: "コードやデータの整形・変換" },
+  { slug: "security", name: "セキュリティ", description: "パスワードなどを安全に作成" },
+  { slug: "generation", name: "生成", description: "QRコードなどを作成" },
+  { slug: "writing", name: "文章", description: "文章の文字数や行数を確認" },
+  { slug: "calculation", name: "計算", description: "日付や数値を計算" },
+] as const;
+
 const toolMetadata: ToolDefinition[] = [
   {
     slug: "json-formatter",
@@ -78,5 +86,9 @@ export function getToolsByCategory(category: string) {
 }
 
 export function getCategories() {
-  return [...new Set(toolRegistry.map((tool) => tool.category))];
+  return categoryRegistry;
+}
+
+export function getCategoryBySlug(slug: string) {
+  return categoryRegistry.find((category) => category.slug === slug);
 }

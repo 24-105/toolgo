@@ -19,7 +19,7 @@ export default function ToolsPage() {
       category="ツール一覧"
       help={
         <p className="text-sm leading-6 text-muted">
-          ツールはすべてブラウザ内で処理されます。
+          ツールを選ぶと、詳しい説明と入力画面が開きます。
         </p>
       }
     >
