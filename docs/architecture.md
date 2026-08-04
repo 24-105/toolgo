@@ -106,6 +106,14 @@ QRコード生成には `qrcode` を使います。エンコードとPNG生成�
 
 canonical、OGP、sitemap、robotsの絶対URLは `NEXT_PUBLIC_SITE_URL` と `NEXT_PUBLIC_BASE_PATH` から生成します。GitHub Pagesへ公開するときは `.env.example` を参考に本番URLを設定し、ローカルでは未設定時の `http://localhost:3000` を使います。
 
+## 検索設計
+
+検索データはregistryから、slug、ツール名、説明、カテゴリ、キーワード、公開状態だけを取り出してヘッダーへ渡します。ツール画面のClient Componentを検索欄へ読み込まず、ツール数が増えても検索欄の初期負荷を抑えます。
+
+検索は入力途中のキーワードを、ツール名、カテゴリ、説明、keywordsへ照合します。候補を選ぶとツール詳細へ移動し、検索結果をすべて見ると `/tools?q=...` の一覧へ移動します。検索結果はブラウザ内で絞り込み、サーバーや外部APIへ入力を送信しません。
+
+検索欄は `⌘ K` または `Ctrl K` でフォーカスできます。新しいツールを追加するときは、metadataのname、description、category、keywordsを検索結果で使う日本語として整えます。
+
 ## Static Export方針
 
 Next.jsの `output: 'export'` を使用し、サーバー専用機能、API Routes、Server Actions、動的な外部データ取得に依存しません。動的ルートはビルド時にregistryの全slugから静的生成します。GitHub Pagesのサブパス配信を考慮して `basePath` と `assetPrefix` を環境変数で管理し、リンクにはNext.jsのルーティングを使います。

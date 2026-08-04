@@ -2,7 +2,26 @@ import { Badge, Card, CardContent, CardHeader, CardTitle } from "@/components/ui
 import { AdSlot } from "@/components/ads";
 import { PrivacyNote } from "@/components/layout";
 import { getTools } from "@/features/tools/registry";
-import { ArrowRight, CalendarDays, Code2, KeyRound, QrCode, Type } from "lucide-react";
+import {
+  ArrowRight,
+  Binary,
+  CalendarDays,
+  CalendarRange,
+  Code2,
+  Coins,
+  GitCompare,
+  Hash,
+  Image,
+  KeyRound,
+  Link as LinkIcon,
+  Palette,
+  QrCode,
+  Regex,
+  Ruler,
+  Table,
+  Type,
+  Wallet,
+} from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import Link from "next/link";
 
@@ -15,6 +34,20 @@ const iconMap = {
   qr: QrCode,
   text: Type,
   calendar: CalendarDays,
+  link: LinkIcon,
+  binary: Binary,
+  hash: Hash,
+  palette: Palette,
+  regex: Regex,
+  diff: GitCompare,
+  table: Table,
+  image: Image,
+  markdown: Code2,
+  wallet: Wallet,
+  split: Coins,
+  tax: Coins,
+  date: CalendarRange,
+  ruler: Ruler,
 } satisfies Record<ToolIcon, LucideIcon>;
 
 export const metadata = createPageMetadata({

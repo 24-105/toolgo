@@ -53,7 +53,7 @@ function parseDate(value: string) {
 }
 
 function dateOf(year: number, month: number, day: number) {
-  return new Date(year, month, day);
+  return new Date(Date.UTC(year, month, day));
 }
 
 function birthdayForYear(year: number, birth: Date) {
@@ -71,5 +71,5 @@ function isLeapYear(year: number) {
 }
 
 function formatDate(date: Date) {
-  return `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日`;
+  return `${date.getUTCFullYear()}年${date.getUTCMonth() + 1}月${date.getUTCDate()}日`;
 }

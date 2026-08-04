@@ -1,8 +1,7 @@
-import { Badge, Card, CardContent, CardHeader, CardTitle } from "@/components/ui";
+import { ToolSearchResults } from "@/components/search";
 import { ToolLayout } from "@/components/layout";
 import { getTools } from "@/features/tools/registry";
 import { createPageMetadata } from "@/lib/seo";
-import Link from "next/link";
 
 export const metadata = createPageMetadata({
   title: "ツール一覧",
@@ -12,6 +11,17 @@ export const metadata = createPageMetadata({
 });
 
 export default function ToolsPage() {
+  const searchTools = getTools().map(
+    ({ slug, name, description, category, keywords, status }) => ({
+      slug,
+      name,
+      description,
+      category,
+      keywords,
+      status,
+    }),
+  );
+
   return (
     <ToolLayout
       title="ツール一覧"
@@ -23,31 +33,7 @@ export default function ToolsPage() {
         </p>
       }
     >
-      <Card>
-        <CardHeader>
-          <div className="flex flex-wrap items-center justify-between gap-3">
-            <CardTitle>ツール一覧</CardTitle>
-            <Badge variant="success">5種類</Badge>
-          </div>
-        </CardHeader>
-        <CardContent>
-          <div className="tool-list" aria-label="ツール一覧">
-            {getTools().map((tool) => (
-              <Link
-                key={tool.slug}
-                href={`/tools/${tool.slug}/`}
-                className="tool-list-item"
-              >
-                <span>
-                  {tool.name}
-                  <span className="tool-list-item-description">{tool.description}</span>
-                </span>
-                {tool.status === "planned" && <Badge>準備中</Badge>}
-              </Link>
-            ))}
-          </div>
-        </CardContent>
-      </Card>
+      <ToolSearchResults tools={searchTools} />
     </ToolLayout>
   );
 }

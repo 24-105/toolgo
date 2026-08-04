@@ -1,6 +1,25 @@
 import type { ComponentType } from "react";
 
-export type ToolIcon = "code" | "key" | "qr" | "text" | "calendar";
+export type ToolIcon =
+  | "code"
+  | "key"
+  | "qr"
+  | "text"
+  | "calendar"
+  | "link"
+  | "binary"
+  | "hash"
+  | "palette"
+  | "regex"
+  | "diff"
+  | "table"
+  | "image"
+  | "markdown"
+  | "wallet"
+  | "split"
+  | "tax"
+  | "date"
+  | "ruler";
 export type ToolStatus = "available" | "planned";
 
 export type ToolFaq = {

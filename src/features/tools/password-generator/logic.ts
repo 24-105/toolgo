@@ -16,6 +16,10 @@ const characterSets = {
 } as const;
 
 export function generatePassword(options: PasswordOptions): string {
+  if (!Number.isInteger(options.length) || options.length < 4 || options.length > 128) {
+    throw new Error("パスワードの長さは4〜128文字で指定してください。");
+  }
+
   const selectedSets = (
     Object.keys(characterSets) as Array<keyof typeof characterSets>
   ).filter((key) => options[key]);

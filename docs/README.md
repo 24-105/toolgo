@@ -6,13 +6,15 @@
 
 ## 要件・計画
 
-| 文書                                         | 内容                                          |
-| -------------------------------------------- | --------------------------------------------- |
-| [roadmap.md](roadmap.md)                     | Phase 0〜10、MVP、将来拡張、次に実施するPhase |
-| [mvp.md](mvp.md)                             | MVP対象5ツールの必須機能、対象外、将来機能    |
-| [release-checklist.md](release-checklist.md) | GitHub Pages公開前後の確認項目                |
-| [terms.md](terms.md)                         | ToolGo利用規約の本文と公開時の確認事項        |
-| [privacy-policy.md](privacy-policy.md)       | ToolGoプライバシーポリシーの本文と確認事項    |
+| 文書                                             | 内容                                          |
+| ------------------------------------------------ | --------------------------------------------- |
+| [roadmap.md](roadmap.md)                         | Phase 0〜10、MVP、将来拡張、次に実施するPhase |
+| [mvp.md](mvp.md)                                 | MVP対象5ツールの必須機能、対象外、将来機能    |
+| [release-checklist.md](release-checklist.md)     | GitHub Pages公開前後の確認項目                |
+| [tool-expansion-plan.md](tool-expansion-plan.md) | 追加する10ツールの候補、共通要件、実装計画    |
+| [daily-tools-plan.md](daily-tools-plan.md)       | 日常生活向け5ツールの仕様と給与計算の前提     |
+| [terms.md](terms.md)                             | ToolGo利用規約の本文と公開時の確認事項        |
+| [privacy-policy.md](privacy-policy.md)           | ToolGoプライバシーポリシーの本文と確認事項    |
 
 ## 設計書
 

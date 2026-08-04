@@ -20,20 +20,23 @@
 - [利用規約](docs/terms.md)
 - [プライバシーポリシー](docs/privacy-policy.md)
 - [MVP公開チェックリスト](docs/release-checklist.md)
+- [追加ツール10個の計画](docs/tool-expansion-plan.md)
+- [日常生活向けツール5個の計画](docs/daily-tools-plan.md)
 - [開発・ツール追加ルール](docs/contributing.md)
 - [docs全体の目次](docs/README.md)
 
 ### 目的別の読み方
 
-| 作業内容                           | 最初に読む文書                                                             |
-| ---------------------------------- | -------------------------------------------------------------------------- |
-| Phaseやリリース計画を確認する      | [docs/roadmap.md](docs/roadmap.md)                                         |
-| MVPツールを実装する                | [docs/mvp.md](docs/mvp.md)                                                 |
-| ディレクトリや共通基盤を変更する   | [docs/architecture.md](docs/architecture.md)                               |
-| UI、ロゴ、レイアウトを変更する     | [docs/design-principles.md](docs/design-principles.md)                     |
-| UI文言や日本語化を変更する         | [docs/language-policy.md](docs/language-policy.md)                         |
-| 自然な日本語の文言を追加・修正する | [docs/japanese-writing-guidelines.md](docs/japanese-writing-guidelines.md) |
-| 新しいツールを追加する             | [docs/contributing.md](docs/contributing.md)                               |
+| 作業内容                               | 最初に読む文書                                                             |
+| -------------------------------------- | -------------------------------------------------------------------------- |
+| Phaseやリリース計画を確認する          | [docs/roadmap.md](docs/roadmap.md)                                         |
+| MVPツールを実装する                    | [docs/mvp.md](docs/mvp.md)                                                 |
+| ディレクトリや共通基盤を変更する       | [docs/architecture.md](docs/architecture.md)                               |
+| UI、ロゴ、レイアウトを変更する         | [docs/design-principles.md](docs/design-principles.md)                     |
+| UI文言や日本語化を変更する             | [docs/language-policy.md](docs/language-policy.md)                         |
+| 自然な日本語の文言を追加・修正する     | [docs/japanese-writing-guidelines.md](docs/japanese-writing-guidelines.md) |
+| 新しいツールを追加する                 | [docs/contributing.md](docs/contributing.md)                               |
+| 追加ツール10個の仕様と実装順を確認する | [docs/tool-expansion-plan.md](docs/tool-expansion-plan.md)                 |
 
 ## プロジェクト概要
 
