@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
 import { ToolLayout } from "@/components/layout";
+import { ToolIcon } from "@/components/tools";
 import { Badge, Card, CardContent, CardHeader, CardTitle } from "@/components/ui";
 import {
   getCategories,
@@ -63,7 +64,10 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                 href={`/tools/${tool.slug}/`}
                 className="tool-list-item"
               >
-                <span>
+                <span className="tool-list-item-icon" aria-hidden="true">
+                  <ToolIcon icon={tool.icon} />
+                </span>
+                <span className="tool-list-item-content">
                   {tool.name}
                   <span className="tool-list-item-description">{tool.description}</span>
                 </span>

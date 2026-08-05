@@ -154,6 +154,5 @@ export const privacySections: LegalSection[] = [
       "本ポリシーに関するお問い合わせは、お問い合わせページに記載したToolGoのGitHubリポジトリのIssueで受け付けます。",
       "本サイトの機能や利用する外部サービスの変更に応じて、このポリシーを変更することがあります。変更後の内容は、本サイトに掲載した時点で適用します。",
     ],
-    items: [toolgoIssuesUrl],
   },
 ];

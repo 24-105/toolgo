@@ -13,12 +13,13 @@ export const metadata = createPageMetadata({
 
 export default function ToolsPage() {
   const searchTools = getTools().map(
-    ({ slug, name, description, category, keywords, status }) => ({
+    ({ slug, name, description, category, keywords, icon, status }) => ({
       slug,
       name,
       description,
       category,
       keywords,
+      icon,
       status,
     }),
   );

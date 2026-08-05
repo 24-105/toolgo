@@ -38,7 +38,7 @@ export function ColorConverter({}: ToolComponentProps) {
             id="color-input"
             value={input}
             onChange={(event) => setInput(event.target.value)}
-            placeholder="#149eca、rgb(20, 158, 202) または hsl(193, 82%, 44%)"
+            placeholder="#149eca、rgb(20, 158, 202) または hsl(195, 82%, 44%)"
           />
         </div>
         <Button onClick={run}>変換する</Button>

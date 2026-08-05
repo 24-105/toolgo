@@ -39,7 +39,7 @@ export function JsonFormatter({}: ToolComponentProps) {
   return (
     <div className="grid gap-4 lg:grid-cols-2">
       <Card>
-        <CardHeader>
+        <CardHeader className="tool-editor-card-header">
           <CardTitle>入力</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
@@ -50,7 +50,7 @@ export function JsonFormatter({}: ToolComponentProps) {
               value={input}
               onChange={(event) => setInput(event.target.value)}
               placeholder={initialJson}
-              className="min-h-72 font-mono text-sm"
+              className="h-72 min-h-72 resize-none font-mono text-sm"
               spellCheck={false}
             />
           </div>
@@ -98,14 +98,17 @@ export function JsonFormatter({}: ToolComponentProps) {
       </Card>
 
       <Card>
-        <CardHeader className="flex flex-row items-center justify-between gap-3">
+        <CardHeader className="tool-editor-card-header">
           <CardTitle>結果</CardTitle>
           <CopyButton value={output} />
         </CardHeader>
         <CardContent>
-          <pre className="min-h-72 overflow-auto rounded-md border border-border bg-surface-muted p-4 font-mono text-sm leading-6">
-            {output || "ここに結果が表示されます。"}
-          </pre>
+          <div className="space-y-2">
+            <p className="text-sm font-semibold leading-none text-foreground">JSON結果</p>
+            <pre className="h-72 min-h-72 overflow-auto rounded-md border border-border bg-surface-muted p-4 font-mono text-sm leading-6">
+              {output || "ここに結果が表示されます。"}
+            </pre>
+          </div>
         </CardContent>
       </Card>
     </div>

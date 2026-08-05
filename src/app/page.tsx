@@ -1,54 +1,12 @@
 import { Badge, Card, CardContent, CardHeader, CardTitle } from "@/components/ui";
 import { AdSlot } from "@/components/ads";
 import { PrivacyNote } from "@/components/layout";
+import { ToolIcon } from "@/components/tools";
 import { getTools } from "@/features/tools/registry";
-import {
-  ArrowRight,
-  Binary,
-  CalendarDays,
-  CalendarRange,
-  Code2,
-  Coins,
-  GitCompare,
-  Hash,
-  Image,
-  KeyRound,
-  Link as LinkIcon,
-  Palette,
-  QrCode,
-  Regex,
-  Ruler,
-  Table,
-  Type,
-  Wallet,
-} from "lucide-react";
-import type { LucideIcon } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 import { createPageMetadata } from "@/lib/seo";
-import type { ToolIcon } from "@/features/tools/types";
-
-const iconMap = {
-  code: Code2,
-  key: KeyRound,
-  qr: QrCode,
-  text: Type,
-  calendar: CalendarDays,
-  link: LinkIcon,
-  binary: Binary,
-  hash: Hash,
-  palette: Palette,
-  regex: Regex,
-  diff: GitCompare,
-  table: Table,
-  image: Image,
-  markdown: Code2,
-  wallet: Wallet,
-  split: Coins,
-  tax: Coins,
-  date: CalendarRange,
-  ruler: Ruler,
-} satisfies Record<ToolIcon, LucideIcon>;
 
 export const metadata = createPageMetadata({
   title: "無料ブラウザツール集｜オンラインで使える便利ツール",
@@ -136,12 +94,10 @@ function MetricCard({
 }
 
 function QuickTool({ tool }: { tool: ReturnType<typeof getTools>[number] }) {
-  const Icon = iconMap[tool.icon];
-
   return (
     <Link href={`/tools/${tool.slug}/`} className="quick-tool-item">
       <span className="quick-tool-icon" aria-hidden="true">
-        <Icon />
+        <ToolIcon icon={tool.icon} />
       </span>
       <span className="quick-tool-name">{tool.name}</span>
       <span className="quick-tool-category">{tool.category}</span>

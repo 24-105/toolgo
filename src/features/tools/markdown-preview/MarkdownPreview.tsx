@@ -6,7 +6,7 @@ import type { ToolComponentProps } from "../types";
 import { renderMarkdown } from "./logic";
 
 const sample =
-  "# 見出し\n\nToolGoの**Markdownプレビュー**です。\n\n- 箇条書き\n- `コード`";
+  "# 見出し\n\nToolGoの**Markdownプレビュー**です。\n\n- 箇条書き\n- `コード`\n\n| 項目 | 内容 |\n| --- | --- |\n| GFM | 対応 |";
 
 export function MarkdownPreview({}: ToolComponentProps) {
   const [input, setInput] = useState("");
@@ -27,7 +27,7 @@ export function MarkdownPreview({}: ToolComponentProps) {
             className="min-h-80 font-mono text-sm"
           />
           <p className="mt-2 text-sm text-muted">
-            見出し、箇条書き、太字、インラインコードに対応しています。
+            CommonMarkとGFMの見出し、リスト、テーブル、リンク、コードブロックなどに対応しています。HTMLは無効化し、&lt;br&gt;だけ改行として扱います。
           </p>
         </CardContent>
       </Card>
@@ -37,7 +37,7 @@ export function MarkdownPreview({}: ToolComponentProps) {
         </CardHeader>
         <CardContent>
           <div
-            className="min-h-80 rounded-md border border-border bg-surface-muted p-4 leading-7"
+            className="markdown-preview min-h-80 rounded-md border border-border bg-surface-muted p-4 leading-7"
             dangerouslySetInnerHTML={{ __html: html }}
           />
         </CardContent>

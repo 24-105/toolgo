@@ -1,45 +1,43 @@
-function escapeHtml(value: string) {
-  return value
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;");
+import { unified } from "unified";
+import rehypeSanitize from "rehype-sanitize";
+import rehypeStringify from "rehype-stringify";
+import remarkGfm from "remark-gfm";
+import remarkParse from "remark-parse";
+import remarkRehype from "remark-rehype";
+
+type MarkdownNode = {
+  children?: MarkdownNode[];
+  type: string;
+  value?: string;
+};
+
+function allowBreakTags() {
+  return (tree: MarkdownNode) => {
+    convertBreakTags(tree);
+  };
 }
+
+function convertBreakTags(node: MarkdownNode) {
+  for (const child of node.children ?? []) {
+    if (
+      child.type === "html" &&
+      /^<br\s*\/?>(?:\s*)$/iu.test(child.value?.trim() ?? "")
+    ) {
+      child.type = "break";
+      delete child.value;
+    }
+    convertBreakTags(child);
+  }
+}
+
+const markdownProcessor = unified()
+  .use(remarkParse)
+  .use(remarkGfm)
+  .use(allowBreakTags)
+  .use(remarkRehype)
+  .use(rehypeSanitize)
+  .use(rehypeStringify);
 
 export function renderMarkdown(value: string) {
-  const lines = value.split(/\r?\n/u);
-  const output: string[] = [];
-  let listItems: string[] = [];
-
-  function flushList() {
-    if (listItems.length > 0) {
-      output.push(`<ul>${listItems.join("")}</ul>`);
-      listItems = [];
-    }
-  }
-
-  for (const line of lines) {
-    const escaped = escapeHtml(line);
-    if (escaped.startsWith("- ")) {
-      listItems.push(`<li>${formatInline(escaped.slice(2))}</li>`);
-      continue;
-    }
-    flushList();
-    if (escaped.startsWith("### "))
-      output.push(`<h3>${formatInline(escaped.slice(4))}</h3>`);
-    else if (escaped.startsWith("## "))
-      output.push(`<h2>${formatInline(escaped.slice(3))}</h2>`);
-    else if (escaped.startsWith("# "))
-      output.push(`<h1>${formatInline(escaped.slice(2))}</h1>`);
-    else if (!escaped.trim()) output.push("");
-    else output.push(`<p>${formatInline(escaped)}</p>`);
-  }
-  flushList();
-  return output.join("\n");
-}
-
-function formatInline(value: string) {
-  return value
-    .replace(/\*\*(.+?)\*\*/gu, "<strong>$1</strong>")
-    .replace(/`([^`]+)`/gu, "<code>$1</code>");
+  return String(markdownProcessor.processSync(value));
 }

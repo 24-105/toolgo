@@ -7,12 +7,13 @@ import { getTools } from "@/features/tools/registry";
 
 export function AppShell({ children }: { children: ReactNode }) {
   const searchTools = getTools().map(
-    ({ slug, name, description, category, keywords, status }) => ({
+    ({ slug, name, description, category, keywords, icon, status }) => ({
       slug,
       name,
       description,
       category,
       keywords,
+      icon,
       status,
     }),
   );

@@ -31,7 +31,7 @@ export function UrlEncoderDecoder({}: ToolComponentProps) {
   return (
     <div className="grid gap-4 lg:grid-cols-2">
       <Card>
-        <CardHeader>
+        <CardHeader className="tool-editor-card-header">
           <CardTitle>入力</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
@@ -40,7 +40,7 @@ export function UrlEncoderDecoder({}: ToolComponentProps) {
             value={input}
             onChange={(event) => setInput(event.target.value)}
             placeholder="https://example.com/検索"
-            className="min-h-56"
+            className="h-72 min-h-72 resize-none"
             spellCheck={false}
           />
           <label className="block max-w-md space-y-2 text-sm font-semibold">
@@ -77,7 +77,7 @@ export function UrlEncoderDecoder({}: ToolComponentProps) {
         </CardContent>
       </Card>
       <Card>
-        <CardHeader className="flex flex-row items-center justify-between gap-3">
+        <CardHeader className="tool-editor-card-header">
           <CardTitle>結果</CardTitle>
           <CopyButton value={output} />
         </CardHeader>
@@ -87,7 +87,7 @@ export function UrlEncoderDecoder({}: ToolComponentProps) {
             readOnly
             value={output}
             placeholder="ここに結果が表示されます"
-            className="min-h-56 font-mono text-sm"
+            className="h-72 min-h-72 resize-none font-mono text-sm"
           />
         </CardContent>
       </Card>

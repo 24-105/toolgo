@@ -6,6 +6,8 @@ import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from "reac
 import type { FormEvent } from "react";
 
 import { Badge, Card, CardContent, CardHeader, CardTitle } from "@/components/ui";
+import { ToolIcon } from "@/components/tools/tool-icon";
+import type { ToolIcon as ToolIconName } from "@/features/tools/types";
 
 export type ToolSearchItem = {
   slug: string;
@@ -13,6 +15,7 @@ export type ToolSearchItem = {
   description: string;
   category: string;
   keywords: string[];
+  icon: ToolIconName;
   status: "available" | "planned";
 };
 
@@ -144,7 +147,10 @@ export function ToolSearchResults({ tools }: { tools: ToolSearchItem[] }) {
                 href={`/tools/${tool.slug}/`}
                 className="tool-list-item"
               >
-                <span>
+                <span className="tool-list-item-icon" aria-hidden="true">
+                  <ToolIcon icon={tool.icon} />
+                </span>
+                <span className="tool-list-item-content">
                   {tool.name}
                   <span className="tool-list-item-description">{tool.description}</span>
                 </span>
