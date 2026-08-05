@@ -5,10 +5,16 @@ import { legalLastUpdated, privacySections } from "@/content/legal";
 import { createPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "プライバシーポリシー",
-  description: "ToolGoにおける入力データやブラウザ情報の扱いについて説明します。",
+  title: "プライバシーポリシー｜ToolGoの入力データ・個人情報の扱い",
+  description:
+    "ToolGoのツール入力、個人情報、localStorage、アクセス解析、GitHub Pages、将来の広告に関する情報の扱いを説明します。",
   path: "/privacy-policy/",
-  keywords: ["プライバシーポリシー", "個人情報", "ToolGo"],
+  keywords: [
+    "ToolGo プライバシーポリシー",
+    "入力データ 送信しない",
+    "個人情報",
+    "Cookie",
+  ],
 });
 
 export default function PrivacyPolicyPage() {

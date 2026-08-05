@@ -51,10 +51,11 @@ const iconMap = {
 } satisfies Record<ToolIcon, LucideIcon>;
 
 export const metadata = createPageMetadata({
-  title: "ホーム",
-  description: "ToolGoは、ブラウザで使える手軽な便利ツール集です。",
+  title: "無料ブラウザツール集｜オンラインで使える便利ツール",
+  description:
+    "JSON整形、パスワード生成、QRコード、文字数カウント、年齢計算など、無料で使えるオンラインツールをブラウザ上で提供します。入力データは外部へ送信しません。",
   path: "/",
-  keywords: ["無料ツール", "オンラインツール", "ブラウザツール"],
+  keywords: ["無料ブラウザツール", "無料オンラインツール", "便利ツール", "Webツール"],
 });
 
 export default function HomePage() {
@@ -65,9 +66,11 @@ export default function HomePage() {
           <div>
             <p className="eyebrow">ホーム</p>
             <h1 id="page-title" className="page-title">
-              ToolGo
+              ToolGo｜無料ブラウザツール集
             </h1>
-            <p className="lede">手軽な便利ツールを、ブラウザですぐに使えます。</p>
+            <p className="lede">
+              無料で使えるオンラインツールを、ブラウザだけで利用できます。
+            </p>
             <PrivacyNote />
           </div>
         </header>

@@ -22,10 +22,10 @@ export async function generateMetadata({ params }: ToolPageProps): Promise<Metad
   }
 
   return createPageMetadata({
-    title: tool.name,
-    description: tool.description,
+    title: tool.seoTitle ?? tool.name,
+    description: tool.seoDescription ?? tool.description,
     path: `/tools/${tool.slug}/`,
-    keywords: tool.keywords,
+    keywords: tool.seoKeywords ?? tool.keywords,
   });
 }
 

@@ -51,7 +51,7 @@ export function AgeCalculator({}: ToolComponentProps) {
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="reference-date">今日</Label>
+            <Label htmlFor="reference-date">基準日</Label>
             <Input
               id="reference-date"
               type="date"

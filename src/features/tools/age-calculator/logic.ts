@@ -9,11 +9,11 @@ export function calculateAge(birthDate: string, referenceDate: string): AgeResul
   const reference = parseDate(referenceDate);
 
   if (!birth || !reference) {
-    throw new Error("誕生日と今日の日付を正しく入力してください。");
+    throw new Error("誕生日と基準日を正しく入力してください。");
   }
 
   if (birth > reference) {
-    throw new Error("誕生日は今日より前の日付を入力してください。");
+    throw new Error("誕生日は基準日より前の日付を入力してください。");
   }
 
   let age = reference.getFullYear() - birth.getFullYear();

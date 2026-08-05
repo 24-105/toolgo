@@ -32,7 +32,8 @@ export function createPageMetadata({
   const image = absoluteUrl("/og/toolgo.svg");
 
   return {
-    title,
+    // 明示的なabsolute titleにして、トップページでも共通サフィックスを確実に付ける。
+    title: { absolute: `${title} | ${siteName}` },
     description,
     keywords,
     alternates: {

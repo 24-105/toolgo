@@ -107,7 +107,7 @@ export function PasswordGenerator({}: ToolComponentProps) {
           />
         </div>
         <p className="text-sm leading-6 text-muted">
-          安全な乱数を使ってパスワードを作成します。
+          暗号学的に安全な乱数を使ってパスワードを作成します。
         </p>
       </CardContent>
     </Card>

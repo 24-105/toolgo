@@ -5,10 +5,11 @@ import { aboutSections, legalLastUpdated } from "@/content/legal";
 import { createPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "このサイトについて",
-  description: "ToolGoの目的、提供しているツール、入力データの扱いについて説明します。",
+  title: "ToolGoについて｜無料ブラウザツール集の概要",
+  description:
+    "ToolGoが提供する無料ブラウザツールの種類、サイトの目的、入力データを外部へ送信しない仕組み、運営情報を説明します。",
   path: "/about/",
-  keywords: ["ToolGoについて", "ブラウザツール", "運営情報"],
+  keywords: ["ToolGoについて", "無料ブラウザツール", "運営情報", "入力データ"],
 });
 
 export default function AboutPage() {
@@ -16,7 +17,7 @@ export default function AboutPage() {
     <main className="legal-page">
       <div className="site-container">
         <p className="eyebrow">ToolGoの案内</p>
-        <h1 className="page-title">このサイトについて</h1>
+        <h1 className="page-title">ToolGoについて</h1>
         <p className="legal-updated">更新日：{legalLastUpdated}</p>
         <LegalDocument sections={aboutSections} />
       </div>

@@ -209,7 +209,7 @@ export function SalaryTakeHome({}: ToolComponentProps) {
           </div>
         )}
         <p className="text-sm leading-6 text-muted">
-          現在の制度を前提にした概算です。健康保険の種類、勤務先、賞与、各種控除などで実際の手取り額は変わります。正確な金額は給与明細や勤務先の案内を確認してください。
+          現行制度を前提にした概算です。健康保険の種類、勤務先、賞与、各種控除などで実際の手取り額は変わります。正確な金額は給与明細や勤務先の案内を確認してください。
         </p>
       </CardContent>
     </Card>

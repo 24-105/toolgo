@@ -7,16 +7,17 @@ import { getCategories, getToolsByCategory } from "@/features/tools/registry";
 import { createPageMetadata } from "@/lib/seo";
 
 export const metadata = createPageMetadata({
-  title: "カテゴリ",
-  description: "ToolGoのツールを、目的に合うカテゴリから探せます。",
+  title: "無料ツールをカテゴリから探す｜ブラウザツール一覧",
+  description:
+    "開発、文章、生成、計算、デザイン、日常生活など、目的別にToolGoの無料ブラウザツールを探せます。",
   path: "/categories/",
-  keywords: ["ツールカテゴリ", "無料ツール"],
+  keywords: ["無料ツール カテゴリ", "ブラウザツール", "開発ツール", "計算ツール"],
 });
 
 export default function CategoriesPage() {
   return (
     <ToolLayout
-      title="カテゴリ"
+      title="無料ツールをカテゴリから探す｜ブラウザツール一覧"
       description="目的に合うツールをカテゴリから探せます。"
       category="ツール一覧"
     >

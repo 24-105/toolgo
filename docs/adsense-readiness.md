@@ -149,3 +149,12 @@
 - 静的出力：20ツールページ、固定ページ、404、robots、sitemapを確認
 - 内部リンク：生成HTMLの内部ルート34件に欠落なし
 - AdSense未設定確認：広告スクリプト、Publisher ID、ダミー広告の出力なし
+
+## セキュリティ確認
+
+- `npm audit --audit-level=high`：依存更新後、脆弱性0件
+- 監査で検出されたNext.js経由のPostCSS / sharpの高重大度脆弱性を、Next.js 16.3.0、PostCSS 8.5.23、sharp 0.35.3へ更新して解消しました。
+- ソース内にAPIキー、秘密鍵、アクセストークン、`eval`、`new Function`、`fetch`、XHR、Beaconなどは確認されませんでした。
+- Markdownプレビューは入力文字列をHTMLエスケープしてから対応タグへ変換しています。`dangerouslySetInnerHTML`はこの変換結果だけに使用しています。
+- Google Analytics、AdSenseは環境変数が設定されない限り読み込みません。ツール入力を外部サービスへ送る処理はありません。
+- npm監査時に、ローカルNode.js 22.9.0が一部依存パッケージの要求するNode.js 22.13.0以上を満たさない警告が出ました。CIのNode.js 26では問題ありませんが、ローカル開発環境もNode.js 26系へ合わせることを推奨します。

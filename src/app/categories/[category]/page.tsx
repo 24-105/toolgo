@@ -28,10 +28,10 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
   }
 
   return createPageMetadata({
-    title: `${category.name}のツール`,
-    description: `${category.description}ツールの一覧です。`,
+    title: category.seoTitle,
+    description: category.seoDescription,
     path: `/categories/${category.slug}/`,
-    keywords: [category.name, "無料ツール"],
+    keywords: [...category.seoKeywords],
   });
 }
 
@@ -47,13 +47,13 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
 
   return (
     <ToolLayout
-      title={`${category.name}のツール`}
-      description={`${category.description}ツールの一覧です。`}
+      title={category.seoHeading}
+      description={category.seoDescription}
       category="カテゴリ"
     >
       <Card>
         <CardHeader>
-          <CardTitle>{category.name}のツール</CardTitle>
+          <CardTitle>{category.seoHeading}</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="tool-list" aria-label={`${category.name}のツール一覧`}>

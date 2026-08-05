@@ -4,10 +4,11 @@ import { getTools } from "@/features/tools/registry";
 import { createPageMetadata } from "@/lib/seo";
 
 export const metadata = createPageMetadata({
-  title: "ツール一覧",
-  description: "ToolGoで使える無料ツールの一覧です。",
+  title: "無料オンラインツール一覧｜ブラウザで使える便利ツール",
+  description:
+    "開発、文章、計算、デザインなどの目的別に、無料で使えるブラウザツールを探せます。各ツールの使い方と入力データの扱いも確認できます。",
   path: "/tools/",
-  keywords: ["ツール一覧", "無料オンラインツール"],
+  keywords: ["無料オンラインツール", "ブラウザツール一覧", "便利ツール", "無料Webツール"],
 });
 
 export default function ToolsPage() {
@@ -24,7 +25,7 @@ export default function ToolsPage() {
 
   return (
     <ToolLayout
-      title="ツール一覧"
+      title="無料オンラインツール一覧｜ブラウザで使える便利ツール"
       description="目的に合う無料のブラウザツールを、ここから選べます。"
       category="ツール一覧"
       help={

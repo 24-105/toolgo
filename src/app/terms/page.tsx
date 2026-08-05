@@ -5,10 +5,11 @@ import { legalLastUpdated, termsSections } from "@/content/legal";
 import { createPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "利用規約",
-  description: "ToolGoの利用条件を定めた利用規約です。",
+  title: "利用規約｜ToolGo無料ツールの利用条件・免責事項",
+  description:
+    "ToolGoの無料ブラウザツールを利用する際の条件、免責事項、禁止事項、著作権、サービス変更、準拠法を定めています。",
   path: "/terms/",
-  keywords: ["利用規約", "ToolGo"],
+  keywords: ["ToolGo 利用規約", "無料ツール 利用条件", "免責事項", "ブラウザツール 規約"],
 });
 
 export default function TermsPage() {

@@ -21,13 +21,86 @@ import { UnitConverter } from "./unit-converter/UnitConverter";
 import type { ToolDefinition } from "./types";
 
 export const categoryRegistry = [
-  { slug: "development", name: "開発", description: "コードやデータの整形・変換" },
-  { slug: "security", name: "セキュリティ", description: "パスワードなどを安全に作成" },
-  { slug: "generation", name: "生成", description: "QRコードなどを作成" },
-  { slug: "writing", name: "文章", description: "文章の文字数や行数を確認" },
-  { slug: "calculation", name: "計算", description: "日付や数値を計算" },
-  { slug: "design", name: "デザイン", description: "色や画像を扱う" },
-  { slug: "daily", name: "日常生活", description: "暮らしの計算や換算" },
+  {
+    slug: "development",
+    name: "開発",
+    description: "コードやデータの整形・変換",
+    seoHeading: "開発者向け無料ツール",
+    seoTitle: "開発者向け無料ツール集｜JSON・URL・Base64変換",
+    seoDescription:
+      "JSON整形、URLエンコード、Base64変換、UUID生成など、開発作業に使える無料ブラウザツールをまとめています。入力データは外部へ送信しません。",
+    seoKeywords: ["開発者向け無料ツール", "開発ツール 無料", "JSON整形", "URLエンコード"],
+  },
+  {
+    slug: "security",
+    name: "セキュリティ",
+    description: "パスワードなどを安全に作成",
+    seoHeading: "セキュリティ向け無料ツール",
+    seoTitle: "セキュリティ向け無料ツール｜パスワード・ハッシュ生成",
+    seoDescription:
+      "パスワード生成とSHA-256・SHA-512ハッシュ生成など、ブラウザ内で使える無料のセキュリティツールをまとめています。",
+    seoKeywords: ["セキュリティツール 無料", "パスワード生成", "ハッシュ生成", "SHA-256"],
+  },
+  {
+    slug: "generation",
+    name: "生成",
+    description: "QRコードなどを作成",
+    seoHeading: "無料生成ツール",
+    seoTitle: "無料生成ツール｜QRコード・文字列を作成",
+    seoDescription:
+      "URLや文字列からQRコードを作成できる、無料のブラウザ生成ツールを紹介します。入力データは外部へ送信しません。",
+    seoKeywords: [
+      "生成ツール 無料",
+      "QRコード生成",
+      "QRコード作成",
+      "オンライン生成ツール",
+    ],
+  },
+  {
+    slug: "writing",
+    name: "文章",
+    description: "文章の文字数や行数を確認",
+    seoHeading: "文章作成・確認に使える無料ツール",
+    seoTitle: "文章作成・確認に使える無料ツール",
+    seoDescription:
+      "文字数カウント、テキスト差分比較、Markdownプレビューなど、文章の作成と確認に使える無料ツールをまとめています。",
+    seoKeywords: [
+      "文章作成ツール 無料",
+      "文字数カウント",
+      "文章比較",
+      "Markdownプレビュー",
+    ],
+  },
+  {
+    slug: "calculation",
+    name: "計算",
+    description: "日付や数値を計算",
+    seoHeading: "無料計算ツール",
+    seoTitle: "無料計算ツール集｜年齢・日付・税金を計算",
+    seoDescription:
+      "年齢、日付、税込・税抜、割り勘など、日常の計算に使える無料オンラインツールを目的別に探せます。",
+    seoKeywords: ["計算ツール 無料", "年齢計算", "日付計算", "税金計算"],
+  },
+  {
+    slug: "design",
+    name: "デザイン",
+    description: "色や画像を扱う",
+    seoHeading: "デザイン向け無料ツール",
+    seoTitle: "デザイン向け無料ツール｜カラーコード・画像圧縮",
+    seoDescription:
+      "HEX・RGB・HSLのカラーコード変換と画像圧縮を、インストール不要のブラウザ上で利用できます。",
+    seoKeywords: ["デザインツール 無料", "カラーコード変換", "画像圧縮", "HEX RGB変換"],
+  },
+  {
+    slug: "daily",
+    name: "日常生活",
+    description: "暮らしの計算や換算",
+    seoHeading: "暮らしの計算・換算ツール",
+    seoTitle: "暮らしの計算・換算ツール｜無料オンラインツール",
+    seoDescription:
+      "給料の手取り、割り勘、税込・税抜、日付、単位換算など、暮らしに役立つ無料計算ツールをまとめています。",
+    seoKeywords: ["生活計算ツール", "手取り計算", "割り勘計算", "単位換算"],
+  },
 ] as const;
 
 const toolMetadata: ToolDefinition[] = [
@@ -35,6 +108,17 @@ const toolMetadata: ToolDefinition[] = [
     slug: "json-formatter",
     name: "JSON整形",
     description: "JSONを読みやすく整形し、構文エラーも確認できます。",
+    seoTitle: "JSON整形ツール｜無料JSON Formatter・構文チェック",
+    seoDescription:
+      "JSONを貼り付けて、インデント付きに整形・圧縮できる無料ツールです。構文エラーの確認と結果のコピーまでブラウザ内で行え、入力データは外部へ送信しません。",
+    seoKeywords: [
+      "json formatter",
+      "JSON整形",
+      "JSON整形ツール",
+      "JSON beautifier",
+      "JSON構文チェック",
+      "JSON online",
+    ],
     category: "開発",
     keywords: ["JSON", "整形", "開発ツール"],
     icon: "code",
@@ -43,7 +127,7 @@ const toolMetadata: ToolDefinition[] = [
     component: JsonFormatter,
     details: {
       overview:
-        "JSON整形は、改行やインデントがないJSONを読みやすい形に整えるツールです。設定ファイルやAPIのレスポンスを確認するときに、データの階層や項目の対応関係をすばやく把握できます。入力内容にJSONとして解釈できない部分がある場合は、エラーの内容も確認できます。",
+        "JSON整形は、改行やインデントがないJSONを読みやすい形に整えるツールです。設定ファイルやAPIのレスポンスを確認するときに、データの階層や項目の対応関係を把握できます。入力内容にJSONとして解釈できない部分がある場合は、エラーの内容も確認できます。",
       example:
         "APIから返ってきた一行のJSONを貼り付け、インデント付きに整えて項目の抜けや括弧の閉じ忘れを確認します。",
       howToUse: [
@@ -71,7 +155,17 @@ const toolMetadata: ToolDefinition[] = [
   {
     slug: "password-generator",
     name: "パスワード生成",
-    description: "安全なパスワードを、このブラウザだけで作れます。",
+    description: "推測されにくいパスワードを、このブラウザだけで作れます。",
+    seoTitle: "パスワードジェネレーター｜無料パスワード生成ツール",
+    seoDescription:
+      "長さと大文字・小文字・数字・記号を指定して、推測されにくいパスワードを作れます。生成とコピーはブラウザ内で完結し、結果をサーバーへ送信・保存しません。",
+    seoKeywords: [
+      "パスワード生成",
+      "パスワードジェネレーター",
+      "ランダムパスワード",
+      "強力なパスワード",
+      "password generator",
+    ],
     category: "セキュリティ",
     keywords: ["パスワード", "生成", "セキュリティ"],
     icon: "key",
@@ -110,6 +204,16 @@ const toolMetadata: ToolDefinition[] = [
     slug: "qr-code-generator",
     name: "QRコード生成",
     description: "文字やURLをQRコードに変換します。",
+    seoTitle: "QRコード生成｜無料でURL・文字列をQR化",
+    seoDescription:
+      "URLや文字列を入力してQRコードを作成し、画像としてダウンロードできる無料ツールです。入力内容はブラウザ内で処理し、外部へ送信しません。",
+    seoKeywords: [
+      "QRコード生成",
+      "QRコード作成",
+      "QRコード 無料",
+      "URL QRコード",
+      "QR code generator",
+    ],
     category: "生成",
     keywords: ["QRコード", "生成", "URL"],
     icon: "qr",
@@ -148,6 +252,16 @@ const toolMetadata: ToolDefinition[] = [
     slug: "character-counter",
     name: "文字数カウント",
     description: "文章の文字数や行数を数えます。",
+    seoTitle: "文字数カウント｜無料で文字数・単語数・行数を計測",
+    seoDescription:
+      "文章を貼り付けるだけで、文字数、空白を除く文字数、単語数、行数を確認できます。応募書類やSNS投稿の文字数確認に使え、入力データは外部へ送信しません。",
+    seoKeywords: [
+      "文字数カウント",
+      "文字数計算",
+      "文字数制限",
+      "単語数カウント",
+      "行数カウント",
+    ],
     category: "文章",
     keywords: ["文字数", "カウント", "文章"],
     icon: "text",
@@ -185,7 +299,18 @@ const toolMetadata: ToolDefinition[] = [
   {
     slug: "age-calculator",
     name: "年齢計算",
-    description: "誕生日から、今日の年齢と次の誕生日までの日数を計算します。",
+    description:
+      "誕生日から、指定した基準日時点の年齢と次の誕生日までの日数を計算します。",
+    seoTitle: "年齢計算｜生年月日から満年齢・次の誕生日を計算",
+    seoDescription:
+      "生年月日と基準日を入力して、満年齢、次の誕生日、誕生日までの日数を計算できます。入力した日付はブラウザ内で処理し、外部へ送信しません。",
+    seoKeywords: [
+      "年齢計算",
+      "年齢計算ツール",
+      "満年齢計算",
+      "生年月日 計算",
+      "誕生日までの日数",
+    ],
     category: "計算",
     keywords: ["年齢", "計算", "生年月日"],
     icon: "calendar",
@@ -194,12 +319,12 @@ const toolMetadata: ToolDefinition[] = [
     component: AgeCalculator,
     details: {
       overview:
-        "年齢計算は、生年月日と基準日から満年齢、次の誕生日までの日数、次の誕生日を計算するツールです。誕生日を入力して、今日時点の年齢を確認したいときに利用できます。基準日を変更すれば、特定の日付時点の年齢も確認できます。",
+        "年齢計算は、生年月日と基準日から満年齢、次の誕生日までの日数、次の誕生日を計算するツールです。誕生日を入力して、基準日時点の年齢を確認したいときに利用できます。基準日を変更すれば、特定の日付時点の年齢も確認できます。",
       example:
         "生年月日と確認したい基準日を入力し、旅行や記念日までの年齢と次の誕生日を確認します。",
       howToUse: [
         "「誕生日」に生年月日を入力します。",
-        "「今日」に基準日を入力します。初期値は現在の日付です。",
+        "「基準日」に確認したい日付を入力します。初期値は現在の日付です。",
         "「計算する」を押すと、満年齢と次の誕生日までの日数が表示されます。",
       ],
       notes: [
@@ -209,7 +334,7 @@ const toolMetadata: ToolDefinition[] = [
       ],
       faq: [
         {
-          question: "今日の日付は自動で入りますか？",
+          question: "基準日は自動で入りますか？",
           answer:
             "基準日には、ページを開いた時点の日本時間の日付が初期値として入ります。別の日付を指定して計算することもできます。",
         },
@@ -225,6 +350,17 @@ const toolMetadata: ToolDefinition[] = [
     slug: "url-encoder-decoder",
     name: "URL変換",
     description: "URLや文字列をエンコード・デコードします。",
+    seoTitle: "URLエンコード・デコード｜無料URL変換ツール",
+    seoDescription:
+      "URLや日本語を含む文字列をエンコード・デコードできる無料ツールです。URL全体とパラメーターの一部を切り替えて変換でき、入力データは外部へ送信しません。",
+    seoKeywords: [
+      "url encode",
+      "url decode",
+      "URLエンコード",
+      "URLデコード",
+      "パーセントエンコード",
+      "URL変換",
+    ],
     category: "開発",
     keywords: ["URL", "エンコード", "デコード"],
     icon: "link",
@@ -233,7 +369,7 @@ const toolMetadata: ToolDefinition[] = [
     component: UrlEncoderDecoder,
     details: {
       overview:
-        "URL変換は、URLに含める文字列を安全な形式へ変換したり、変換済みの文字列を元に戻したりするツールです。日本語を含む検索語やクエリ文字列を確認するときに使えます。",
+        "URL変換は、URLで扱える形式へ文字列を変換したり、変換済みの文字列を元に戻したりするツールです。日本語を含む検索語やクエリ文字列を確認するときに使えます。",
       example:
         "検索語「東京 おすすめ」をURLの一部としてエンコードし、クエリパラメーターに貼り付けられる形にします。",
       howToUse: [
@@ -257,6 +393,17 @@ const toolMetadata: ToolDefinition[] = [
     slug: "base64-converter",
     name: "Base64変換",
     description: "文字列をBase64へ変換し、元の文字列へ戻します。",
+    seoTitle: "Base64エンコード・デコード｜無料変換ツール",
+    seoDescription:
+      "文字列をBase64へエンコードし、Base64文字列を元へデコードできる無料ツールです。日本語にも対応し、入力データはブラウザ内だけで処理します。",
+    seoKeywords: [
+      "base64 encode",
+      "base64 decode",
+      "Base64変換",
+      "Base64エンコード",
+      "Base64デコード",
+      "Base64 online",
+    ],
     category: "開発",
     keywords: ["Base64", "変換", "エンコード"],
     icon: "binary",
@@ -287,6 +434,17 @@ const toolMetadata: ToolDefinition[] = [
     slug: "uuid-generator",
     name: "UUID生成",
     description: "UUIDを必要な個数だけブラウザ内で生成します。",
+    seoTitle: "UUID生成｜無料UUID v4ジェネレーター",
+    seoDescription:
+      "UUID v4を必要な個数だけ生成できる無料ツールです。テストデータや一時的な識別子の作成に使え、生成処理はブラウザ内で完結します。",
+    seoKeywords: [
+      "uuid generator",
+      "UUID生成",
+      "UUID生成ツール",
+      "UUID v4",
+      "UUID online",
+      "ランダムUUID",
+    ],
     category: "開発",
     keywords: ["UUID", "識別子", "生成"],
     icon: "binary",
@@ -310,6 +468,17 @@ const toolMetadata: ToolDefinition[] = [
     slug: "hash-generator",
     name: "ハッシュ生成",
     description: "文字列からSHA-256またはSHA-512のハッシュを生成します。",
+    seoTitle: "SHA-256・SHA-512ハッシュ生成｜無料オンラインツール",
+    seoDescription:
+      "文字列からSHA-256またはSHA-512のハッシュ値を計算できます。チェックサムの比較に使える無料ツールで、入力データはブラウザ内だけで処理します。",
+    seoKeywords: [
+      "ハッシュ生成",
+      "SHA-256",
+      "SHA-512",
+      "ハッシュ値 計算",
+      "チェックサム",
+      "SHA512",
+    ],
     category: "セキュリティ",
     keywords: ["ハッシュ", "SHA-256", "SHA-512", "チェックサム"],
     icon: "hash",
@@ -335,6 +504,16 @@ const toolMetadata: ToolDefinition[] = [
     slug: "color-converter",
     name: "カラーコード変換",
     description: "HEXとRGB、HSLの色指定を相互に確認します。",
+    seoTitle: "カラーコード変換｜HEX・RGB・HSLを無料で相互変換",
+    seoDescription:
+      "HEX、RGB、HSLのカラーコードを相互に変換できる無料ツールです。Webサイトや資料の色を確認し、必要な形式をコピーできます。入力はブラウザ内で処理します。",
+    seoKeywords: [
+      "カラーコード変換",
+      "HEX RGB変換",
+      "HSL変換",
+      "カラーコード 変換",
+      "色コード",
+    ],
     category: "デザイン",
     keywords: ["カラーコード", "HEX", "RGB", "HSL", "色"],
     icon: "palette",
@@ -358,6 +537,16 @@ const toolMetadata: ToolDefinition[] = [
     slug: "regex-tester",
     name: "正規表現テスター",
     description: "正規表現が文字列に一致するかを確認します。",
+    seoTitle: "正規表現テスター｜無料でJavaScriptの正規表現を確認",
+    seoDescription:
+      "正規表現と対象文字列を入力し、一致した部分と位置を確認できます。JavaScriptのフラグに対応した無料テスターで、入力内容は外部へ送信しません。",
+    seoKeywords: [
+      "正規表現テスター",
+      "正規表現 チェック",
+      "regex tester",
+      "JavaScript 正規表現",
+      "正規表現 テスト",
+    ],
     category: "開発",
     keywords: ["正規表現", "RegExp", "テスト"],
     icon: "regex",
@@ -383,6 +572,17 @@ const toolMetadata: ToolDefinition[] = [
     slug: "text-diff",
     name: "テキスト差分比較",
     description: "2つの文章を行単位で比較し、変更箇所を確認します。",
+    seoTitle: "テキスト差分比較｜無料で文章・コードの変更を確認",
+    seoDescription:
+      "変更前と変更後の文章やコードを貼り付け、追加・削除された行を比較できる無料ツールです。入力内容はブラウザ内で処理し、外部へ送信しません。",
+    seoKeywords: [
+      "テキスト差分",
+      "差分比較",
+      "diffツール",
+      "文章比較",
+      "コード比較",
+      "テキスト比較",
+    ],
     category: "文章",
     keywords: ["差分", "比較", "文章", "コード"],
     icon: "diff",
@@ -408,6 +608,17 @@ const toolMetadata: ToolDefinition[] = [
     slug: "csv-tsv-converter",
     name: "CSV・TSV変換",
     description: "CSVとTSVを相互に変換します。",
+    seoTitle: "CSV・TSV変換｜無料で区切り文字を相互変換",
+    seoDescription:
+      "CSVとTSVを相互に変換し、表データを別のアプリへ貼り付けやすく整えられる無料ツールです。UTF-8の入力をブラウザ内で処理し、外部へ送信しません。",
+    seoKeywords: [
+      "CSV TSV変換",
+      "CSV変換",
+      "TSV変換",
+      "CSV 変換 online",
+      "区切り文字 変換",
+      "表データ 変換",
+    ],
     category: "開発",
     keywords: ["CSV", "TSV", "表", "変換"],
     icon: "table",
@@ -425,14 +636,18 @@ const toolMetadata: ToolDefinition[] = [
         "変換するを押して結果をコピーします。",
       ],
       notes: [
-        "UTF-8のテキストを対象にしています。先頭行を見出しとして特別扱いはしません。引用符が閉じていないデータは変換できません。",
+        "UTF-8のテキストを対象にしています。先頭行を見出しとして特別には扱いません。引用符が閉じていないデータは変換できません。",
       ],
     },
   },
   {
     slug: "image-compressor",
     name: "画像圧縮",
-    description: "画像の容量を減らして、ダウンロードできます。",
+    description: "画像の容量を減らし、ダウンロードできます。",
+    seoTitle: "画像圧縮｜無料で画像容量を削減するオンラインツール",
+    seoDescription:
+      "JPEG・PNG・WebP画像の画質を調整し、容量を減らしてダウンロードできます。処理はブラウザ内で完結し、元画像を外部へ送信しません。",
+    seoKeywords: ["画像圧縮", "画像容量削減", "画像圧縮 online", "JPEG圧縮", "PNG圧縮"],
     category: "デザイン",
     keywords: ["画像圧縮", "画像", "容量削減", "JPEG"],
     icon: "image",
@@ -457,7 +672,17 @@ const toolMetadata: ToolDefinition[] = [
   {
     slug: "markdown-preview",
     name: "Markdownプレビュー",
-    description: "Markdownの見出しや装飾を表示結果として確認します。",
+    description: "Markdownの見出しや装飾を表示形式で確認します。",
+    seoTitle: "Markdownプレビュー｜無料で見出し・装飾を確認",
+    seoDescription:
+      "Markdownを入力して、見出し、箇条書き、太字、インラインコードの表示を確認できます。READMEやメモの見た目をブラウザ内でプレビューできます。",
+    seoKeywords: [
+      "Markdownプレビュー",
+      "Markdown viewer",
+      "Markdown 確認",
+      "README プレビュー",
+      "Markdown editor",
+    ],
     category: "文章",
     keywords: ["Markdown", "プレビュー", "文章", "見出し"],
     icon: "markdown",
@@ -482,7 +707,18 @@ const toolMetadata: ToolDefinition[] = [
   {
     slug: "salary-take-home",
     name: "給料の手取り計算",
-    description: "額面月収から、手取り額を現在の制度を前提に概算します。",
+    description: "額面月収から、現行制度を前提に手取り額を概算します。",
+    seoTitle: "給料の手取り計算｜額面から手取り額を無料で概算",
+    seoDescription:
+      "額面月収、扶養人数、健康保険などを入力し、社会保険料・所得税を差し引いた月の手取り額を概算できます。現行制度を前提とした目安で、正確な金額は給与明細を確認してください。",
+    seoKeywords: [
+      "手取り計算",
+      "給与手取り計算",
+      "給料 手取り",
+      "手取り額",
+      "社会保険料計算",
+      "所得税計算",
+    ],
     category: "日常生活",
     keywords: ["給料", "手取り", "給与", "税金", "社会保険"],
     icon: "wallet",
@@ -491,7 +727,7 @@ const toolMetadata: ToolDefinition[] = [
     component: SalaryTakeHome,
     details: {
       overview:
-        "給料の手取り計算は、額面月収から社会保険料と所得税を差し引き、月の手取り額を概算するツールです。給与明細を見る前の目安を知りたいときに利用できます。",
+        "給料の手取り計算は、額面月収から社会保険料と所得税を差し引き、月の手取り額を概算するツールです。給与明細を受け取る前の目安を知りたいときに利用できます。",
       example:
         "転職先の額面月収と扶養人数を入力し、給与明細を受け取る前の月額手取りの目安を比較します。",
       howToUse: [
@@ -500,7 +736,7 @@ const toolMetadata: ToolDefinition[] = [
         "住民税が分かる場合は月額を入力して、計算するを押します。詳しく入力する場合は給与明細の控除額も入力できます。",
       ],
       notes: [
-        "現在の制度と協会けんぽの都道府県別料率を前提にした概算です。健康保険組合、賞与、年末調整、各種控除には完全対応していません。",
+        "現行制度と協会けんぽの都道府県別料率を前提にした概算です。健康保険組合、賞与、年末調整、各種控除には完全対応していません。",
       ],
       faq: [
         {
@@ -520,6 +756,16 @@ const toolMetadata: ToolDefinition[] = [
     slug: "bill-splitter",
     name: "割り勘計算",
     description: "合計金額を人数で割り、1人ずつの支払額を計算します。",
+    seoTitle: "割り勘計算｜飲み会・食事会の支払額を無料計算",
+    seoDescription:
+      "合計金額と人数を入力して、1人あたりの支払額と端数の分け方を計算できます。食事会や旅行の割り勘に使える無料ツールです。",
+    seoKeywords: [
+      "割り勘計算",
+      "割り勘ツール",
+      "飲み会 割り勘",
+      "一人当たり 計算",
+      "支払額 計算",
+    ],
     category: "日常生活",
     keywords: ["割り勘", "飲み会", "支払い", "計算"],
     icon: "split",
@@ -543,6 +789,16 @@ const toolMetadata: ToolDefinition[] = [
     slug: "tax-calculator",
     name: "税込・税抜計算",
     description: "税込価格、税抜価格、消費税額を相互に計算します。",
+    seoTitle: "税込・税抜計算｜消費税と税込価格を無料で計算",
+    seoDescription:
+      "税込価格、税抜価格、消費税額を税率から相互に計算できます。見積書や買い物の金額確認に使える無料ツールで、入力内容はブラウザ内で処理します。",
+    seoKeywords: [
+      "税込税抜計算",
+      "消費税計算",
+      "税込価格 計算",
+      "税抜価格 計算",
+      "消費税8%",
+    ],
     category: "日常生活",
     keywords: ["税込", "税抜", "消費税", "計算"],
     icon: "tax",
@@ -567,6 +823,10 @@ const toolMetadata: ToolDefinition[] = [
     slug: "date-calculator",
     name: "日付計算",
     description: "日付に日数を足したり引いたり、2つの日付の差を計算します。",
+    seoTitle: "日付計算｜日数を足し引き・2つの日付の差を計算",
+    seoDescription:
+      "基準日に日数を足した後・前の日付や、2つの日付の差を計算できます。締め切りや予定日の確認に使える無料ツールで、営業日は考慮しません。",
+    seoKeywords: ["日付計算", "日数計算", "日付の差", "何日後 計算", "締め切り 計算"],
     category: "日常生活",
     keywords: ["日付", "日数", "期間", "計算"],
     icon: "date",
@@ -589,6 +849,10 @@ const toolMetadata: ToolDefinition[] = [
     slug: "unit-converter",
     name: "単位換算",
     description: "長さ、重さ、温度、容量の単位を相互に換算します。",
+    seoTitle: "単位換算｜長さ・重さ・温度・容量を無料で変換",
+    seoDescription:
+      "長さ、重さ、温度、容量の単位を相互に換算できます。料理や海外の情報、DIYで使える無料オンラインツールで、入力データは外部へ送信しません。",
+    seoKeywords: ["単位換算", "単位変換", "長さ 単位換算", "重さ 単位換算", "温度変換"],
     category: "日常生活",
     keywords: ["単位換算", "長さ", "重さ", "温度", "容量"],
     icon: "ruler",

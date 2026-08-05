@@ -21,6 +21,7 @@
 - [プライバシーポリシー](docs/privacy-policy.md)
 - [MVP公開チェックリスト](docs/release-checklist.md)
 - [AdSense申請準備](docs/adsense-readiness.md)
+- [SEO title監査](docs/seo-title-audit.md)
 - [開発・ツール追加ルール](docs/contributing.md)
 - [docs全体の目次](docs/README.md)
 

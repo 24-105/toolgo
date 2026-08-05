@@ -39,6 +39,9 @@ export type ToolMetadata = {
   slug: string;
   name: string;
   description: string;
+  seoTitle?: string;
+  seoDescription?: string;
+  seoKeywords?: string[];
   category: string;
   keywords: string[];
   icon: ToolIcon;
