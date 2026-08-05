@@ -1,4 +1,4 @@
-export const legalLastUpdated = "2026年8月4日";
+export const legalLastUpdated = "2026年8月5日";
 
 export type LegalSection = {
   heading: string;
@@ -68,7 +68,11 @@ export const privacySections: LegalSection[] = [
     heading: "3. Cookieとブラウザへの保存",
     paragraphs: [
       "本サイトは、テーマ設定（ライト・ダーク）をブラウザのlocalStorageに保存します。この情報は表示設定にのみ使われ、本サイトのサーバーへ送信されません。",
-      "現在、本サイトは独自のアクセス解析用Cookieを使用していません。",
+      "本サイトでは、利用状況を把握するためGoogle Analyticsを使用しています。Google AnalyticsはCookieなどを利用して、閲覧したページ、利用環境、アクセス日時などの情報を収集します。収集された情報はGoogleのプライバシーポリシーに基づいて管理されます。",
+    ],
+    items: [
+      "Google Analytics: https://policies.google.com/technologies/partner-sites",
+      "Google プライバシーポリシー: https://policies.google.com/privacy",
     ],
   },
   {

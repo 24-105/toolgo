@@ -12,7 +12,7 @@ Phase 8では、広告を無効にした状態でToolGoをGitHub Pagesへ公開�
 - [ ] 5つのMVPツールが静的HTMLとして生成される
 - [ ] `sitemap.xml` と `robots.txt` が生成される
 - [ ] `NEXT_PUBLIC_ADS_ENABLED=false` のままになっている
-- [ ] ユーザー入力を送信する外部APIや解析処理がない
+- [ ] ユーザー入力を送信する外部APIや解析処理がない（Google Analyticsなどのサイト利用状況の解析は除く）
 
 ## GitHub側で必要な設定
 
@@ -47,6 +47,7 @@ https://toolgo.jp/
 - [ ] 年齢計算の日付エラーが分かりやすい
 - [ ] 広告が表示されていない
 - [ ] ブラウザのコンソールにエラーがない
+- [ ] Google Analyticsのタグが本番URLで読み込まれ、意図した測定IDに送信される
 
 ## 人間側で確定すること
 

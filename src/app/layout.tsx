@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import { GoogleAnalytics } from "@/components/analytics/google-analytics";
 import { AppShell } from "@/components/layout";
 import { absoluteUrl, siteDescription, siteName, siteOrigin } from "@/lib/seo";
 
@@ -52,6 +53,7 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body>
+        <GoogleAnalytics />
         <AppShell>{children}</AppShell>
       </body>
     </html>
