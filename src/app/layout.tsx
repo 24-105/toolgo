@@ -53,9 +53,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
+      <head>
+        <AdSenseScript />
+      </head>
       <body>
         <GoogleAnalytics />
-        <AdSenseScript />
         <AppShell>{children}</AppShell>
       </body>
     </html>

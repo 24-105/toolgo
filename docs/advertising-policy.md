@@ -4,11 +4,11 @@
 
 ## 現在の実装状態
 
-広告は初期状態で無効です。`NEXT_PUBLIC_ADS_ENABLED=true` にしない限り、広告用の外部スクリプトは読み込まず、画面にも広告枠を表示しません。
+AdSenseの共通スクリプトは、Publisher IDが設定された本番ビルドで読み込みます。現在のPublisher IDは `ca-pub-5792181255807252` です。`NEXT_PUBLIC_ADS_ENABLED` が `true` でない場合は、広告用の外部スクリプトを読み込みません。
 
-広告用の`AdSenseScript`と手動配置用の`AdSlot`を実装していますが、Publisher IDが未設定で、`NEXT_PUBLIC_ADS_ENABLED`も`false`のため、現在はどちらも表示・読み込みされません。広告事業者のCookie同意処理はまだ追加していません。
+広告用の`AdSenseScript`と手動配置用の`AdSlot`を実装しています。共通スクリプトはルートレイアウトから全ページの`head`へ読み込みます。手動広告枠は広告枠IDが設定された場合だけ表示します。広告事業者のCookie同意処理はまだ追加していません。
 
-有効化には本番ビルドで`NEXT_PUBLIC_ADS_ENABLED=true`、実在する`NEXT_PUBLIC_ADSENSE_PUBLISHER_ID`、手動広告枠を使う場合は`NEXT_PUBLIC_ADSENSE_SLOT_ID`が必要です。開発環境では表示しません。未設定時に空広告やダミー文言は出さず、スクリプトも読み込みません。
+有効化には本番ビルドで`NEXT_PUBLIC_ADS_ENABLED=true`と`NEXT_PUBLIC_ADSENSE_PUBLISHER_ID`が必要です。手動広告枠を使う場合は`NEXT_PUBLIC_ADSENSE_SLOT_ID`も設定します。開発環境では表示しません。未設定時に空広告やダミー文言は出さず、スクリプトも読み込みません。
 
 ## 掲載場所
 

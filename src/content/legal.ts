@@ -1,4 +1,4 @@
-export const legalLastUpdated = "2026年8月5日";
+export const legalLastUpdated = "2026年8月6日";
 
 export const toolgoRepositoryUrl = "https://github.com/24-105/toolgo";
 export const toolgoIssuesUrl = `${toolgoRepositoryUrl}/issues`;
@@ -144,7 +144,8 @@ export const privacySections: LegalSection[] = [
   {
     heading: "5. 広告について",
     paragraphs: [
-      "現在、本サイトではGoogle AdSenseなどの広告を配信していません。将来、Google AdSenseなどを導入する場合は、広告用Cookie、第三者配信事業者による情報利用、パーソナライズド広告の扱い、必要な同意方法について、このポリシーを更新してから開始します。第三者配信事業者は、広告の配信や効果測定のためにCookieを使用する可能性があります。",
+      "本サイトではGoogle AdSenseの広告スクリプトを使用しています。Googleなどの第三者配信事業者は、広告の配信、パーソナライズ、効果測定のためにCookieや広告識別子、アクセス情報を使用する場合があります。広告の表示や利用される情報は、Googleの設定、利用者の環境、地域の要件などによって異なります。",
+      "広告のCookie、第三者配信事業者による情報利用、パーソナライズド広告の扱い、必要な同意方法については、Googleの公式情報と本サイトの公開設定を確認してください。広告の導入・設定を変更した場合は、このポリシーも更新します。",
     ],
   },
   {
