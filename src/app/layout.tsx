@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { GoogleAnalytics } from "@/components/analytics/google-analytics";
+import { AdSenseScript } from "@/components/ads";
 import { AppShell } from "@/components/layout";
 import { absoluteUrl, siteDescription, siteName, siteOrigin } from "@/lib/seo";
 
@@ -54,6 +55,7 @@ export default function RootLayout({
     <html lang="ja">
       <body>
         <GoogleAnalytics />
+        <AdSenseScript />
         <AppShell>{children}</AppShell>
       </body>
     </html>

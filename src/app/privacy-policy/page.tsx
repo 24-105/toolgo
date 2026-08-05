@@ -17,7 +17,7 @@ export default function PrivacyPolicyPage() {
       <div className="site-container">
         <p className="eyebrow">個人情報・データの扱い</p>
         <h1 className="page-title">プライバシーポリシー</h1>
-        <p className="legal-updated">制定日：{legalLastUpdated}</p>
+        <p className="legal-updated">制定日・改定日：{legalLastUpdated}</p>
         <LegalDocument sections={privacySections} />
       </div>
     </main>

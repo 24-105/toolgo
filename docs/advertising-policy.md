@@ -6,7 +6,9 @@
 
 広告は初期状態で無効です。`NEXT_PUBLIC_ADS_ENABLED=true` にしない限り、広告用の外部スクリプトは読み込まず、画面にも広告枠を表示しません。
 
-現在実装しているのは、広告を配置する場所を共通化する `AdSlot` だけです。広告事業者のスクリプト、広告ID、Cookie同意処理はまだ追加していません。
+広告用の`AdSenseScript`と手動配置用の`AdSlot`を実装していますが、Publisher IDが未設定で、`NEXT_PUBLIC_ADS_ENABLED`も`false`のため、現在はどちらも表示・読み込みされません。広告事業者のCookie同意処理はまだ追加していません。
+
+有効化には本番ビルドで`NEXT_PUBLIC_ADS_ENABLED=true`、実在する`NEXT_PUBLIC_ADSENSE_PUBLISHER_ID`、手動広告枠を使う場合は`NEXT_PUBLIC_ADSENSE_SLOT_ID`が必要です。開発環境では表示しません。未設定時に空広告やダミー文言は出さず、スクリプトも読み込みません。
 
 ## 掲載場所
 
@@ -45,6 +47,7 @@
 - [ ] 個人化広告を使うか決める
 - [ ] Cookie・同意・プライバシーに関する表示を決める
 - [ ] `NEXT_PUBLIC_ADS_ENABLED` と広告IDの設定値を安全に管理する
+- [ ] 自動広告を使う場合はPublisher IDだけで有効化し、手動広告を使う場合は広告枠IDも設定する
 - [ ] 実広告を表示した状態で、主要ブラウザ・スマートフォン・広告ブロッカーを確認する
 - [ ] GitHub Pagesの本番環境で広告表示、表示速度、レイアウト崩れを確認する
 

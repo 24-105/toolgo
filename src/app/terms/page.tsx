@@ -17,7 +17,7 @@ export default function TermsPage() {
       <div className="site-container">
         <p className="eyebrow">ご利用にあたって</p>
         <h1 className="page-title">利用規約</h1>
-        <p className="legal-updated">制定日：{legalLastUpdated}</p>
+        <p className="legal-updated">制定日・改定日：{legalLastUpdated}</p>
         <LegalDocument sections={termsSections} />
       </div>
     </main>

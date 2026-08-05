@@ -12,20 +12,29 @@ export function LegalDocument({ sections }: { sections: LegalSection[] }) {
           {section.items && (
             <ul>
               {section.items.map((item) => (
-                <li key={item}>
-                  {item.startsWith("http") ? (
-                    <a href={item} target="_blank" rel="noreferrer">
-                      {item}
-                    </a>
-                  ) : (
-                    item
-                  )}
-                </li>
+                <li key={item}>{renderLegalItem(item)}</li>
               ))}
             </ul>
           )}
         </section>
       ))}
     </article>
+  );
+}
+
+function renderLegalItem(item: string) {
+  const match = item.match(/^(.*?)(https?:\/\/\S+)$/u);
+
+  if (!match) {
+    return item;
+  }
+
+  return (
+    <>
+      {match[1]}
+      <a href={match[2]} target="_blank" rel="noreferrer">
+        {match[2]}
+      </a>
+    </>
   );
 }

@@ -118,12 +118,26 @@ function ToolExplanation({ title, details }: { title: string; details: ToolDetai
 
   return (
     <section className="tool-explanation" aria-label={`${title}の詳しい説明`}>
-      <details>
+      <details open>
         <summary>詳しい説明を見る</summary>
         <div className="tool-explanation-content">
           <section>
             <h2>{title}とは</h2>
             <p>{details.overview}</p>
+          </section>
+
+          {details.example && (
+            <section>
+              <h2>利用例</h2>
+              <p>{details.example}</p>
+            </section>
+          )}
+
+          <section>
+            <h2>入力データの取り扱い</h2>
+            <p>
+              このツールの入力内容と処理結果は利用者のブラウザ内で扱います。ToolGoのサーバーへ送信・保存しません。
+            </p>
           </section>
 
           <section>

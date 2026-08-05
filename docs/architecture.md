@@ -17,6 +17,7 @@ src/
     categories/[category]/page.tsx
     sitemap.ts
     robots.ts
+    not-found.tsx
   components/
     layout/          # AppShell, Sidebar, Topbar, Footer, ToolLayout
     ui/              # Button, Input, Card, Tabsなど
@@ -90,11 +91,13 @@ export type ToolMetadata = {
   isMvp: boolean;
   status: "planned" | "available";
 };
+
+`ToolDetails`には、ツール固有の概要、利用例、使い方、注意事項、FAQを登録します。共通のToolLayoutが入力データのブラウザ内処理と関連ツールへの導線を表示します。
 ```
 
 `slug` は英小文字とハイフンに統一し、変更時はリダイレクトまたは旧URLの扱いを決めます。SEO文言を画面コンポーネントへ重複記述せず、metadataを情報源にします。`status` は `planned` と `available` を持ち、実装前のMVPツールも同じregistryで公開予定として扱えます。
 
-`src/features/tools/registry.ts` が一覧、カテゴリ、動的ルート、metadata、sitemapの共通情報源です。ツール画面は `ToolDefinition.component` に登録し、未実装の場合は詳細ページが準備中表示を出します。新しいツールの追加で `app/tools/page.tsx` や `sitemap.ts` を個別に変更しないことを基準にします。
+`src/features/tools/registry.ts` が一覧、カテゴリ、動的ルート、metadata、sitemapの共通情報源です。公開するツールは実装済みの`available`だけとし、コンポーネントのないツール詳細URLは404にします。未完成ツールを公開ナビゲーションやsitemapへ残しません。新しいツールの追加で `app/tools/page.tsx` や `sitemap.ts` を個別に変更しないことを基準にします。
 
 QRコード生成には `qrcode` を使います。エンコードとPNG生成をブラウザ内で行い、外部APIや入力データの送信に依存しません。その他のMVPツールはブラウザ標準APIと純粋なTypeScriptロジックで実装します。
 
@@ -102,7 +105,7 @@ QRコード生成には `qrcode` を使います。エンコードとPNG生成�
 
 ツールごとに一意のtitle、description、canonical、OGPを生成します。静的exportで生成できる情報のみを使い、ユーザー入力をmetadataへ含めません。共通のURL生成とページmetadataは `src/lib/seo.ts` に集約します。
 
-`src/app/sitemap.ts` と `src/app/robots.ts` は公開対象の静的ルートから生成します。現在の公開対象はホーム、ツール一覧、カテゴリ、registryに登録されたツール詳細ページです。noindexにすべき内部ページは公開対象へ追加しません。
+`src/app/sitemap.ts` と `src/app/robots.ts` は公開対象の静的ルートから生成します。現在の公開対象はホーム、ツール一覧、カテゴリ、About、Contact、規約、プライバシーポリシー、registryに登録されたツール詳細ページです。404やnoindexにすべき内部ページは公開対象へ追加しません。
 
 canonical、OGP、sitemap、robotsの絶対URLは `NEXT_PUBLIC_SITE_URL` と `NEXT_PUBLIC_BASE_PATH` から生成します。GitHub Pagesへ公開するときは `.env.example` を参考に本番URLを設定し、ローカルでは未設定時の `http://localhost:3000` を使います。
 

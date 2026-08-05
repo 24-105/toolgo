@@ -44,6 +44,8 @@ const toolMetadata: ToolDefinition[] = [
     details: {
       overview:
         "JSON整形は、改行やインデントがないJSONを読みやすい形に整えるツールです。設定ファイルやAPIのレスポンスを確認するときに、データの階層や項目の対応関係をすばやく把握できます。入力内容にJSONとして解釈できない部分がある場合は、エラーの内容も確認できます。",
+      example:
+        "APIから返ってきた一行のJSONを貼り付け、インデント付きに整えて項目の抜けや括弧の閉じ忘れを確認します。",
       howToUse: [
         "入力欄にJSONを貼り付けます。入力欄にはサンプルが薄く表示されているため、そのまま上書きできます。",
         "「整形する」を押すと、読みやすいインデント付きのJSONが表示されます。",
@@ -79,6 +81,8 @@ const toolMetadata: ToolDefinition[] = [
     details: {
       overview:
         "パスワード生成は、指定した長さと文字の種類から、推測されにくいパスワードを作るツールです。自分で文字を考える必要がないため、サービスごとに異なるパスワードを用意したいときに役立ちます。",
+      example:
+        "新しく登録するサービスの条件に合わせて16文字以上・数字と記号を含む設定にし、生成結果をパスワード管理アプリへ保存します。",
       howToUse: [
         "パスワードの長さを選びます。長くするほど、総当たりで推測されにくくなります。",
         "大文字・小文字・数字・記号の使用有無を選びます。",
@@ -115,6 +119,8 @@ const toolMetadata: ToolDefinition[] = [
     details: {
       overview:
         "QRコード生成は、文字やURLをスマートフォンなどで読み取れるQRコードに変換するツールです。WebページのURL、連絡先、短いメッセージなどを、画像として共有したいときに利用できます。",
+      example:
+        "イベント案内ページのURLを入力してQRコードを作成し、チラシや資料へ貼り付けます。",
       howToUse: [
         "入力欄にURLやメッセージを入力します。URLを使う場合は `https://` から入力してください。",
         "入力内容をもとにQRコードが自動で表示されます。",
@@ -151,6 +157,8 @@ const toolMetadata: ToolDefinition[] = [
     details: {
       overview:
         "文字数カウントは、入力した文章の文字数や行数を確認するツールです。レポート、応募書類、SNS投稿、記事など、文字数の上限や目安が決まっている文章の確認に使えます。",
+      example:
+        "応募フォームに貼り付ける文章を入力し、空白を含む文字数と含まない文字数を確認してから提出します。",
       howToUse: [
         "入力欄に文章を貼り付けるか、その場で入力します。",
         "文字数、空白を除いた文字数、行数などの集計結果を確認します。",
@@ -187,6 +195,8 @@ const toolMetadata: ToolDefinition[] = [
     details: {
       overview:
         "年齢計算は、生年月日と基準日から満年齢、次の誕生日までの日数、次の誕生日を計算するツールです。誕生日を入力して、今日時点の年齢を確認したいときに利用できます。基準日を変更すれば、特定の日付時点の年齢も確認できます。",
+      example:
+        "生年月日と確認したい基準日を入力し、旅行や記念日までの年齢と次の誕生日を確認します。",
       howToUse: [
         "「誕生日」に生年月日を入力します。",
         "「今日」に基準日を入力します。初期値は現在の日付です。",
@@ -224,6 +234,8 @@ const toolMetadata: ToolDefinition[] = [
     details: {
       overview:
         "URL変換は、URLに含める文字列を安全な形式へ変換したり、変換済みの文字列を元に戻したりするツールです。日本語を含む検索語やクエリ文字列を確認するときに使えます。",
+      example:
+        "検索語「東京 おすすめ」をURLの一部としてエンコードし、クエリパラメーターに貼り付けられる形にします。",
       howToUse: [
         "URLまたは文字列を入力します。",
         "エンコードまたはデコードを押します。",
@@ -254,6 +266,7 @@ const toolMetadata: ToolDefinition[] = [
     details: {
       overview:
         "Base64変換は、文字列をBase64形式へ変換したり、Base64形式の文字列を元に戻したりするツールです。APIの値やデータ形式を確認するときに役立ちます。",
+      example: "ログや設定に含まれるBase64文字列をデコードし、元のテキストを確認します。",
       howToUse: [
         "入力欄に文字列を貼り付けます。",
         "Base64に変換するか、Base64から戻すを押します。",
@@ -283,6 +296,8 @@ const toolMetadata: ToolDefinition[] = [
     details: {
       overview:
         "UUID生成は、データや処理を識別するためのUUIDをまとめて作成するツールです。テストデータや一時的な識別子が必要なときに使えます。",
+      example:
+        "データベースのテスト用レコードに使うUUIDを10個生成し、一覧をコピーしてテストデータへ貼り付けます。",
       howToUse: [
         "生成する個数を入力します。",
         "生成するを押します。",
@@ -304,6 +319,8 @@ const toolMetadata: ToolDefinition[] = [
     details: {
       overview:
         "ハッシュ生成は、入力した文字列からSHA-256またはSHA-512のハッシュ値を計算するツールです。文字列の同一性を確認するチェックサムの比較に使えます。",
+      example:
+        "配布前後のファイル情報から得たハッシュ値を比較し、同じ内容かを確認します。",
       howToUse: [
         "文字列を入力します。",
         "アルゴリズムを選びます。",
@@ -327,6 +344,8 @@ const toolMetadata: ToolDefinition[] = [
     details: {
       overview:
         "カラーコード変換は、HEX、RGB、HSLで指定した色を相互に変換するツールです。Webサイトや資料の色を調整するときに役立ちます。",
+      example:
+        "デザイン案のHEXカラーをRGBに変換し、別のソフトへ貼り付けて同じ色を再現します。",
       howToUse: [
         "HEX、RGBまたはHSLの色指定を入力します。",
         "変換するを押します。",
@@ -348,6 +367,8 @@ const toolMetadata: ToolDefinition[] = [
     details: {
       overview:
         "正規表現テスターは、正規表現と対象の文字列を入力して、一致した部分と位置を確認するツールです。入力チェックや検索条件を試すときに使えます。",
+      example:
+        "メールアドレスの入力チェック用パターンを試し、どの文字列が一致するかを確認します。",
       howToUse: [
         "正規表現とフラグを入力します。",
         "対象の文字列を入力します。",
@@ -371,6 +392,8 @@ const toolMetadata: ToolDefinition[] = [
     details: {
       overview:
         "テキスト差分比較は、変更前と変更後の文章を行単位で比べ、追加・削除された行を確認するツールです。文章や設定ファイルの変更を確認するときに使えます。",
+      example:
+        "設定ファイルの変更前と変更後を貼り付け、追加・削除された行だけを確認します。",
       howToUse: [
         "変更前の文章を左側に入力します。",
         "変更後の文章を右側に入力します。",
@@ -394,6 +417,8 @@ const toolMetadata: ToolDefinition[] = [
     details: {
       overview:
         "CSV・TSV変換は、カンマ区切りのCSVとタブ区切りのTSVを相互に変換するツールです。表データを別のアプリケーションへ貼り付ける前の整形に使えます。",
+      example:
+        "表計算ソフトからコピーしたTSVをCSVへ変換し、別のシステムへインポートできる形式に整えます。",
       howToUse: [
         "表データを貼り付けます。",
         "入力形式と出力形式を選びます。",
@@ -417,6 +442,8 @@ const toolMetadata: ToolDefinition[] = [
     details: {
       overview:
         "画像圧縮は、選択したJPEG・PNG・WebP画像をブラウザ内でJPEGへ変換し、容量を減らすツールです。Webサイトへ掲載する画像を軽くしたいときに使えます。",
+      example:
+        "スマートフォンで撮影した画像を選び、画質を調整してWeb掲載用の軽いJPEGとして保存します。",
       howToUse: [
         "画像ファイルを選択します。",
         "画質を選びます。",
@@ -440,6 +467,8 @@ const toolMetadata: ToolDefinition[] = [
     details: {
       overview:
         "Markdownプレビューは、見出し、箇条書き、太字、インラインコードなどの基本的なMarkdownを表示形式で確認するツールです。READMEやメモの見た目を確認するときに使えます。",
+      example:
+        "READMEのMarkdownを貼り付け、見出しや箇条書きが意図した見た目になるかを確認します。",
       howToUse: [
         "Markdownを入力欄へ貼り付けます。",
         "右側のプレビューを確認します。",
@@ -463,6 +492,8 @@ const toolMetadata: ToolDefinition[] = [
     details: {
       overview:
         "給料の手取り計算は、額面月収から社会保険料と所得税を差し引き、月の手取り額を概算するツールです。給与明細を見る前の目安を知りたいときに利用できます。",
+      example:
+        "転職先の額面月収と扶養人数を入力し、給与明細を受け取る前の月額手取りの目安を比較します。",
       howToUse: [
         "税金や社会保険料が引かれる前の額面月収を入力します。",
         "健康保険の都道府県支部、扶養人数、40歳以上かどうかを選びます。",
@@ -498,6 +529,8 @@ const toolMetadata: ToolDefinition[] = [
     details: {
       overview:
         "割り勘計算は、食事会や旅行などの合計金額を人数で分けるツールです。1円単位の余りは、先頭の人から1円ずつ加算して合計額が合うようにします。",
+      example:
+        "食事会の合計金額と参加人数を入力し、1人あたりの支払額と端数の配分を確認します。",
       howToUse: [
         "合計金額を入力します。",
         "人数を入力します。",
@@ -519,6 +552,7 @@ const toolMetadata: ToolDefinition[] = [
     details: {
       overview:
         "税込・税抜計算は、商品の価格から税抜価格、消費税額、税込価格を計算するツールです。買い物や見積書の金額を確認するときに使えます。",
+      example: "見積書の税抜金額と税率を入力し、請求時の税込金額と消費税額を確認します。",
       howToUse: [
         "金額を入力します。",
         "税率と、入力した金額が税込か税抜かを選びます。",
@@ -542,6 +576,7 @@ const toolMetadata: ToolDefinition[] = [
     details: {
       overview:
         "日付計算は、基準日から指定した日数後または前の日付と、2つの日付の差を計算するツールです。締め切りや予定日までの日数を確認するときに使えます。",
+      example: "開始日から30日後の日付を計算し、申込後の確認期限や作業予定日を決めます。",
       howToUse: [
         "基準日と比較する日付を入力します。",
         "足し引きする日数を入力します。",
@@ -563,6 +598,8 @@ const toolMetadata: ToolDefinition[] = [
     details: {
       overview:
         "単位換算は、長さ、重さ、温度、容量の単位を別の単位へ換算するツールです。料理、買い物、DIY、海外の情報を確認するときに使えます。",
+      example:
+        "海外レシピの華氏温度やカップ表記を、使っているオーブンや計量カップの単位へ換算します。",
       howToUse: [
         "換算する種類を選びます。",
         "数値と変換前・変換後の単位を選びます。",
@@ -587,6 +624,17 @@ export function getToolBySlug(slug: string) {
 
 export function getToolsByCategory(category: string) {
   return toolRegistry.filter((tool) => tool.category === category);
+}
+
+export function getRelatedTools(tool: ToolDefinition, limit = 3) {
+  return [...toolRegistry]
+    .filter((candidate) => candidate.slug !== tool.slug)
+    .sort(
+      (left, right) =>
+        Number(right.category === tool.category) -
+        Number(left.category === tool.category),
+    )
+    .slice(0, limit);
 }
 
 export function getCategories() {

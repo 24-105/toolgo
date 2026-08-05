@@ -20,6 +20,7 @@
 - [利用規約](docs/terms.md)
 - [プライバシーポリシー](docs/privacy-policy.md)
 - [MVP公開チェックリスト](docs/release-checklist.md)
+- [AdSense申請準備](docs/adsense-readiness.md)
 - [開発・ツール追加ルール](docs/contributing.md)
 - [docs全体の目次](docs/README.md)
 
@@ -72,6 +73,8 @@ npm run start
 ```
 
 本番のcanonical、OGP、sitemap、robotsのURLを正しく生成するには、`.env.example` を参考に `NEXT_PUBLIC_SITE_URL` と `NEXT_PUBLIC_BASE_PATH` を設定します。
+
+Google Analyticsは`NEXT_PUBLIC_GA_MEASUREMENT_ID`を設定した場合だけ読み込みます。広告は`NEXT_PUBLIC_ADS_ENABLED=false`を維持し、Publisher ID発行後に別途確認します。
 
 品質確認には次を使用します。
 

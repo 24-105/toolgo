@@ -33,7 +33,15 @@ export function AppSidebar() {
       <nav className="sidebar-nav" aria-label="メインナビゲーション">
         <p className="sidebar-section-label">メニュー</p>
         {primaryNavigation.map((item) => (
-          <SidebarLink key={item.href} item={item} active={pathname === item.href} />
+          <SidebarLink
+            key={item.href}
+            item={item}
+            active={
+              item.href === "/"
+                ? pathname === "/"
+                : pathname === item.href || pathname.startsWith(`${item.href}/`)
+            }
+          />
         ))}
       </nav>
     </aside>
@@ -64,6 +72,7 @@ function SidebarLink({
     <Link
       className={`sidebar-link${active ? " sidebar-link-active" : ""}`}
       href={item.href}
+      aria-current={active ? "page" : undefined}
     >
       <Icon size={16} strokeWidth={1.8} aria-hidden="true" />
       <span>{item.label}</span>

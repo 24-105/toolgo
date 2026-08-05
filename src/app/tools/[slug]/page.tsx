@@ -1,9 +1,8 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
-import { ToolLayout } from "@/components/layout";
-import { Badge, Card, CardContent, CardHeader, CardTitle } from "@/components/ui";
-import { getToolBySlug, getTools } from "@/features/tools/registry";
+import { RelatedTools, ToolLayout } from "@/components/layout";
+import { getRelatedTools, getToolBySlug, getTools } from "@/features/tools/registry";
 import { createPageMetadata } from "@/lib/seo";
 
 type ToolPageProps = {
@@ -40,30 +39,19 @@ export default async function ToolPage({ params }: ToolPageProps) {
 
   const ToolComponent = tool.component;
 
+  if (!ToolComponent || tool.status !== "available") {
+    notFound();
+  }
+
   return (
     <ToolLayout
       title={tool.name}
       description={tool.description}
       category={tool.category}
       details={tool.details}
+      relatedTools={<RelatedTools tools={getRelatedTools(tool)} />}
     >
-      {ToolComponent ? (
-        <ToolComponent metadata={tool} />
-      ) : (
-        <Card>
-          <CardHeader>
-            <div className="flex flex-wrap items-center justify-between gap-3">
-              <CardTitle>公開準備中です</CardTitle>
-              <Badge variant="warning">準備中</Badge>
-            </div>
-          </CardHeader>
-          <CardContent>
-            <p className="text-sm leading-6 text-muted">
-              このツールは準備中です。公開までお待ちください。
-            </p>
-          </CardContent>
-        </Card>
-      )}
+      <ToolComponent metadata={tool} />
     </ToolLayout>
   );
 }

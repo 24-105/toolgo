@@ -29,6 +29,7 @@ export type ToolFaq = {
 
 export type ToolDetails = {
   overview: string;
+  example?: string;
   howToUse: string[];
   notes?: string[];
   faq?: ToolFaq[];
