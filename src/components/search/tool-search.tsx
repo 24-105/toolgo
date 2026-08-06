@@ -8,6 +8,7 @@ import type { FormEvent } from "react";
 import { Badge, Card, CardContent, CardHeader, CardTitle } from "@/components/ui";
 import { ToolIcon } from "@/components/tools/tool-icon";
 import type { ToolIcon as ToolIconName } from "@/features/tools/types";
+import { publicPath } from "@/lib/seo";
 
 export type ToolSearchItem = {
   slug: string;
@@ -63,7 +64,7 @@ export function ToolSearchBox({ tools }: { tools: ToolSearchItem[] }) {
         strokeWidth={1.8}
         aria-hidden="true"
       />
-      <form action="/tools" role="search" onSubmit={submit}>
+      <form action={publicPath("/tools/")} role="search" onSubmit={submit}>
         <input
           className="topbar-search"
           name="q"

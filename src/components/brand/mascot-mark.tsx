@@ -1,5 +1,7 @@
 import Image from "next/image";
 
+import { publicPath } from "@/lib/seo";
+
 type MascotMarkProps = {
   size?: "sm" | "md";
   priority?: boolean;
@@ -10,7 +12,7 @@ export function MascotMark({ size = "md", priority = false }: MascotMarkProps) {
 
   return (
     <Image
-      src="/brand/frog-logo-mark.png"
+      src={publicPath("/brand/frog-logo-mark.png")}
       alt=""
       width={pixels}
       height={pixels}

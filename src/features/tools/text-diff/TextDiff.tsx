@@ -21,8 +21,8 @@ export function TextDiff({}: ToolComponentProps) {
   return (
     <div className="grid gap-4 lg:grid-cols-2">
       <Card>
-        <CardHeader>
-          <CardTitle>変更前</CardTitle>
+        <CardHeader className="tool-editor-card-header">
+          <CardTitle className="tool-editor-card-title">変更前</CardTitle>
         </CardHeader>
         <CardContent>
           <Textarea
@@ -30,13 +30,13 @@ export function TextDiff({}: ToolComponentProps) {
             value={left}
             onChange={(event) => setLeft(event.target.value)}
             placeholder="変更前の文章を入力してください"
-            className="min-h-64 font-mono text-sm"
+            className="tool-editor-field resize-none font-mono text-sm"
           />
         </CardContent>
       </Card>
       <Card>
-        <CardHeader>
-          <CardTitle>変更後</CardTitle>
+        <CardHeader className="tool-editor-card-header">
+          <CardTitle className="tool-editor-card-title">変更後</CardTitle>
         </CardHeader>
         <CardContent>
           <Textarea
@@ -44,16 +44,16 @@ export function TextDiff({}: ToolComponentProps) {
             value={right}
             onChange={(event) => setRight(event.target.value)}
             placeholder="変更後の文章を入力してください"
-            className="min-h-64 font-mono text-sm"
+            className="tool-editor-field resize-none font-mono text-sm"
           />
         </CardContent>
       </Card>
       <Card className="lg:col-span-2">
-        <CardHeader>
-          <CardTitle>差分</CardTitle>
+        <CardHeader className="tool-editor-card-header">
+          <CardTitle className="tool-editor-card-title">差分</CardTitle>
         </CardHeader>
         <CardContent>
-          <pre className="min-h-32 overflow-auto rounded-md border border-border bg-surface-muted p-4 font-mono text-sm leading-6">
+          <pre className="tool-editor-field overflow-auto rounded-md border border-border bg-surface-muted p-4 font-mono text-sm leading-6">
             {result.rows.map((row, index) => (
               <span
                 key={`${row.type}-${index}`}

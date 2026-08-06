@@ -8,9 +8,14 @@ import { ColorConverter } from "./color-converter/ColorConverter";
 import { CsvTsvConverter } from "./csv-tsv-converter/CsvTsvConverter";
 import { HashGenerator } from "./hash-generator/HashGenerator";
 import { ImageCompressor } from "./image-compressor/ImageCompressor";
+import { ImageResizer } from "./image-resizer/ImageResizer";
+import { JsonDiff } from "./json-diff/JsonDiff";
 import { MarkdownPreview } from "./markdown-preview/MarkdownPreview";
+import { PercentageCalculator } from "./percentage-calculator/PercentageCalculator";
+import { QrCodeReader } from "./qr-code-reader/QrCodeReader";
 import { RegexTester } from "./regex-tester/RegexTester";
 import { TextDiff } from "./text-diff/TextDiff";
+import { TextTransformer } from "./text-transformer/TextTransformer";
 import { UrlEncoderDecoder } from "./url-encoder-decoder/UrlEncoderDecoder";
 import { UuidGenerator } from "./uuid-generator/UuidGenerator";
 import { BillSplitter } from "./bill-splitter/BillSplitter";
@@ -153,6 +158,54 @@ const toolMetadata: ToolDefinition[] = [
     },
   },
   {
+    slug: "json-diff",
+    name: "JSON差分比較",
+    description: "2つのJSONを整形し、追加・削除された部分を比較します。",
+    seoTitle: "JSON差分比較｜無料JSON Diff・変更箇所を確認",
+    seoDescription:
+      "変更前と変更後のJSONを貼り付けて、追加・削除された項目を比較できる無料ツールです。JSONを整形して差分を表示し、入力データは外部へ送信しません。",
+    seoKeywords: [
+      "JSON差分比較",
+      "JSON diff",
+      "JSON比較",
+      "JSON変更箇所",
+      "JSON Diff online",
+    ],
+    category: "開発",
+    keywords: ["JSON", "差分", "比較", "Diff", "開発ツール"],
+    icon: "diff",
+    isMvp: false,
+    status: "available",
+    component: JsonDiff,
+    details: {
+      overview:
+        "JSON差分比較は、2つのJSONを整形して、追加・削除された行や共通部分を確認するツールです。APIレスポンスや設定ファイルの変更を確認するときに役立ちます。",
+      example:
+        "APIの変更前後のレスポンスを貼り付け、新しく追加された項目や削除された項目を確認します。",
+      howToUse: [
+        "変更前のJSONを左側に、変更後のJSONを右側に貼り付けます。",
+        "「差分を比較する」を押します。",
+        "+が追加、-が削除された部分として表示される結果を確認します。",
+      ],
+      notes: [
+        "比較前にJSONを整形するため、項目の並び順が変わっている場合も差分として表示されることがあります。",
+        "比較できるJSONは、それぞれ1,000行以内です。",
+      ],
+      faq: [
+        {
+          question: "JSONの構文エラーも確認できますか？",
+          answer:
+            "はい。変更前と変更後のどちらかが正しいJSONでない場合は、比較せずに入力の構文を確認するよう案内します。",
+        },
+        {
+          question: "JSONの項目の順番が違う場合も比較できますか？",
+          answer:
+            "JSONとして整形してから行単位で比較します。項目の順番が変わっている場合は、その部分が差分として表示されます。",
+        },
+      ],
+    },
+  },
+  {
     slug: "password-generator",
     name: "パスワード生成",
     description: "推測されにくいパスワードを、このブラウザだけで作れます。",
@@ -249,6 +302,53 @@ const toolMetadata: ToolDefinition[] = [
     },
   },
   {
+    slug: "qr-code-reader",
+    name: "QRコード読み取り",
+    description: "画像からQRコードの内容を読み取ります。",
+    seoTitle: "QRコード読み取り｜無料で画像からQRコードを解析",
+    seoDescription:
+      "QRコードが含まれた画像を選択して、内容を読み取れる無料ツールです。画像の解析はブラウザ内で行い、入力データを外部へ送信しません。",
+    seoKeywords: [
+      "QRコード読み取り",
+      "QRコード解析",
+      "QRコード リーダー",
+      "QR code reader",
+      "画像 QRコード 読み取り",
+    ],
+    category: "生成",
+    keywords: ["QRコード", "読み取り", "解析", "画像"],
+    icon: "qr",
+    isMvp: false,
+    status: "available",
+    component: QrCodeReader,
+    details: {
+      overview:
+        "QRコード読み取りは、保存した画像に含まれるQRコードの内容を確認するツールです。URLやテキストを手入力せずに確認したいときに使えます。",
+      example:
+        "スクリーンショットや保存した案内画像を選択し、QRコードに含まれるURLやメッセージを確認します。",
+      howToUse: [
+        "QRコードが含まれた画像を選択します。",
+        "「読み取る」を押します。",
+        "表示された内容を確認し、必要に応じてコピーします。",
+      ],
+      notes: [
+        "現在は保存済み画像の読み取りに対応しています。カメラ撮影には対応していません。",
+        "ブラウザのBarcodeDetector APIに対応していない環境では利用できません。",
+      ],
+      faq: [
+        {
+          question: "カメラでQRコードを読み取れますか？",
+          answer: "現在はカメラ撮影ではなく、保存済みの画像を選択して読み取る方式です。",
+        },
+        {
+          question: "読み取った画像はサーバーへ送信されますか？",
+          answer:
+            "画像の解析はブラウザ内で行います。選択した画像や読み取り結果をToolGoのサーバーへ送信・保存しません。",
+        },
+      ],
+    },
+  },
+  {
     slug: "character-counter",
     name: "文字数カウント",
     description: "文章の文字数や行数を数えます。",
@@ -292,6 +392,54 @@ const toolMetadata: ToolDefinition[] = [
           question: "日本語と英数字で数え方は変わりますか？",
           answer:
             "入力された文字を同じ1文字として数えます。提出先に文字数の定義がある場合は、その規定を優先してください。",
+        },
+      ],
+    },
+  },
+  {
+    slug: "text-transformer",
+    name: "全角半角・文字変換",
+    description: "全角半角、大文字小文字、空白や改行を変換します。",
+    seoTitle: "全角半角変換・文字変換｜無料テキスト変換ツール",
+    seoDescription:
+      "文章の全角・半角、大文字・小文字、行頭行末の空白、改行を変換できる無料ツールです。入力内容はブラウザ内で処理し、外部へ送信しません。",
+    seoKeywords: [
+      "全角半角変換",
+      "全角 半角 変換",
+      "大文字 小文字 変換",
+      "文字変換",
+      "テキスト変換",
+    ],
+    category: "文章",
+    keywords: ["全角", "半角", "大文字", "小文字", "文字変換"],
+    icon: "text",
+    isMvp: false,
+    status: "available",
+    component: TextTransformer,
+    details: {
+      overview:
+        "全角半角・文字変換は、文章の文字幅や英字の大文字・小文字、空白と改行をまとめて整えるツールです。入力フォームやデータを貼り付ける前の整形に使えます。",
+      example:
+        "全角で入力された英数字を半角へ変換し、申込フォームやCSVへ貼り付けやすい状態に整えます。",
+      howToUse: [
+        "変換する文章を入力欄に貼り付けます。",
+        "変換方法を選びます。",
+        "「変換する」を押して、結果をコピーします。",
+      ],
+      notes: [
+        "全角・半角変換は英数字と記号を中心に変換します。漢字やひらがなの字体は変わりません。",
+        "入力内容はブラウザ内で処理し、ToolGoのサーバーへ送信しません。",
+      ],
+      faq: [
+        {
+          question: "日本語の文章も変換できますか？",
+          answer:
+            "はい。日本語を含む文章を入力できます。全角・半角変換では英数字と記号、空白などが変換対象になります。",
+        },
+        {
+          question: "変換結果を保存できますか？",
+          answer:
+            "結果をコピーして、テキストエディターや入力先へ貼り付けられます。ToolGoは入力内容を保存しません。",
         },
       ],
     },
@@ -342,6 +490,54 @@ const toolMetadata: ToolDefinition[] = [
           question: "2月29日生まれの場合はどう計算しますか？",
           answer:
             "うるう年でない年は、2月28日を誕生日として満年齢と次の誕生日までの日数を計算します。",
+        },
+      ],
+    },
+  },
+  {
+    slug: "percentage-calculator",
+    name: "パーセント計算",
+    description: "割合、増減率、割引後の価格を計算します。",
+    seoTitle: "パーセント計算｜割合・増減率・割引を無料で計算",
+    seoDescription:
+      "割合、何パーセントかの計算、増減率、割引後の価格を入力して計算できる無料ツールです。買い物や売上の比較などに使え、処理はブラウザ内で完結します。",
+    seoKeywords: [
+      "パーセント計算",
+      "割合 計算",
+      "増減率 計算",
+      "割引 計算",
+      "何パーセント 計算",
+    ],
+    category: "計算",
+    keywords: ["割合", "パーセント", "増減率", "割引", "計算"],
+    icon: "percent",
+    isMvp: false,
+    status: "available",
+    component: PercentageCalculator,
+    details: {
+      overview:
+        "パーセント計算は、ある数が全体の何%か、指定した割合の数、増減率、割引後の価格を計算するツールです。買い物、売上、成績などの割合を確認できます。",
+      example:
+        "商品の価格と割引率を入力し、セール後の支払額を確認します。前月と今月の売上から増減率を求めることもできます。",
+      howToUse: [
+        "計算方法を選びます。",
+        "画面に表示された2つの数値を入力します。",
+        "「計算する」を押して結果を確認します。",
+      ],
+      notes: [
+        "増減率は、変化前の数を基準に計算します。小数の結果は最大8桁まで表示します。",
+        "金額の端数処理や実際の請求条件がある場合は、利用するサービスや店舗の規定を優先してください。",
+      ],
+      faq: [
+        {
+          question: "割合と増減率は何が違いますか？",
+          answer:
+            "割合は部分の数が全体に占める比率です。増減率は、変化前の数を基準にどれだけ増えたか、減ったかを表します。",
+        },
+        {
+          question: "割引後の価格を計算できますか？",
+          answer:
+            "はい。「AのB%引き価格」を選び、元の価格と割引率を入力すると、割引後の価格を計算できます。",
         },
       ],
     },
@@ -600,7 +796,7 @@ const toolMetadata: ToolDefinition[] = [
         "一致した部分と位置を確認します。",
       ],
       notes: [
-        "JavaScriptの正規表現として解釈します。正規表現は500文字以内、対象の文字列は10,000文字以内で入力してください。書き方やフラグによって結果が変わります。",
+        "JavaScriptの正規表現として解釈します。正規表現は500文字以内、フラグは20文字以内、対象の文字列は10,000文字以内で入力してください。書き方やフラグによって結果が変わります。",
       ],
       faq: [
         {
@@ -749,6 +945,54 @@ const toolMetadata: ToolDefinition[] = [
           question: "画像をサーバーへアップロードしますか？",
           answer:
             "画像の読み込みと圧縮はブラウザ内で行います。元画像をToolGoのサーバーへ送信・保存しません。",
+        },
+      ],
+    },
+  },
+  {
+    slug: "image-resizer",
+    name: "画像リサイズ・形式変換",
+    description: "画像の幅・高さを変更し、JPEG・PNG・WebPに変換します。",
+    seoTitle: "画像リサイズ・形式変換｜無料で画像サイズを変更",
+    seoDescription:
+      "画像の幅と高さを指定してサイズを変更し、JPEG・PNG・WebPへ変換できる無料ツールです。縦横比の維持にも対応し、画像はブラウザ内で処理します。",
+    seoKeywords: [
+      "画像リサイズ",
+      "画像サイズ変更",
+      "画像形式変換",
+      "JPEG PNG WebP変換",
+      "画像 縮小",
+    ],
+    category: "デザイン",
+    keywords: ["画像", "リサイズ", "サイズ変更", "JPEG", "PNG", "WebP"],
+    icon: "image",
+    isMvp: false,
+    status: "available",
+    component: ImageResizer,
+    details: {
+      overview:
+        "画像リサイズ・形式変換は、画像の幅と高さを変更し、JPEG・PNG・WebPの形式へ変換するツールです。Webサイト用の画像や、アップロード前の画像を指定サイズに整えられます。",
+      example:
+        "スマートフォンで撮影した画像の幅を1,200pxに変更し、Web掲載用のWebP画像として保存します。",
+      howToUse: [
+        "画像ファイルを選択します。",
+        "幅と高さを入力し、必要に応じて縦横比の維持や保存形式を選びます。",
+        "「サイズを変更する」を押して、変換した画像をダウンロードします。",
+      ],
+      notes: [
+        "JPEG・PNG・WebPに対応しています。20MB以下、縦横8,192px以内の画像を処理できます。",
+        "JPEGへ変換すると、画像の透過部分は白い背景になります。",
+      ],
+      faq: [
+        {
+          question: "縦横比を維持して画像を縮小できますか？",
+          answer:
+            "はい。「縦横比を維持する」を選ぶと、幅または高さの変更に合わせてもう一方の値を自動調整します。",
+        },
+        {
+          question: "画像をサーバーへアップロードしますか？",
+          answer:
+            "画像の読み込み、リサイズ、形式変換はブラウザ内で行います。元画像や変換結果をToolGoのサーバーへ送信・保存しません。",
         },
       ],
     },

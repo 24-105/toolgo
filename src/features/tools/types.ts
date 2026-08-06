@@ -19,7 +19,8 @@ export type ToolIcon =
   | "split"
   | "tax"
   | "date"
-  | "ruler";
+  | "ruler"
+  | "percent";
 export type ToolStatus = "available" | "planned";
 
 export type ToolFaq = {

@@ -7,6 +7,15 @@ import { absoluteUrl, siteDescription, siteName, siteOrigin } from "@/lib/seo";
 
 import "./globals.css";
 
+const themeInitializer = `(function () {
+  try {
+    var savedTheme = window.localStorage.getItem("toolgo-theme");
+    document.documentElement.dataset.theme = savedTheme === "dark" ? "dark" : "light";
+  } catch (_) {
+    document.documentElement.dataset.theme = "light";
+  }
+})();`;
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteOrigin),
   title: {
@@ -52,8 +61,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ja">
+    <html lang="ja" suppressHydrationWarning>
       <head>
+        <script
+          id="theme-initializer"
+          dangerouslySetInnerHTML={{ __html: themeInitializer }}
+        />
         <AdSenseScript />
       </head>
       <body>

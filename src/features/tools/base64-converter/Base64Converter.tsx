@@ -29,8 +29,8 @@ export function Base64Converter({}: ToolComponentProps) {
   return (
     <div className="grid gap-4 lg:grid-cols-2">
       <Card>
-        <CardHeader>
-          <CardTitle>入力</CardTitle>
+        <CardHeader className="tool-editor-card-header">
+          <CardTitle className="tool-editor-card-title">入力</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <Textarea
@@ -38,7 +38,7 @@ export function Base64Converter({}: ToolComponentProps) {
             value={input}
             onChange={(event) => setInput(event.target.value)}
             placeholder="ここに文字列を入力してください"
-            className="min-h-56"
+            className="tool-editor-field resize-none"
           />
           <div className="flex flex-wrap gap-2">
             <Button onClick={() => run("encode")}>Base64に変換</Button>
@@ -64,8 +64,8 @@ export function Base64Converter({}: ToolComponentProps) {
         </CardContent>
       </Card>
       <Card>
-        <CardHeader className="flex flex-row items-center justify-between gap-3">
-          <CardTitle>結果</CardTitle>
+        <CardHeader className="tool-editor-card-header">
+          <CardTitle className="tool-editor-card-title">結果</CardTitle>
           <CopyButton value={output} />
         </CardHeader>
         <CardContent>
@@ -74,7 +74,7 @@ export function Base64Converter({}: ToolComponentProps) {
             readOnly
             value={output}
             placeholder="ここに結果が表示されます"
-            className="min-h-56 font-mono text-sm"
+            className="tool-editor-field resize-none font-mono text-sm"
           />
         </CardContent>
       </Card>

@@ -14,30 +14,30 @@ export function MarkdownPreview({}: ToolComponentProps) {
   return (
     <div className="grid gap-4 lg:grid-cols-2">
       <Card>
-        <CardHeader>
-          <CardTitle>Markdownを入力</CardTitle>
+        <CardHeader className="tool-editor-card-header">
+          <CardTitle className="tool-editor-card-title">Markdownを入力</CardTitle>
         </CardHeader>
-        <CardContent>
+        <CardContent className="space-y-3">
           <Textarea
             aria-label="Markdown"
             value={input}
             onChange={(event) => setInput(event.target.value)}
             placeholder={sample}
             maxLength={20_000}
-            className="min-h-80 font-mono text-sm"
+            className="tool-editor-field resize-none font-mono text-sm"
           />
-          <p className="mt-2 text-sm text-muted">
+          <p className="text-sm text-muted">
             CommonMarkとGFMの見出し、リスト、テーブル、リンク、コードブロックなどに対応しています。HTMLは無効化し、&lt;br&gt;だけ改行として扱います。
           </p>
         </CardContent>
       </Card>
       <Card>
-        <CardHeader>
-          <CardTitle>プレビュー</CardTitle>
+        <CardHeader className="tool-editor-card-header">
+          <CardTitle className="tool-editor-card-title">プレビュー</CardTitle>
         </CardHeader>
         <CardContent>
           <div
-            className="markdown-preview min-h-80 rounded-md border border-border bg-surface-muted p-4 leading-7"
+            className="tool-editor-field markdown-preview overflow-auto rounded-md border border-border bg-surface-muted p-4 leading-7"
             dangerouslySetInnerHTML={{ __html: html }}
           />
         </CardContent>

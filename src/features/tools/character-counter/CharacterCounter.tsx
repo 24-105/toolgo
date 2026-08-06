@@ -20,8 +20,8 @@ export function CharacterCounter({}: ToolComponentProps) {
   return (
     <div className="grid gap-4 lg:grid-cols-[minmax(0,1.4fr)_minmax(16rem,0.6fr)]">
       <Card>
-        <CardHeader>
-          <CardTitle>文章を入力</CardTitle>
+        <CardHeader className="tool-editor-card-header">
+          <CardTitle className="tool-editor-card-title">文章を入力</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <Textarea
@@ -29,7 +29,7 @@ export function CharacterCounter({}: ToolComponentProps) {
             value={input}
             onChange={(event) => setInput(event.target.value)}
             placeholder="ここに文章を入力してください"
-            className="min-h-80"
+            className="tool-editor-field resize-none"
           />
           <Button
             type="button"
@@ -42,8 +42,8 @@ export function CharacterCounter({}: ToolComponentProps) {
         </CardContent>
       </Card>
       <Card>
-        <CardHeader>
-          <CardTitle>集計結果</CardTitle>
+        <CardHeader className="tool-editor-card-header">
+          <CardTitle className="tool-editor-card-title">集計結果</CardTitle>
         </CardHeader>
         <CardContent>
           <dl className="grid grid-cols-2 gap-3">

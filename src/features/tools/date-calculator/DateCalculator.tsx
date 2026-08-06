@@ -69,7 +69,7 @@ export function DateCalculator({}: ToolComponentProps) {
             />
           </div>
           <label className="space-y-2 text-sm font-semibold">
-            <span className="block">基準日から</span>
+            <span className="tool-editor-field-label">基準日から</span>
             <Select
               value={operation}
               onChange={(event) => setOperation(event.target.value as "add" | "subtract")}

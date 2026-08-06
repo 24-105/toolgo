@@ -67,8 +67,8 @@ export function QrCodeGenerator({}: ToolComponentProps) {
   return (
     <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,0.8fr)]">
       <Card>
-        <CardHeader>
-          <CardTitle>内容を入力</CardTitle>
+        <CardHeader className="tool-editor-card-header">
+          <CardTitle className="tool-editor-card-title">内容を入力</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <Textarea
@@ -76,7 +76,7 @@ export function QrCodeGenerator({}: ToolComponentProps) {
             value={input}
             onChange={(event) => updateInput(event.target.value)}
             placeholder="文字やURLを入力してください"
-            className="min-h-48"
+            className="tool-editor-field resize-none"
           />
           <Button
             type="button"
@@ -94,11 +94,11 @@ export function QrCodeGenerator({}: ToolComponentProps) {
         </CardContent>
       </Card>
       <Card>
-        <CardHeader>
-          <CardTitle>プレビュー</CardTitle>
+        <CardHeader className="tool-editor-card-header">
+          <CardTitle className="tool-editor-card-title">プレビュー</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
-          <div className="grid min-h-64 place-items-center rounded-md border border-border bg-white p-4">
+          <div className="tool-editor-field grid place-items-center overflow-auto rounded-md border border-border bg-white p-4">
             {dataUrl ? (
               <Image
                 src={dataUrl}

@@ -65,7 +65,7 @@ export function UnitConverter({}: ToolComponentProps) {
       </CardHeader>
       <CardContent className="space-y-4">
         <label className="block max-w-sm space-y-2 text-sm font-semibold">
-          <span className="block">種類</span>
+          <span className="tool-editor-field-label">種類</span>
           <Select
             value={category}
             onChange={(event) => changeCategory(event.target.value as UnitCategory)}
@@ -87,7 +87,7 @@ export function UnitConverter({}: ToolComponentProps) {
             />
           </div>
           <label className="space-y-2 text-sm font-semibold">
-            <span className="block">変換前</span>
+            <span className="tool-editor-field-label">変換前</span>
             <Select value={from} onChange={(event) => setFrom(event.target.value)}>
               {options.map((unit) => (
                 <option key={unit.value} value={unit.value}>
@@ -97,7 +97,7 @@ export function UnitConverter({}: ToolComponentProps) {
             </Select>
           </label>
           <label className="space-y-2 text-sm font-semibold">
-            <span className="block">変換後</span>
+            <span className="tool-editor-field-label">変換後</span>
             <Select value={to} onChange={(event) => setTo(event.target.value)}>
               {options.map((unit) => (
                 <option key={unit.value} value={unit.value}>
