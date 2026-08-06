@@ -46,7 +46,7 @@ export default function HomePage() {
           />
         </section>
 
-        <section className="dashboard-grid" aria-label="よく使うツール">
+        <section className="dashboard-grid dashboard-section" aria-label="よく使うツール">
           <Card className="dashboard-tools-card">
             <CardHeader className="card-header-row">
               <div>
@@ -67,7 +67,10 @@ export default function HomePage() {
           </Card>
         </section>
 
-        <section className="dashboard-grid" aria-label="カテゴリから探す">
+        <section
+          className="dashboard-grid dashboard-section"
+          aria-label="カテゴリから探す"
+        >
           <Card>
             <CardHeader>
               <p className="section-kicker">目的から探す</p>

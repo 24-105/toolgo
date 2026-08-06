@@ -23,6 +23,7 @@
   --radius-md: 0.5rem;
   --radius-lg: 0.75rem;
   --shadow-sm: 0 1px 2px rgb(23 32 51 / 5%);
+  --layout-section-gap: 1rem;
 }
 
 @theme inline {
@@ -559,6 +560,10 @@ a {
   gap: 1rem;
 }
 
+.dashboard-section + .dashboard-section {
+  margin-top: var(--layout-section-gap);
+}
+
 .dashboard-tools-card {
   grid-column: 1 / -1;
 }
@@ -735,7 +740,7 @@ a {
 }
 
 .tool-explanation {
-  margin-top: 1rem;
+  margin-top: var(--layout-section-gap);
 }
 
 .tool-explanation > details {
@@ -813,8 +818,8 @@ a {
 .tool-support-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
-  gap: 1rem;
-  margin-top: 1rem;
+  gap: var(--layout-section-gap);
+  margin-top: var(--layout-section-gap);
 }
 
 .related-tool-list {
