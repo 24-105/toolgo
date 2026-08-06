@@ -2,7 +2,12 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
 import { RelatedTools, ToolLayout } from "@/components/layout";
-import { getRelatedTools, getToolBySlug, getTools } from "@/features/tools/registry";
+import {
+  getCategoryByName,
+  getRelatedTools,
+  getToolBySlug,
+  getTools,
+} from "@/features/tools/registry";
 import { createPageMetadata } from "@/lib/seo";
 
 type ToolPageProps = {
@@ -43,11 +48,14 @@ export default async function ToolPage({ params }: ToolPageProps) {
     notFound();
   }
 
+  const category = getCategoryByName(tool.category);
+
   return (
     <ToolLayout
       title={tool.name}
       description={tool.description}
       category={tool.category}
+      categoryHref={category ? `/categories/${category.slug}/` : undefined}
       details={tool.details}
       relatedTools={<RelatedTools tools={getRelatedTools(tool)} />}
     >

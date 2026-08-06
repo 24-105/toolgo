@@ -16,6 +16,7 @@ export type ToolLayoutProps = {
   title: string;
   description: string;
   category?: string;
+  categoryHref?: string;
   breadcrumbs?: ToolBreadcrumb[];
   children: ReactNode;
   help?: ReactNode;
@@ -44,6 +45,7 @@ export function ToolLayout({
   title,
   description,
   category,
+  categoryHref,
   breadcrumbs = [
     { label: "ホーム", href: "/" },
     { label: "ツール一覧", href: "/tools" },
@@ -63,7 +65,17 @@ export function ToolLayout({
       <div className="site-container">
         <Breadcrumbs items={breadcrumbItems} />
         <header className="tool-header">
-          {category && <p className="eyebrow">{category}</p>}
+          {category && (
+            <p className="eyebrow">
+              {categoryHref ? (
+                <Link className="tool-category-link" href={categoryHref}>
+                  {category}
+                </Link>
+              ) : (
+                category
+              )}
+            </p>
+          )}
           <h1 className="page-title">{title}</h1>
           <p className="tool-description">{description}</p>
           <PrivacyNote />

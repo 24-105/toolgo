@@ -2,6 +2,7 @@ import { ToolSearchResults } from "@/components/search";
 import { ToolLayout } from "@/components/layout";
 import { getTools } from "@/features/tools/registry";
 import { createPageMetadata } from "@/lib/seo";
+import Link from "next/link";
 
 export const metadata = createPageMetadata({
   title: "無料オンラインツール一覧｜ブラウザで使える便利ツール",
@@ -30,9 +31,18 @@ export default function ToolsPage() {
       description="目的に合う無料のブラウザツールを、ここから選べます。"
       category="ツール一覧"
       help={
-        <p className="text-sm leading-6 text-muted">
-          ツールを選ぶと、詳しい説明と入力画面が開きます。
-        </p>
+        <div className="text-sm leading-6 text-muted">
+          <p>
+            ツールを選ぶと、詳しい説明と入力画面が開きます。JSON、文章、計算、画像など、目的に合うツールを検索できます。
+          </p>
+          <p>
+            分野から探す場合は、
+            <Link className="text-link" href="/categories/">
+              カテゴリ別の一覧
+            </Link>
+            も利用できます。
+          </p>
+        </div>
       }
     >
       <ToolSearchResults tools={searchTools} />

@@ -49,7 +49,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   return (
     <ToolLayout
       title={category.seoHeading}
-      description={category.seoDescription}
+      description={`${category.seoDescription} 用途に合うツールを選び、各ページで使い方や注意事項を確認できます。`}
       category="カテゴリ"
     >
       <Card>

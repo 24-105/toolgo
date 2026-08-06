@@ -462,6 +462,18 @@ const toolMetadata: ToolDefinition[] = [
         "結果をコピーして利用します。",
       ],
       notes: ["生成したUUIDを重要な認証情報や秘密情報の代わりに使わないでください。"],
+      faq: [
+        {
+          question: "UUID v4とは何ですか？",
+          answer:
+            "UUID v4は、ランダムな値をもとに作られる128ビットの識別子です。テストデータや一時的な識別子に使えますが、認証情報の代わりにはしないでください。",
+        },
+        {
+          question: "生成したUUIDを保存できますか？",
+          answer:
+            "生成結果はコピーできます。ToolGoがUUIDをサーバーへ送信・保存することはありません。",
+        },
+      ],
     },
   },
   {
@@ -498,6 +510,18 @@ const toolMetadata: ToolDefinition[] = [
       notes: [
         "ハッシュは暗号化ではなく、元の文字列を復元するためのものではありません。パスワードの保管には利用しないでください。",
       ],
+      faq: [
+        {
+          question: "SHA-256とSHA-512は何が違いますか？",
+          answer:
+            "どちらも入力からハッシュ値を作る方式ですが、SHA-512の方が長いハッシュ値になります。比較対象と同じ方式を選んでください。",
+        },
+        {
+          question: "ハッシュから元の文字列を復元できますか？",
+          answer:
+            "ハッシュは暗号化ではないものの、元の文字列を復元するための機能ではありません。入力と結果の比較やチェックサム確認に利用してください。",
+        },
+      ],
     },
   },
   {
@@ -531,6 +555,18 @@ const toolMetadata: ToolDefinition[] = [
         "必要な形式の色指定をコピーして利用します。",
       ],
       notes: ["表示や印刷の色は、画面や環境によって見え方が異なる場合があります。"],
+      faq: [
+        {
+          question: "HEX、RGB、HSLは相互に変換できますか？",
+          answer:
+            "はい。対応する形式を入力して変換すると、HEX、RGB、HSLの値を相互に確認できます。",
+        },
+        {
+          question: "変換した色が同じように見えないのはなぜですか？",
+          answer:
+            "画面、カラープロファイル、表示環境によって色の見え方が変わる場合があります。変換結果は色指定の値として利用してください。",
+        },
+      ],
     },
   },
   {
@@ -565,6 +601,18 @@ const toolMetadata: ToolDefinition[] = [
       ],
       notes: [
         "JavaScriptの正規表現として解釈します。正規表現は500文字以内、対象の文字列は10,000文字以内で入力してください。書き方やフラグによって結果が変わります。",
+      ],
+      faq: [
+        {
+          question: "この正規表現テスターはどの仕様に対応していますか？",
+          answer:
+            "JavaScriptの正規表現として判定します。利用できる構文やフラグは、実行するブラウザのJavaScript仕様に従います。",
+        },
+        {
+          question: "一致しないときは何を確認すればよいですか？",
+          answer:
+            "正規表現、対象文字列、フラグの指定を確認してください。特に大文字・小文字の区別や、行頭・行末を表す記号の有無で結果が変わります。",
+        },
       ],
     },
   },
@@ -602,6 +650,18 @@ const toolMetadata: ToolDefinition[] = [
       notes: [
         "行の追加・削除を中心に比較します。文字単位の細かな差分には対応していません。",
       ],
+      faq: [
+        {
+          question: "文章とコードのどちらを比較できますか？",
+          answer:
+            "文章、コード、設定ファイルなど、行に分けて入力できるテキストを比較できます。入力内容はブラウザ内で処理します。",
+        },
+        {
+          question: "文字単位の差分も確認できますか？",
+          answer:
+            "このツールは行単位の追加・削除を中心に比較します。1行内の文字単位の変更表示には対応していません。",
+        },
+      ],
     },
   },
   {
@@ -638,6 +698,18 @@ const toolMetadata: ToolDefinition[] = [
       notes: [
         "UTF-8のテキストを対象にしています。先頭行を見出しとして特別には扱いません。引用符が閉じていないデータは変換できません。",
       ],
+      faq: [
+        {
+          question: "CSVとTSVの違いは何ですか？",
+          answer:
+            "CSVはカンマ、TSVはタブで列を区切るテキスト形式です。表データを利用するアプリケーションに合わせて変換できます。",
+        },
+        {
+          question: "日本語を含むCSVを変換できますか？",
+          answer:
+            "UTF-8のテキストに対応しています。別の文字コードや、引用符が正しく閉じていないデータは正しく変換できない場合があります。",
+        },
+      ],
     },
   },
   {
@@ -666,6 +738,18 @@ const toolMetadata: ToolDefinition[] = [
       ],
       notes: [
         "10MB以下、縦横4,096px以内の画像に対応しています。JPEGへ変換するため、透過部分は白い背景になります。圧縮後の画質と容量は画像の内容によって変わります。",
+      ],
+      faq: [
+        {
+          question: "対応している画像形式は何ですか？",
+          answer:
+            "JPEG、PNG、WebPの画像を選択できます。圧縮後はJPEGとしてダウンロードされ、透過部分は白い背景になります。",
+        },
+        {
+          question: "画像をサーバーへアップロードしますか？",
+          answer:
+            "画像の読み込みと圧縮はブラウザ内で行います。元画像をToolGoのサーバーへ送信・保存しません。",
+        },
       ],
     },
   },
@@ -701,6 +785,18 @@ const toolMetadata: ToolDefinition[] = [
       ],
       notes: [
         "見出し、箇条書き、太字、インラインコードに対応しています。HTMLやスクリプトは安全のため、そのまま実行しません。",
+      ],
+      faq: [
+        {
+          question: "どのMarkdown記法に対応していますか？",
+          answer:
+            "見出し、箇条書き、太字、インラインコードなど、基本的なMarkdown記法に対応しています。対応範囲は入力内容によって異なる場合があります。",
+        },
+        {
+          question: "入力したMarkdownは保存されますか？",
+          answer:
+            "入力内容はブラウザ内でプレビューします。ToolGoのサーバーへ送信・保存する機能はありません。",
+        },
       ],
     },
   },
@@ -783,6 +879,18 @@ const toolMetadata: ToolDefinition[] = [
         "計算結果を確認します。",
       ],
       notes: ["特定の人だけ多く払う、幹事を無料にするなどの分け方には対応していません。"],
+      faq: [
+        {
+          question: "割り切れない金額はどう分けますか？",
+          answer:
+            "1円単位の余りは、先頭の人から1円ずつ加算して、全員分の合計が入力した金額と一致するように分けます。",
+        },
+        {
+          question: "支払う人ごとに金額を変えられますか？",
+          answer:
+            "均等に割る計算に対応しています。幹事を無料にするなど、支払う人ごとに異なる金額を指定する機能はありません。",
+        },
+      ],
     },
   },
   {
@@ -817,6 +925,18 @@ const toolMetadata: ToolDefinition[] = [
       notes: [
         "軽減税率の対象品目は8%です。実際の取引では、取引内容と端数処理の方法を確認してください。",
       ],
+      faq: [
+        {
+          question: "税込価格から税抜価格を計算できますか？",
+          answer:
+            "はい。税込価格と税率を入力すると、税抜価格と消費税額を計算できます。税率と端数処理は実際の取引条件を確認してください。",
+        },
+        {
+          question: "軽減税率8%に対応していますか？",
+          answer:
+            "税率を指定して計算できます。軽減税率の対象品目を計算する場合は8%を選び、実際の請求や申告では取引内容を優先してください。",
+        },
+      ],
     },
   },
   {
@@ -843,6 +963,17 @@ const toolMetadata: ToolDefinition[] = [
         "日数を足すか引くかを選んで計算します。",
       ],
       notes: ["暦日で計算するため、土日祝日や営業日は考慮しません。"],
+      faq: [
+        {
+          question: "土日祝日を除いた営業日で計算できますか？",
+          answer: "いいえ。暦日で計算するため、土日祝日や会社独自の休日は除外しません。",
+        },
+        {
+          question: "何日後・何日前の日付を計算できますか？",
+          answer:
+            "基準日と日数、足すか引くかを指定して、指定日数後または前の日付を計算できます。2つの日付の差も確認できます。",
+        },
+      ],
     },
   },
   {
@@ -872,6 +1003,18 @@ const toolMetadata: ToolDefinition[] = [
       notes: [
         "一般的な単位の換算に対応しています。専門分野固有の定義や測定誤差は考慮していません。",
       ],
+      faq: [
+        {
+          question: "どの単位を換算できますか？",
+          answer:
+            "長さ、重さ、温度、容量の一般的な単位を相互に換算できます。換算する種類を選ぶと、対応する単位を選択できます。",
+        },
+        {
+          question: "料理や海外の単位換算に使えますか？",
+          answer:
+            "はい。海外レシピの温度や容量、DIYで使う長さなど、一般的な単位の目安を確認する用途に使えます。",
+        },
+      ],
     },
   },
 ];
@@ -893,12 +1036,16 @@ export function getToolsByCategory(category: string) {
 export function getRelatedTools(tool: ToolDefinition, limit = 3) {
   return [...toolRegistry]
     .filter((candidate) => candidate.slug !== tool.slug)
-    .sort(
-      (left, right) =>
-        Number(right.category === tool.category) -
-        Number(left.category === tool.category),
-    )
+    .sort((left, right) => relatedToolScore(right, tool) - relatedToolScore(left, tool))
     .slice(0, limit);
+}
+
+function relatedToolScore(candidate: ToolDefinition, tool: ToolDefinition) {
+  const keywordOverlap = candidate.keywords.filter((keyword) =>
+    tool.keywords.includes(keyword),
+  ).length;
+
+  return Number(candidate.category === tool.category) * 100 + keywordOverlap * 10;
 }
 
 export function getCategories() {
@@ -907,4 +1054,8 @@ export function getCategories() {
 
 export function getCategoryBySlug(slug: string) {
   return categoryRegistry.find((category) => category.slug === slug);
+}
+
+export function getCategoryByName(name: string) {
+  return categoryRegistry.find((category) => category.name === name);
 }

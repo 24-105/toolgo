@@ -2,7 +2,7 @@ import { Badge, Card, CardContent, CardHeader, CardTitle } from "@/components/ui
 import { AdSlot } from "@/components/ads";
 import { PrivacyNote } from "@/components/layout";
 import { ToolIcon } from "@/components/tools";
-import { getTools } from "@/features/tools/registry";
+import { getCategories, getTools } from "@/features/tools/registry";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
@@ -27,7 +27,7 @@ export default function HomePage() {
               ToolGo｜無料ブラウザツール集
             </h1>
             <p className="lede">
-              無料で使えるオンラインツールを、ブラウザだけで利用できます。
+              無料で使えるオンラインツールを、ブラウザだけで利用できます。開発、文章、計算、デザイン、日常生活の作業を、目的に合うツールですぐに進められます。
             </p>
             <PrivacyNote />
           </div>
@@ -61,6 +61,29 @@ export default function HomePage() {
               <div className="quick-tool-list">
                 {getTools().map((tool) => (
                   <QuickTool key={tool.slug} tool={tool} />
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        </section>
+
+        <section className="dashboard-grid" aria-label="カテゴリから探す">
+          <Card>
+            <CardHeader>
+              <p className="section-kicker">目的から探す</p>
+              <CardTitle>カテゴリ別のツール</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="category-link-list">
+                {getCategories().map((category) => (
+                  <Link
+                    key={category.slug}
+                    className="category-link-item"
+                    href={`/categories/${category.slug}/`}
+                  >
+                    <span>{category.name}</span>
+                    <span>{category.description}</span>
+                  </Link>
                 ))}
               </div>
             </CardContent>
