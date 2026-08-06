@@ -48,14 +48,14 @@ export function TaxCalculator({}: ToolComponentProps) {
             />
           </div>
           <label className="space-y-2 text-sm font-semibold">
-            <span className="block">税率</span>
+            <span className="tool-editor-field-label">税率</span>
             <Select value={rate} onChange={(event) => setRate(event.target.value)}>
               <option value="0.1">10%</option>
               <option value="0.08">8%</option>
             </Select>
           </label>
           <label className="space-y-2 text-sm font-semibold">
-            <span className="block">入力する金額</span>
+            <span className="tool-editor-field-label">入力する金額</span>
             <Select
               value={mode}
               onChange={(event) => setMode(event.target.value as TaxMode)}

@@ -10,6 +10,7 @@ import {
   CardHeader,
   CardTitle,
   Label,
+  Select,
   Textarea,
 } from "@/components/ui";
 import type { ToolComponentProps } from "../types";
@@ -40,31 +41,29 @@ export function JsonFormatter({}: ToolComponentProps) {
     <div className="grid gap-4 lg:grid-cols-2">
       <Card>
         <CardHeader className="tool-editor-card-header">
-          <CardTitle>入力</CardTitle>
+          <CardTitle className="tool-editor-card-title">入力</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="json-input">JSON文字列</Label>
+            <Label className="tool-editor-field-label" htmlFor="json-input">
+              JSON文字列
+            </Label>
             <Textarea
               id="json-input"
               value={input}
               onChange={(event) => setInput(event.target.value)}
               placeholder={initialJson}
-              className="h-72 min-h-72 resize-none font-mono text-sm"
+              className="tool-editor-field resize-none font-mono text-sm"
               spellCheck={false}
             />
           </div>
           <div className="flex flex-wrap items-end gap-3">
             <label className="space-y-2 text-sm font-semibold">
-              <span className="block">インデント</span>
-              <select
-                value={indent}
-                onChange={(event) => setIndent(event.target.value)}
-                className="min-h-10 rounded-md border border-border bg-surface px-3 text-sm"
-              >
+              <span className="tool-editor-field-label">インデント</span>
+              <Select value={indent} onChange={(event) => setIndent(event.target.value)}>
                 <option value="2">2スペース</option>
                 <option value="4">4スペース</option>
-              </select>
+              </Select>
             </label>
             <div className="flex flex-wrap gap-2">
               <Button type="button" onClick={() => run("format")}>
@@ -99,13 +98,15 @@ export function JsonFormatter({}: ToolComponentProps) {
 
       <Card>
         <CardHeader className="tool-editor-card-header">
-          <CardTitle>結果</CardTitle>
+          <CardTitle className="tool-editor-card-title">結果</CardTitle>
           <CopyButton value={output} />
         </CardHeader>
         <CardContent>
           <div className="space-y-2">
-            <p className="text-sm font-semibold leading-none text-foreground">JSON結果</p>
-            <pre className="h-72 min-h-72 overflow-auto rounded-md border border-border bg-surface-muted p-4 font-mono text-sm leading-6">
+            <p className="tool-editor-field-label text-sm font-semibold text-foreground">
+              JSON結果
+            </p>
+            <pre className="tool-editor-field overflow-auto rounded-md border border-border bg-surface-muted p-4 font-mono text-sm leading-6">
               {output || "ここに結果が表示されます。"}
             </pre>
           </div>

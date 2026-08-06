@@ -46,7 +46,7 @@ export function CsvTsvConverter({}: ToolComponentProps) {
         />
         <div className="grid gap-3 sm:grid-cols-2">
           <label className="space-y-2 text-sm font-semibold">
-            <span className="block">入力形式</span>
+            <span className="tool-editor-field-label">入力形式</span>
             <Select
               value={source}
               onChange={(event) => setSource(event.target.value as "," | "\t")}
@@ -56,7 +56,7 @@ export function CsvTsvConverter({}: ToolComponentProps) {
             </Select>
           </label>
           <label className="space-y-2 text-sm font-semibold">
-            <span className="block">出力形式</span>
+            <span className="tool-editor-field-label">出力形式</span>
             <Select
               value={destination}
               onChange={(event) => setDestination(event.target.value as "," | "\t")}

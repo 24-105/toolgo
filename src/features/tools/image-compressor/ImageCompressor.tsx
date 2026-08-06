@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   Button,
   Card,
@@ -21,8 +21,10 @@ export function ImageCompressor({}: ToolComponentProps) {
   const [outputUrl, setOutputUrl] = useState("");
   const [outputSize, setOutputSize] = useState(0);
   const [error, setError] = useState("");
+  const operationRef = useRef(0);
   useEffect(() => {
     return () => {
+      operationRef.current += 1;
       if (outputUrl) URL.revokeObjectURL(outputUrl);
     };
   }, [outputUrl]);
@@ -45,9 +47,14 @@ export function ImageCompressor({}: ToolComponentProps) {
       setError("画質は0.1〜1.0の範囲で指定してください。");
       return;
     }
+    const operation = ++operationRef.current;
     const url = URL.createObjectURL(file);
     const image = new Image();
     image.onload = () => {
+      if (operation !== operationRef.current) {
+        URL.revokeObjectURL(url);
+        return;
+      }
       const canvas = document.createElement("canvas");
       if (image.naturalWidth > MAX_DIMENSION || image.naturalHeight > MAX_DIMENSION) {
         URL.revokeObjectURL(url);
@@ -70,10 +77,12 @@ export function ImageCompressor({}: ToolComponentProps) {
       canvas.toBlob(
         (blob) => {
           URL.revokeObjectURL(url);
+          if (operation !== operationRef.current) return;
           if (!blob) {
             setError("画像を圧縮できませんでした。");
             return;
           }
+          if (outputUrl) URL.revokeObjectURL(outputUrl);
           setOutputUrl(URL.createObjectURL(blob));
           setOutputSize(blob.size);
           setError("");
@@ -84,6 +93,7 @@ export function ImageCompressor({}: ToolComponentProps) {
     };
     image.onerror = () => {
       URL.revokeObjectURL(url);
+      if (operation !== operationRef.current) return;
       setError("対応していない画像形式です。");
     };
     image.src = url;
@@ -101,6 +111,7 @@ export function ImageCompressor({}: ToolComponentProps) {
             type="file"
             accept="image/jpeg,image/png,image/webp"
             onChange={(event) => {
+              operationRef.current += 1;
               if (outputUrl) URL.revokeObjectURL(outputUrl);
               setFile(event.target.files?.[0] ?? null);
               setOutputUrl("");

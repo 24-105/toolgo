@@ -10,6 +10,7 @@ import {
   KeyRound,
   Link as LinkIcon,
   Palette,
+  Percent,
   QrCode,
   Regex,
   Ruler,
@@ -41,6 +42,7 @@ const iconMap = {
   tax: Coins,
   date: CalendarRange,
   ruler: Ruler,
+  percent: Percent,
 } satisfies Record<ToolIconName, LucideIcon>;
 
 export function ToolIcon({ icon }: { icon: ToolIconName }) {

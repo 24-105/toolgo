@@ -32,7 +32,7 @@ export function UrlEncoderDecoder({}: ToolComponentProps) {
     <div className="grid gap-4 lg:grid-cols-2">
       <Card>
         <CardHeader className="tool-editor-card-header">
-          <CardTitle>入力</CardTitle>
+          <CardTitle className="tool-editor-card-title">入力</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <Textarea
@@ -40,11 +40,11 @@ export function UrlEncoderDecoder({}: ToolComponentProps) {
             value={input}
             onChange={(event) => setInput(event.target.value)}
             placeholder="https://example.com/検索"
-            className="h-72 min-h-72 resize-none"
+            className="tool-editor-field resize-none"
             spellCheck={false}
           />
           <label className="block max-w-md space-y-2 text-sm font-semibold">
-            <span className="block">変換する範囲</span>
+            <span className="tool-editor-field-label">変換する範囲</span>
             <Select
               value={mode}
               onChange={(event) => setMode(event.target.value as UrlEncodeMode)}
@@ -78,7 +78,7 @@ export function UrlEncoderDecoder({}: ToolComponentProps) {
       </Card>
       <Card>
         <CardHeader className="tool-editor-card-header">
-          <CardTitle>結果</CardTitle>
+          <CardTitle className="tool-editor-card-title">結果</CardTitle>
           <CopyButton value={output} />
         </CardHeader>
         <CardContent>
@@ -87,7 +87,7 @@ export function UrlEncoderDecoder({}: ToolComponentProps) {
             readOnly
             value={output}
             placeholder="ここに結果が表示されます"
-            className="h-72 min-h-72 resize-none font-mono text-sm"
+            className="tool-editor-field resize-none font-mono text-sm"
           />
         </CardContent>
       </Card>

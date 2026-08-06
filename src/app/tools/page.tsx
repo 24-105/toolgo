@@ -31,7 +31,7 @@ export default function ToolsPage() {
       description="目的に合う無料のブラウザツールを、ここから選べます。"
       category="ツール一覧"
       help={
-        <div className="text-sm leading-6 text-muted">
+        <div className="tool-support-copy text-sm leading-6 text-muted">
           <p>
             ツールを選ぶと、詳しい説明と入力画面が開きます。JSON、文章、計算、画像など、目的に合うツールを検索できます。
           </p>

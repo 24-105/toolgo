@@ -10,7 +10,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
     <select
       ref={ref}
       className={cn(
-        "min-h-10 w-full rounded-md border border-border bg-surface px-3 py-2 text-sm text-foreground shadow-sm outline-none",
+        "h-10 min-h-10 w-full rounded-md border border-border bg-surface px-3 py-2 text-sm text-foreground shadow-sm outline-none",
         "focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-ring/40",
         className,
       )}

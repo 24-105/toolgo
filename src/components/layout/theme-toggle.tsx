@@ -22,7 +22,12 @@ export function ThemeToggle() {
   const isDark = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
   useEffect(() => {
-    const savedTheme = window.localStorage.getItem("toolgo-theme");
+    let savedTheme: string | null = null;
+    try {
+      savedTheme = window.localStorage.getItem("toolgo-theme");
+    } catch {
+      // localStorageが利用できない環境でも、テーマ切り替え自体は動作させます。
+    }
     const dark = savedTheme === "dark";
     document.documentElement.dataset.theme = dark ? "dark" : "light";
     window.dispatchEvent(new Event(themeEvent));
@@ -31,7 +36,11 @@ export function ThemeToggle() {
   function toggleTheme() {
     const nextIsDark = !isDark;
     document.documentElement.dataset.theme = nextIsDark ? "dark" : "light";
-    window.localStorage.setItem("toolgo-theme", nextIsDark ? "dark" : "light");
+    try {
+      window.localStorage.setItem("toolgo-theme", nextIsDark ? "dark" : "light");
+    } catch {
+      // 保存できない環境では、現在のページ内だけテーマを切り替えます。
+    }
     window.dispatchEvent(new Event(themeEvent));
   }
 

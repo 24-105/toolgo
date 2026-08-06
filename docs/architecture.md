@@ -121,7 +121,7 @@ canonical、OGP、sitemap、robotsの絶対URLは `NEXT_PUBLIC_SITE_URL` と `NE
 
 Next.jsの `output: 'export'` を使用し、サーバー専用機能、API Routes、Server Actions、動的な外部データ取得に依存しません。動的ルートはビルド時にregistryの全slugから静的生成します。GitHub Pagesのサブパス配信を考慮して `basePath` と `assetPrefix` を環境変数で管理し、リンクにはNext.jsのルーティングを使います。
 
-ブラウザAPIを使う処理はClient Component内で実行し、SSR時に `window` や `navigator` を参照しません。重い処理は必要に応じて遅延ロードまたはWeb Workerへ分離します。
+ブラウザAPIを使う処理はClient Component内で実行し、SSR時に `window` や `navigator` を参照しません。重い処理は必要に応じて遅延ロードまたはWeb Workerへ分離します。正規表現のようにユーザー入力で計算量が大きくなり得る処理はWeb Workerへ隔離し、画面を停止させないよう入力上限とタイムアウトを設けます。
 
 ## 品質・運用上の原則
 

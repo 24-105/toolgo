@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Card,
   CardContent,
@@ -11,21 +11,77 @@ import {
   Textarea,
 } from "@/components/ui";
 import type { ToolComponentProps } from "../types";
-import { testRegex, type RegexMatch } from "./logic";
+import type { RegexMatch } from "./logic";
+
+const REGEX_TIMEOUT_MS = 500;
 
 export function RegexTester({}: ToolComponentProps) {
   const [pattern, setPattern] = useState("\\d+");
   const [flags, setFlags] = useState("g");
   const [input, setInput] = useState("");
-  const result = useMemo(() => {
+  const [result, setResult] = useState<{
+    matches: RegexMatch[];
+    error: string;
+  }>({ matches: [], error: "" });
+
+  useEffect(() => {
+    let active = true;
+    let worker: Worker;
+
     try {
-      return { matches: testRegex(pattern, flags, input), error: "" };
+      worker = new Worker(new URL("./regex-worker.ts", import.meta.url));
     } catch {
-      return {
-        matches: [] as RegexMatch[],
-        error: "正規表現またはフラグが正しくありません。",
-      };
+      queueMicrotask(() => {
+        if (active) {
+          setResult({
+            matches: [],
+            error: "このブラウザでは正規表現を確認できません。",
+          });
+        }
+      });
+      return;
     }
+
+    const timeoutId = window.setTimeout(() => {
+      worker.terminate();
+      if (active) {
+        setResult({
+          matches: [],
+          error: "正規表現の処理に時間がかかりすぎました。パターンを見直してください。",
+        });
+      }
+    }, REGEX_TIMEOUT_MS);
+
+    worker.onmessage = (
+      event: MessageEvent<
+        { ok: true; matches: RegexMatch[] } | { ok: false; message: string }
+      >,
+    ) => {
+      window.clearTimeout(timeoutId);
+      worker.terminate();
+      if (!active) return;
+      setResult(
+        event.data.ok
+          ? { matches: event.data.matches, error: "" }
+          : { matches: [], error: event.data.message },
+      );
+    };
+
+    worker.onerror = () => {
+      window.clearTimeout(timeoutId);
+      worker.terminate();
+      if (active) {
+        setResult({ matches: [], error: "正規表現を確認できませんでした。" });
+      }
+    };
+
+    worker.postMessage({ pattern, flags, input });
+
+    return () => {
+      active = false;
+      window.clearTimeout(timeoutId);
+      worker.terminate();
+    };
   }, [flags, input, pattern]);
   return (
     <Card>
@@ -34,7 +90,7 @@ export function RegexTester({}: ToolComponentProps) {
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="grid gap-3 sm:grid-cols-[1fr_8rem]">
-          <label className="space-y-2 text-sm font-semibold">
+          <div className="space-y-2">
             <Label htmlFor="regex-pattern">正規表現</Label>
             <Input
               id="regex-pattern"
@@ -43,19 +99,20 @@ export function RegexTester({}: ToolComponentProps) {
               maxLength={500}
               className="font-mono"
             />
-          </label>
-          <label className="space-y-2 text-sm font-semibold">
+          </div>
+          <div className="space-y-2">
             <Label htmlFor="regex-flags">フラグ</Label>
             <Input
               id="regex-flags"
               value={flags}
               onChange={(event) => setFlags(event.target.value)}
               placeholder="g"
+              maxLength={20}
               className="font-mono"
             />
-          </label>
+          </div>
         </div>
-        <label className="block space-y-2 text-sm font-semibold">
+        <div className="space-y-2">
           <Label htmlFor="regex-input">対象の文字列</Label>
           <Textarea
             id="regex-input"
@@ -65,7 +122,7 @@ export function RegexTester({}: ToolComponentProps) {
             placeholder="検索対象の文字列を入力してください"
             className="min-h-40"
           />
-        </label>
+        </div>
         {result.error && (
           <p role="alert" className="text-sm font-semibold text-danger">
             {result.error}
@@ -73,7 +130,7 @@ export function RegexTester({}: ToolComponentProps) {
         )}
         <p className="text-sm text-muted">{result.matches.length}件見つかりました。</p>
         <p className="text-sm text-muted">
-          正規表現は500文字以内、対象の文字列は10,000文字以内で入力してください。
+          正規表現は500文字以内、フラグは20文字以内、対象の文字列は10,000文字以内で入力してください。
         </p>
         <ul className="space-y-2">
           {result.matches.map((match) => (
