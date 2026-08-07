@@ -1,8 +1,9 @@
 import { Badge, Card, CardContent, CardHeader, CardTitle } from "@/components/ui";
 import { AdSlot } from "@/components/ads";
 import { PrivacyNote } from "@/components/layout";
+import { PurposeFinder, type PurposeFinderGroup } from "@/components/search";
 import { ToolIcon } from "@/components/tools";
-import { getCategories, getTools } from "@/features/tools/registry";
+import { getCategories, getPurposeGroups, getTools } from "@/features/tools/registry";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
@@ -17,6 +18,20 @@ export const metadata = createPageMetadata({
 });
 
 export default function HomePage() {
+  const purposes: PurposeFinderGroup[] = getPurposeGroups().map((purpose) => ({
+    slug: purpose.slug,
+    name: purpose.name,
+    description: purpose.description,
+    icon: purpose.icon,
+    tools: purpose.tools.map((tool) => ({
+      slug: tool.slug,
+      name: tool.name,
+      description: tool.description,
+      icon: tool.icon,
+      status: tool.status,
+    })),
+  }));
+
   return (
     <main className="dashboard-page">
       <div className="content-container">
@@ -46,6 +61,10 @@ export default function HomePage() {
           />
         </section>
 
+        <section className="dashboard-section" aria-label="目的から探す">
+          <PurposeFinder purposes={purposes} />
+        </section>
+
         <section className="dashboard-grid dashboard-section" aria-label="よく使うツール">
           <Card className="dashboard-tools-card">
             <CardHeader className="card-header-row">
@@ -67,13 +86,10 @@ export default function HomePage() {
           </Card>
         </section>
 
-        <section
-          className="dashboard-grid dashboard-section"
-          aria-label="カテゴリから探す"
-        >
+        <section className="dashboard-section" aria-label="分野から探す">
           <Card>
             <CardHeader>
-              <p className="section-kicker">目的から探す</p>
+              <p className="section-kicker">分野から探す</p>
               <CardTitle>カテゴリ別のツール</CardTitle>
             </CardHeader>
             <CardContent>
