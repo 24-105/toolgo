@@ -23,6 +23,14 @@ export type ToolIcon =
   | "percent";
 export type ToolStatus = "available" | "planned";
 
+export type ToolPurpose = {
+  slug: string;
+  name: string;
+  description: string;
+  icon: ToolIcon;
+  toolSlugs: string[];
+};
+
 export type ToolFaq = {
   question: string;
   answer: string;

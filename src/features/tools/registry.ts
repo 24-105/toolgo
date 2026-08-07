@@ -12,6 +12,7 @@ import { ImageResizer } from "./image-resizer/ImageResizer";
 import { JsonDiff } from "./json-diff/JsonDiff";
 import { MarkdownPreview } from "./markdown-preview/MarkdownPreview";
 import { PercentageCalculator } from "./percentage-calculator/PercentageCalculator";
+import { PhotoPrintLayout } from "./photo-print-layout/PhotoPrintLayout";
 import { QrCodeReader } from "./qr-code-reader/QrCodeReader";
 import { RegexTester } from "./regex-tester/RegexTester";
 import { TextDiff } from "./text-diff/TextDiff";
@@ -19,11 +20,15 @@ import { TextTransformer } from "./text-transformer/TextTransformer";
 import { UrlEncoderDecoder } from "./url-encoder-decoder/UrlEncoderDecoder";
 import { UuidGenerator } from "./uuid-generator/UuidGenerator";
 import { BillSplitter } from "./bill-splitter/BillSplitter";
+import { CronDebugger } from "./cron-debugger/CronDebugger";
+import { CssClampGenerator } from "./css-clamp-generator/CssClampGenerator";
 import { DateCalculator } from "./date-calculator/DateCalculator";
 import { SalaryTakeHome } from "./salary-take-home/SalaryTakeHome";
 import { TaxCalculator } from "./tax-calculator/TaxCalculator";
 import { UnitConverter } from "./unit-converter/UnitConverter";
-import type { ToolDefinition } from "./types";
+import { UnicodeNormalizerChecker } from "./unicode-normalizer-checker/UnicodeNormalizerChecker";
+import { VlsmSubnetPlanner } from "./vlsm-subnet-planner/VlsmSubnetPlanner";
+import type { ToolDefinition, ToolPurpose } from "./types";
 
 export const categoryRegistry = [
   {
@@ -1261,12 +1266,327 @@ const toolMetadata: ToolDefinition[] = [
       ],
     },
   },
+  {
+    slug: "photo-print-layout",
+    name: "写真印刷レイアウト",
+    description: "複数の写真をA4やL判の印刷用レイアウトに配置します。",
+    seoTitle: "写真印刷レイアウト｜A4・L判に複数写真を配置する無料ツール",
+    seoDescription:
+      "複数の写真をA4、L判、2L判の印刷用レイアウトに配置できます。写真は外部へ送信せず、ブラウザ内でSVGを作成します。",
+    seoKeywords: [
+      "写真 印刷 レイアウト",
+      "A4 写真 並べて印刷",
+      "L判 写真 配置",
+      "写真 印刷 無料",
+      "コンビニ写真 レイアウト",
+    ],
+    category: "デザイン",
+    keywords: ["写真", "印刷", "A4", "L判", "レイアウト", "画像"],
+    icon: "image",
+    isMvp: false,
+    status: "available",
+    component: PhotoPrintLayout,
+    details: {
+      overview:
+        "写真印刷レイアウトは、複数の画像をA4、L判、2L判の用紙に並べて、印刷しやすいSVGにまとめるツールです。写真の縦横比を保ったまま枠に合わせ、必要に応じて複数ページに分けます。",
+      example: "旅行写真をA4用紙に4枚ずつ配置し、作成したSVGを開いて印刷します。",
+      howToUse: [
+        "画像ファイルを選択します。JPEG、PNG、WebPに対応しています。",
+        "用紙サイズと、1ページに配置する枚数を選びます。",
+        "「印刷レイアウトを作成する」を押し、プレビューを確認してダウンロードします。",
+      ],
+      notes: [
+        "写真は中央で切り抜いて、選択した枠に合わせます。元の画像は変更しません。",
+        "印刷時は、プリンターの用紙サイズと拡大縮小の設定を確認してください。",
+      ],
+      faq: [
+        {
+          question: "写真はサーバーへ送信されますか？",
+          answer:
+            "いいえ。写真の読み込みとレイアウト作成はブラウザ内で行い、外部へ送信しません。",
+        },
+        {
+          question: "PDFとして保存できますか？",
+          answer:
+            "現在はSVGをダウンロードできます。SVGをブラウザで開き、印刷画面からPDFとして保存することもできます。",
+        },
+      ],
+    },
+  },
+  {
+    slug: "vlsm-subnet-planner",
+    name: "VLSMサブネット設計",
+    description: "必要なホスト数から、CIDRサブネットを効率よく分割します。",
+    seoTitle: "VLSMサブネット設計｜必要ホスト数からCIDRを自動計算",
+    seoDescription:
+      "元のIPv4ネットワークと必要なホスト数を入力して、VLSM方式のサブネット分割を計算できます。入力データはブラウザ内で処理します。",
+    seoKeywords: [
+      "VLSM 計算",
+      "サブネット設計",
+      "サブネット分割",
+      "CIDR 計算",
+      "サブネットマスク 計算",
+    ],
+    category: "開発",
+    keywords: ["VLSM", "サブネット", "CIDR", "IPv4", "ネットワーク", "開発ツール"],
+    icon: "code",
+    isMvp: false,
+    status: "available",
+    component: VlsmSubnetPlanner,
+    details: {
+      overview:
+        "VLSMサブネット設計は、元のIPv4ネットワークと各サブネットに必要なホスト数から、無駄の少ないCIDR範囲を計算するツールです。必要なホスト数が多い順にサブネットを割り当てます。",
+      example:
+        "192.168.0.0/24に、100台、50台、20台のネットワークを作るための範囲を確認します。",
+      howToUse: [
+        "元のネットワークを「192.168.0.0/24」のように入力します。",
+        "各サブネットで必要なホスト数を1行ずつ入力します。",
+        "「サブネットを設計する」を押し、各範囲と残りのアドレス数を確認します。",
+      ],
+      notes: [
+        "IPv4の標準的なサブネット計算に対応しています。各サブネットではネットワークアドレスとブロードキャストアドレスを予約します。",
+        "VPCやクラウドサービス固有の予約アドレスは考慮していません。実際の設定ではサービスの仕様を確認してください。",
+      ],
+      faq: [
+        {
+          question: "VLSMとは何ですか？",
+          answer:
+            "VLSMは、必要なホスト数に合わせて異なる大きさのサブネットを割り当てる方法です。すべてを同じ大きさに分けるより、アドレスを効率よく使える場合があります。",
+        },
+        {
+          question: "入力したネットワークに収まらない場合はどうなりますか？",
+          answer:
+            "すべてのサブネットを配置できない場合はエラーを表示します。元のネットワークを大きくするか、必要なホスト数を見直してください。",
+        },
+      ],
+    },
+  },
+  {
+    slug: "cron-debugger",
+    name: "Cron式デバッガー",
+    description: "Cron式を日本語で説明し、次回の実行時刻を表示します。",
+    seoTitle: "Cron式デバッガー｜Cronの意味と次回実行時刻を確認",
+    seoDescription:
+      "5項目のCron式を解析し、日本語の実行内容と次回5回分の実行時刻を表示します。入力データは外部へ送信しません。",
+    seoKeywords: [
+      "Cron式 確認",
+      "Cron デバッガー",
+      "Cron 次回実行時刻",
+      "Cron式 意味",
+      "crontab 確認",
+    ],
+    category: "開発",
+    keywords: ["Cron", "crontab", "スケジュール", "デバッグ", "開発ツール"],
+    icon: "calendar",
+    isMvp: false,
+    status: "available",
+    component: CronDebugger,
+    details: {
+      overview:
+        "Cron式デバッガーは、分、時、日、月、曜日の5項目で構成されたCron式を解析し、実行される条件と次回の実行時刻を確認するツールです。",
+      example:
+        "「*/15 9-17 * * 1-5」を入力し、平日の9時から17時まで15分ごとに実行されることを確認します。",
+      howToUse: [
+        "Cron式を入力します。項目の順番は「分 時 日 月 曜日」です。",
+        "「Cron式を解析する」を押します。",
+        "日本語の説明と、端末のタイムゾーンで計算した次回の実行時刻を確認します。",
+      ],
+      notes: [
+        "標準的な5項目のCron式に対応しています。秒を含む6項目形式や、サービス固有の拡張構文には対応していません。",
+        "曜日の0と7は日曜日として扱います。日と曜日を両方指定した場合は、一般的なCronのOR条件で計算します。",
+      ],
+      faq: [
+        {
+          question: "実際のサーバー時刻で計算できますか？",
+          answer:
+            "端末のローカル時刻で計算します。サーバーのタイムゾーンと異なる場合は、実行環境の設定を確認してください。",
+        },
+        {
+          question: "Cron式を生成できますか？",
+          answer:
+            "このツールは既存のCron式の意味と実行時刻を確認するためのものです。式を組み立てる場合は、各項目を指定してから別のツールへコピーしてください。",
+        },
+      ],
+    },
+  },
+  {
+    slug: "css-clamp-generator",
+    name: "CSS clamp()生成",
+    description: "画面幅に応じて変化するCSSのclamp()を計算します。",
+    seoTitle: "CSS clamp()生成｜レスポンシブなサイズ指定を無料計算",
+    seoDescription:
+      "最小・最大の画面幅とサイズから、font-sizeやpaddingなどに使えるCSS clamp()を生成します。プレビューとコピーに対応しています。",
+    seoKeywords: [
+      "CSS clamp 生成",
+      "clamp 計算",
+      "レスポンシブ font-size",
+      "CSS vw 計算",
+      "fluid typography",
+    ],
+    category: "デザイン",
+    keywords: ["CSS", "clamp", "レスポンシブ", "vw", "font-size", "デザイン"],
+    icon: "code",
+    isMvp: false,
+    status: "available",
+    component: CssClampGenerator,
+    details: {
+      overview:
+        "CSS clamp()生成は、画面幅に応じて滑らかに変化するCSSの値を計算するツールです。最小値と最大値の間をvwで補間したclamp()を作成できます。",
+      example:
+        "スマートフォンで16px、デスクトップで24pxになる見出しのfont-sizeを計算します。",
+      howToUse: [
+        "CSSプロパティと値の単位を選びます。",
+        "最小・最大の画面幅と、最小・最大の値を入力します。",
+        "「CSSを生成する」を押し、コードをコピーします。",
+      ],
+      notes: [
+        "入力した画面幅の範囲では、最小値から最大値まで直線的に変化する式を生成します。",
+        "生成結果は計算値です。実際のレイアウトでは、親要素の幅やブラウザの設定も確認してください。",
+      ],
+      faq: [
+        {
+          question: "font-size以外にも使えますか？",
+          answer:
+            "はい。padding、margin、gap、line-heightなど、長さや数値を指定するプロパティにも使えます。",
+        },
+        {
+          question: "clamp()は古いブラウザでも使えますか？",
+          answer:
+            "現行の主要ブラウザで利用できます。対応ブラウザを限定している場合は、対象環境のCSS対応状況も確認してください。",
+        },
+      ],
+    },
+  },
+  {
+    slug: "unicode-normalizer-checker",
+    name: "Unicode正規化チェック",
+    description: "Unicodeの正規化結果と、見た目が似た文字を確認します。",
+    seoTitle: "Unicode正規化チェック｜NFC・NFD・NFKC・NFKDを比較",
+    seoDescription:
+      "文字列をUnicodeのNFC、NFD、NFKC、NFKDで正規化し、コードポイントの違いを比較できます。似た文字の混在もブラウザ内で確認します。",
+    seoKeywords: [
+      "Unicode 正規化",
+      "NFC NFD 変換",
+      "NFKC NFKD 比較",
+      "Unicode コードポイント",
+      "似た文字 チェック",
+    ],
+    category: "開発",
+    keywords: ["Unicode", "正規化", "NFC", "NFD", "コードポイント", "文字比較"],
+    icon: "text",
+    isMvp: false,
+    status: "available",
+    component: UnicodeNormalizerChecker,
+    details: {
+      overview:
+        "Unicode正規化チェックは、見た目が同じでも内部の文字列が異なる問題を確認するツールです。4種類の正規化形式とコードポイントを並べて比較できます。",
+      example:
+        "検索やファイル名の比較で一致しない文字列を入力し、NFCやNFKCで変化するか確認します。",
+      howToUse: [
+        "確認したい文字列を入力します。",
+        "「文字の違いを確認する」を押します。",
+        "NFC、NFD、NFKC、NFKDの結果とコードポイントを比較します。",
+      ],
+      notes: [
+        "NFKCとNFKDは互換文字を置き換えるため、識別子やパスワードを変換する前に用途を確認してください。",
+        "似た文字の検出は代表的なラテン文字・ギリシャ文字・キリル文字を対象にした目安です。安全性を保証するものではありません。",
+      ],
+      faq: [
+        {
+          question: "NFCとNFDの違いは何ですか？",
+          answer:
+            "どちらも文字を同値な形にそろえる方式ですが、NFCは可能な場合に合成し、NFDは分解した形を使います。",
+        },
+        {
+          question: "入力した文字列は保存されますか？",
+          answer:
+            "いいえ。文字列の解析はブラウザ内で行い、外部へ送信したり保存したりしません。",
+        },
+      ],
+    },
+  },
 ];
 
 export const toolRegistry: ToolDefinition[] = toolMetadata;
 
+export const purposeRegistry: ToolPurpose[] = [
+  {
+    slug: "write-and-check",
+    name: "文章や文字を整える",
+    description: "文字数を数えたり、文章の違いを確認します。",
+    icon: "text",
+    toolSlugs: ["character-counter", "text-transformer", "text-diff", "markdown-preview"],
+  },
+  {
+    slug: "calculate-daily",
+    name: "数字・お金・日付を計算する",
+    description: "年齢、割合、手取り、割り勘などを計算します。",
+    icon: "wallet",
+    toolSlugs: [
+      "age-calculator",
+      "percentage-calculator",
+      "salary-take-home",
+      "bill-splitter",
+      "tax-calculator",
+      "date-calculator",
+      "unit-converter",
+    ],
+  },
+  {
+    slug: "work-with-data",
+    name: "データやコードを整える",
+    description: "JSON、URL、CSVなどを見やすく整えます。",
+    icon: "code",
+    toolSlugs: [
+      "json-formatter",
+      "json-diff",
+      "url-encoder-decoder",
+      "base64-converter",
+      "uuid-generator",
+      "regex-tester",
+      "csv-tsv-converter",
+    ],
+  },
+  {
+    slug: "work-with-images",
+    name: "画像や色を扱う",
+    description: "画像のサイズや容量、カラーコードを調整します。",
+    icon: "image",
+    toolSlugs: [
+      "color-converter",
+      "image-compressor",
+      "image-resizer",
+      "photo-print-layout",
+      "css-clamp-generator",
+    ],
+  },
+  {
+    slug: "use-qr-codes",
+    name: "QRコードを作る・読む",
+    description: "URLや文字列をQRコードに変換し、画像から読み取ります。",
+    icon: "qr",
+    toolSlugs: ["qr-code-generator", "qr-code-reader"],
+  },
+  {
+    slug: "protect-strings",
+    name: "パスワードやハッシュを作る",
+    description: "推測されにくい文字列を作り、ハッシュ値を確認します。",
+    icon: "key",
+    toolSlugs: ["password-generator", "hash-generator"],
+  },
+];
+
 export function getTools() {
   return toolRegistry;
+}
+
+export function getPurposeGroups() {
+  return purposeRegistry.map((purpose) => ({
+    ...purpose,
+    tools: purpose.toolSlugs
+      .map((slug) => getToolBySlug(slug))
+      .filter((tool): tool is ToolDefinition => Boolean(tool)),
+  }));
 }
 
 export function getToolBySlug(slug: string) {
