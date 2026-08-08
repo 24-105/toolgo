@@ -58,7 +58,7 @@ export function JsonFormatter({}: ToolComponentProps) {
             />
           </div>
           <div className="flex flex-wrap items-end gap-3">
-            <label className="space-y-2 text-sm font-semibold">
+            <label className="block space-y-2 text-sm font-semibold">
               <span className="tool-editor-field-label">インデント</span>
               <Select value={indent} onChange={(event) => setIndent(event.target.value)}>
                 <option value="2">2スペース</option>

@@ -134,7 +134,7 @@ export function PhotoPrintLayout({}: ToolComponentProps) {
           </p>
         </div>
         <div className="grid gap-3 sm:grid-cols-2">
-          <label className="space-y-2 text-sm font-semibold">
+          <label className="block space-y-2 text-sm font-semibold">
             <span className="tool-editor-field-label">用紙サイズ</span>
             <Select
               value={sizeKey}
@@ -147,7 +147,7 @@ export function PhotoPrintLayout({}: ToolComponentProps) {
               ))}
             </Select>
           </label>
-          <label className="space-y-2 text-sm font-semibold">
+          <label className="block space-y-2 text-sm font-semibold">
             <span className="tool-editor-field-label">1ページに配置する枚数</span>
             <Select
               value={photosPerPage}

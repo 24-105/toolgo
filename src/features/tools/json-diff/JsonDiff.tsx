@@ -42,7 +42,7 @@ export function JsonDiff({}: ToolComponentProps) {
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="grid gap-3 sm:grid-cols-2">
-            <label className="space-y-2 text-sm font-semibold">
+            <label className="block space-y-2 text-sm font-semibold">
               <span className="tool-editor-field-label">変更前</span>
               <Textarea
                 value={left}
@@ -52,7 +52,7 @@ export function JsonDiff({}: ToolComponentProps) {
                 spellCheck={false}
               />
             </label>
-            <label className="space-y-2 text-sm font-semibold">
+            <label className="block space-y-2 text-sm font-semibold">
               <span className="tool-editor-field-label">変更後</span>
               <Textarea
                 value={right}

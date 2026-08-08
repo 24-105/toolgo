@@ -227,7 +227,7 @@ export function ImageResizer({}: ToolComponentProps) {
           縦横比を維持する
         </label>
         <div className="grid gap-3 sm:grid-cols-2">
-          <label className="space-y-2 text-sm font-semibold">
+          <label className="block space-y-2 text-sm font-semibold">
             <span className="tool-editor-field-label">保存形式</span>
             <Select
               value={outputType}
@@ -240,7 +240,7 @@ export function ImageResizer({}: ToolComponentProps) {
               ))}
             </Select>
           </label>
-          <label className="space-y-2 text-sm font-semibold">
+          <label className="block space-y-2 text-sm font-semibold">
             <span className="tool-editor-field-label">画質（0.1〜1.0）</span>
             <Input
               id="resize-quality"

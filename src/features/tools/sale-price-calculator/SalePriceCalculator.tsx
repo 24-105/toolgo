@@ -87,7 +87,7 @@ export function SalePriceCalculator({}: ToolComponentProps) {
               onChange={(event) => setDiscountRate(event.target.value)}
             />
           </div>
-          <label className="space-y-2 text-sm font-semibold">
+          <label className="block space-y-2 text-sm font-semibold">
             <span className="tool-editor-field-label">消費税率</span>
             <Select value={taxRate} onChange={(event) => setTaxRate(event.target.value)}>
               <option value="0.1">10%</option>

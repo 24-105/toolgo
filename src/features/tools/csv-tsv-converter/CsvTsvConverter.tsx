@@ -45,7 +45,7 @@ export function CsvTsvConverter({}: ToolComponentProps) {
           className="min-h-48 font-mono text-sm"
         />
         <div className="grid gap-3 sm:grid-cols-2">
-          <label className="space-y-2 text-sm font-semibold">
+          <label className="block space-y-2 text-sm font-semibold">
             <span className="tool-editor-field-label">入力形式</span>
             <Select
               value={source}
@@ -55,7 +55,7 @@ export function CsvTsvConverter({}: ToolComponentProps) {
               <option value={TAB_DELIMITER}>TSV（タブ区切り）</option>
             </Select>
           </label>
-          <label className="space-y-2 text-sm font-semibold">
+          <label className="block space-y-2 text-sm font-semibold">
             <span className="tool-editor-field-label">出力形式</span>
             <Select
               value={destination}

@@ -68,7 +68,7 @@ export function CssClampGenerator({}: ToolComponentProps) {
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="grid gap-3 sm:grid-cols-2">
-          <label className="space-y-2 text-sm font-semibold">
+          <label className="block space-y-2 text-sm font-semibold">
             <span className="tool-editor-field-label">CSSプロパティ</span>
             <Select
               value={property}
@@ -81,7 +81,7 @@ export function CssClampGenerator({}: ToolComponentProps) {
               ))}
             </Select>
           </label>
-          <label className="space-y-2 text-sm font-semibold">
+          <label className="block space-y-2 text-sm font-semibold">
             <span className="tool-editor-field-label">値の単位</span>
             <Select
               value={unit}
