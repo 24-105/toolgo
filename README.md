@@ -23,6 +23,9 @@
 - [AdSense申請準備](docs/adsense-readiness.md)
 - [SEO title監査](docs/seo-title-audit.md)
 - [開発・ツール追加ルール](docs/contributing.md)
+- [NISA積立シミュレーター仕様](docs/nisa-simulator.md)
+- [投資信託の税引き後シミュレーター仕様](docs/taxable-investment-simulator.md)
+- [iDeCoシミュレーター仕様](docs/ideco-simulator.md)
 - [docs全体の目次](docs/README.md)
 
 ### 目的別の読み方

@@ -6,14 +6,17 @@
 
 ## 要件・計画
 
-| 文書                                         | 内容                                          |
-| -------------------------------------------- | --------------------------------------------- |
-| [roadmap.md](roadmap.md)                     | Phase 0〜10、MVP、将来拡張、次に実施するPhase |
-| [mvp.md](mvp.md)                             | MVP対象5ツールの必須機能、対象外、将来機能    |
-| [release-checklist.md](release-checklist.md) | GitHub Pages公開前後の確認項目                |
-| [adsense-readiness.md](adsense-readiness.md) | AdSense申請前の調査、対応、最終確認           |
-| [terms.md](terms.md)                         | ToolGo利用規約の本文と公開時の確認事項        |
-| [privacy-policy.md](privacy-policy.md)       | ToolGoプライバシーポリシーの本文と確認事項    |
+| 文書                                                               | 内容                                                         |
+| ------------------------------------------------------------------ | ------------------------------------------------------------ |
+| [roadmap.md](roadmap.md)                                           | Phase 0〜10、MVP、将来拡張、次に実施するPhase                |
+| [mvp.md](mvp.md)                                                   | MVP対象5ツールの必須機能、対象外、将来機能                   |
+| [release-checklist.md](release-checklist.md)                       | GitHub Pages公開前後の確認項目                               |
+| [adsense-readiness.md](adsense-readiness.md)                       | AdSense申請前の調査、対応、最終確認                          |
+| [terms.md](terms.md)                                               | ToolGo利用規約の本文と公開時の確認事項                       |
+| [privacy-policy.md](privacy-policy.md)                             | ToolGoプライバシーポリシーの本文と確認事項                   |
+| [nisa-simulator.md](nisa-simulator.md)                             | NISA積立シミュレーターの制度前提、入力、計算ルール           |
+| [taxable-investment-simulator.md](taxable-investment-simulator.md) | 課税口座の投資信託シミュレーターの税制前提、入力、計算ルール |
+| [ideco-simulator.md](ideco-simulator.md)                           | iDeCoの制度前提、掛金上限、税軽減額、計算ルール              |
 
 ## 設計書
 
