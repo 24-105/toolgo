@@ -4,6 +4,7 @@ import {
   CalendarRange,
   Code2,
   Coins,
+  Fuel,
   GitCompare,
   Hash,
   Image,
@@ -43,6 +44,7 @@ const iconMap = {
   date: CalendarRange,
   ruler: Ruler,
   percent: Percent,
+  fuel: Fuel,
 } satisfies Record<ToolIconName, LucideIcon>;
 
 export function ToolIcon({ icon }: { icon: ToolIconName }) {

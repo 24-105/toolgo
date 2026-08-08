@@ -1,5 +1,8 @@
 import { AgeCalculator } from "./age-calculator/AgeCalculator";
+import { BusinessDayCalculator } from "./business-day-calculator/BusinessDayCalculator";
 import { CharacterCounter } from "./character-counter/CharacterCounter";
+import { FuelCostCalculator } from "./fuel-cost-calculator/FuelCostCalculator";
+import { HouseholdBudgetCalculator } from "./household-budget-calculator/HouseholdBudgetCalculator";
 import { JsonFormatter } from "./json-formatter/JsonFormatter";
 import { PasswordGenerator } from "./password-generator/PasswordGenerator";
 import { QrCodeGenerator } from "./qr-code-generator/QrCodeGenerator";
@@ -11,12 +14,17 @@ import { ImageCompressor } from "./image-compressor/ImageCompressor";
 import { ImageResizer } from "./image-resizer/ImageResizer";
 import { JsonDiff } from "./json-diff/JsonDiff";
 import { MarkdownPreview } from "./markdown-preview/MarkdownPreview";
+import { HolidayCalendar } from "./holiday-calendar/HolidayCalendar";
 import { PercentageCalculator } from "./percentage-calculator/PercentageCalculator";
 import { PhotoPrintLayout } from "./photo-print-layout/PhotoPrintLayout";
 import { QrCodeReader } from "./qr-code-reader/QrCodeReader";
 import { RegexTester } from "./regex-tester/RegexTester";
+import { RecipePortionCalculator } from "./recipe-portion-calculator/RecipePortionCalculator";
+import { SalePriceCalculator } from "./sale-price-calculator/SalePriceCalculator";
 import { TextDiff } from "./text-diff/TextDiff";
 import { TextTransformer } from "./text-transformer/TextTransformer";
+import { TravelBudgetCalculator } from "./travel-budget-calculator/TravelBudgetCalculator";
+import { UnitPriceComparator } from "./unit-price-comparator/UnitPriceComparator";
 import { UrlEncoderDecoder } from "./url-encoder-decoder/UrlEncoderDecoder";
 import { UuidGenerator } from "./uuid-generator/UuidGenerator";
 import { BillSplitter } from "./bill-splitter/BillSplitter";
@@ -24,6 +32,8 @@ import { CronDebugger } from "./cron-debugger/CronDebugger";
 import { CssClampGenerator } from "./css-clamp-generator/CssClampGenerator";
 import { DateCalculator } from "./date-calculator/DateCalculator";
 import { SalaryTakeHome } from "./salary-take-home/SalaryTakeHome";
+import { SavingsGoalCalculator } from "./savings-goal-calculator/SavingsGoalCalculator";
+import { SleepTimeCalculator } from "./sleep-time-calculator/SleepTimeCalculator";
 import { TaxCalculator } from "./tax-calculator/TaxCalculator";
 import { UnitConverter } from "./unit-converter/UnitConverter";
 import { UnicodeNormalizerChecker } from "./unicode-normalizer-checker/UnicodeNormalizerChecker";
@@ -108,8 +118,20 @@ export const categoryRegistry = [
     seoHeading: "暮らしの計算・換算ツール",
     seoTitle: "暮らしの計算・換算ツール｜無料オンラインツール",
     seoDescription:
-      "給料の手取り、割り勘、税込・税抜、日付、単位換算など、暮らしに役立つ無料計算ツールをまとめています。",
-    seoKeywords: ["生活計算ツール", "手取り計算", "割り勘計算", "単位換算"],
+      "給料の手取り、割り勘、貯金、営業日、燃料費、家計予算、単価比較など、暮らしに役立つ無料計算ツールをまとめています。",
+    seoKeywords: [
+      "生活計算ツール",
+      "手取り計算",
+      "割り勘計算",
+      "貯金計算",
+      "睡眠時間計算",
+      "祝日カレンダー",
+      "営業日計算",
+      "燃料費計算",
+      "家計予算",
+      "単価比較",
+      "旅行予算",
+    ],
   },
 ] as const;
 
@@ -1143,6 +1165,53 @@ const toolMetadata: ToolDefinition[] = [
     },
   },
   {
+    slug: "savings-goal-calculator",
+    name: "貯金目標計算",
+    description: "毎月の積立額から貯金の達成時期や必要額を計算します。",
+    seoTitle: "貯金目標計算｜毎月の積立額と達成時期を無料計算",
+    seoDescription:
+      "目標金額と現在の貯金額を入力して、毎月の積立額から達成時期、または目標日から必要な積立額を計算できます。入力内容はブラウザ内で処理します。",
+    seoKeywords: [
+      "貯金目標計算",
+      "貯金計画",
+      "積立額 計算",
+      "貯金 いつ貯まる",
+      "目標金額 計算",
+    ],
+    category: "日常生活",
+    keywords: ["貯金", "貯金計画", "積立", "目標金額", "家計"],
+    icon: "wallet",
+    isMvp: false,
+    status: "available",
+    component: SavingsGoalCalculator,
+    details: {
+      overview:
+        "貯金目標計算は、目標金額と現在の貯金額から、毎月の積立額でいつ目標に届くか、または目標日までに毎月いくら積み立てればよいかを計算するツールです。",
+      example:
+        "旅行や引っ越しの目標金額と現在の貯金額を入力し、毎月の積立額から達成予定を確認します。",
+      howToUse: [
+        "目標金額と現在の貯金額を入力します。",
+        "毎月の積立額から達成時期を計算するか、目標日から必要な積立額を計算するかを選びます。",
+        "計算するを押して、残りの金額や積立回数を確認します。",
+      ],
+      notes: [
+        "月1回の積立を前提にした目安です。利息、臨時収入、途中の支出、積立日のずれは考慮しません。",
+      ],
+      faq: [
+        {
+          question: "目標金額より現在の貯金額が多い場合はどうなりますか？",
+          answer:
+            "目標金額に到達していると表示します。追加の積立額や回数は計算しません。",
+        },
+        {
+          question: "利息や投資による増加も計算できますか？",
+          answer:
+            "いいえ。毎月の積立額だけで計算するため、利息、投資による増減、臨時収入は含めません。",
+        },
+      ],
+    },
+  },
+  {
     slug: "tax-calculator",
     name: "税込・税抜計算",
     description: "税込価格、税抜価格、消費税額を相互に計算します。",
@@ -1262,6 +1331,420 @@ const toolMetadata: ToolDefinition[] = [
           question: "料理や海外の単位換算に使えますか？",
           answer:
             "はい。海外レシピの温度や容量、DIYで使う長さなど、一般的な単位の目安を確認する用途に使えます。",
+        },
+      ],
+    },
+  },
+  {
+    slug: "recipe-portion-calculator",
+    name: "料理の分量換算",
+    description: "レシピの人数を変えて、材料の分量をまとめて換算します。",
+    seoTitle: "料理の分量換算｜レシピを人数分に合わせて計算",
+    seoDescription:
+      "元の人数と作る人数を入力して、レシピの材料を必要な人数分へ換算できます。料理の分量はブラウザ内で計算し、入力内容を外部へ送信しません。",
+    seoKeywords: [
+      "料理 分量換算",
+      "レシピ 人数変更",
+      "料理 分量 計算",
+      "レシピ 倍量",
+      "材料 分量換算",
+    ],
+    category: "日常生活",
+    keywords: ["料理", "レシピ", "分量", "人数", "換算"],
+    icon: "table",
+    isMvp: false,
+    status: "available",
+    component: RecipePortionCalculator,
+    details: {
+      overview:
+        "料理の分量換算は、2人分のレシピを4人分にするなど、元の人数に合わせて材料の分量をまとめて計算するツールです。",
+      example:
+        "レシピが2人分なのに5人分作りたいとき、材料を入力して必要な分量を確認します。",
+      howToUse: [
+        "レシピに書かれている元の人数と、作る人数を入力します。",
+        "材料を1行に1つずつ「材料名, 分量, 単位」の形式で入力します。",
+        "分量を換算するを押し、結果を確認またはコピーします。",
+      ],
+      notes: [
+        "分量は数値または分数で入力します。少々、適量など数値にできない分量は換算できません。",
+      ],
+      faq: [
+        {
+          question: "大さじや小さじも換算できますか？",
+          answer:
+            "はい。単位をそのまま文字として入力すれば、分量の数値だけを人数に合わせて換算できます。大さじをmlへ変換する機能ではありません。",
+        },
+        {
+          question: "材料の単位も自動で変わりますか？",
+          answer:
+            "いいえ。g、ml、大さじなどの単位は入力したまま表示します。単位の変換には単位換算を使ってください。",
+        },
+      ],
+    },
+  },
+  {
+    slug: "sleep-time-calculator",
+    name: "睡眠時間計算",
+    description: "就寝時刻と起床時刻から、睡眠時間を計算します。",
+    seoTitle: "睡眠時間計算｜就寝・起床時刻から睡眠時間を計算",
+    seoDescription:
+      "就寝時刻と起床時刻を入力して、日付をまたぐ睡眠時間を計算できます。入力内容はブラウザ内で処理する無料ツールです。",
+    seoKeywords: [
+      "睡眠時間計算",
+      "睡眠時間 計算",
+      "就寝 起床 時刻",
+      "何時間寝たか",
+      "睡眠 時間計算",
+    ],
+    category: "日常生活",
+    keywords: ["睡眠", "就寝", "起床", "時間", "生活"],
+    icon: "date",
+    isMvp: false,
+    status: "available",
+    component: SleepTimeCalculator,
+    details: {
+      overview:
+        "睡眠時間計算は、就寝時刻と起床時刻から、日付をまたぐ場合も含めた経過時間を計算するツールです。",
+      example: "23時に寝て7時に起きたとき、睡眠時間が8時間あるか確認します。",
+      howToUse: [
+        "就寝時刻を入力します。",
+        "起床時刻を入力します。",
+        "睡眠時間を計算するを押して、経過時間を確認します。",
+      ],
+      notes: [
+        "就寝から起床までの経過時間だけを計算します。昼寝、入眠までの時間、途中で起きた時間、睡眠の質は考慮しません。",
+      ],
+      faq: [
+        {
+          question: "23時から7時のように日付をまたいでも計算できますか？",
+          answer: "はい。起床時刻が就寝時刻より前の場合は、翌日の時刻として計算します。",
+        },
+        {
+          question: "睡眠時間が足りているか判定できますか？",
+          answer:
+            "いいえ。年齢や体調によって必要な睡眠時間は異なるため、このツールは経過時間の計算だけを行います。",
+        },
+      ],
+    },
+  },
+  {
+    slug: "sale-price-calculator",
+    name: "セール価格計算",
+    description: "個数・割引率・税率から、買い物の支払合計を計算します。",
+    seoTitle: "セール価格計算｜割引後の税込価格と合計金額を計算",
+    seoDescription:
+      "商品の価格、個数、割引率、消費税率から、割引額と支払合計を計算できます。まとめ買いの金額確認をブラウザ内で行える無料ツールです。",
+    seoKeywords: [
+      "セール価格計算",
+      "割引後価格 計算",
+      "値引き 計算",
+      "買い物 合計 計算",
+      "税込 セール価格",
+    ],
+    category: "日常生活",
+    keywords: ["セール", "割引", "買い物", "価格", "税込"],
+    icon: "percent",
+    isMvp: false,
+    status: "available",
+    component: SalePriceCalculator,
+    details: {
+      overview:
+        "セール価格計算は、1個あたりの価格と個数、割引率、消費税率から、割引額と支払合計を計算するツールです。",
+      example: "3,000円の商品を2個、20%引きで買うときの税込み支払額を確認します。",
+      howToUse: [
+        "1個あたりの価格と個数を入力します。",
+        "割引率と消費税率を入力または選択します。",
+        "セール価格を計算するを押して、支払合計を確認します。",
+      ],
+      notes: [
+        "個数分の合計に割引を適用し、割引後の価格へ消費税を加えます。店舗ごとの端数処理や、2個目半額などの個別条件は考慮しません。",
+      ],
+      faq: [
+        {
+          question: "複数個買った場合の合計を計算できますか？",
+          answer:
+            "はい。1個あたりの価格と個数を入力すると、個数分の通常価格、割引額、支払合計を表示します。",
+        },
+        {
+          question: "2個目半額にも対応していますか？",
+          answer:
+            "いいえ。入力した割引率を合計金額へ適用する計算です。2個目半額などの商品ごとに条件が異なる場合は、商品ごとに分けて計算してください。",
+        },
+      ],
+    },
+  },
+  {
+    slug: "holiday-calendar",
+    name: "祝日・連休カレンダー",
+    description: "日本の祝日・休日と3連休以上の日程を年ごとに確認します。",
+    seoTitle: "祝日・連休カレンダー｜日本の祝日と3連休を確認",
+    seoDescription:
+      "年を選ぶと、日本の祝日・振替休日・祝日に挟まれた休日と、3連休以上の日程を一覧で確認できます。カレンダーはブラウザ内で生成します。",
+    seoKeywords: [
+      "祝日カレンダー",
+      "日本の祝日",
+      "連休カレンダー",
+      "祝日 一覧",
+      "3連休 いつ",
+    ],
+    category: "日常生活",
+    keywords: ["祝日", "休日", "連休", "カレンダー", "予定"],
+    icon: "calendar",
+    isMvp: false,
+    status: "available",
+    component: HolidayCalendar,
+    details: {
+      overview:
+        "祝日・連休カレンダーは、指定した年の日本の祝日・休日と、土日を含めた3連休以上の日程を一覧で確認するツールです。",
+      example: "旅行や帰省の予定を立てる前に、指定した年の祝日と連休を確認します。",
+      howToUse: [
+        "確認したい年を入力します。",
+        "カレンダーを表示するを押します。",
+        "祝日・休日の一覧と3連休以上の日程を確認します。",
+      ],
+      notes: [
+        "2000〜2099年に対応しています。春分の日・秋分の日は天文計算による目安で、正式な日付は内閣府などの公表情報を確認してください。",
+        "地域独自の記念日、学校や勤務先の休日、臨時の休日は含みません。",
+      ],
+      faq: [
+        {
+          question: "振替休日も表示されますか？",
+          answer:
+            "はい。祝日が日曜日に当たる場合の振替休日と、祝日に挟まれた休日を表示します。",
+        },
+        {
+          question: "土日を含めた連休を確認できますか？",
+          answer: "はい。土日と祝日・休日が連続する3連休以上の日程をまとめて表示します。",
+        },
+      ],
+    },
+  },
+  {
+    slug: "business-day-calculator",
+    name: "営業日計算",
+    description: "土日と日本の祝日・休日を除いて、指定日数後・前の日付を計算します。",
+    seoTitle: "営業日計算｜土日祝日を除いた日付を計算",
+    seoDescription:
+      "基準日と営業日数を入力して、土日と日本の祝日・休日を除いた日付を計算できます。締め切りや納期の確認をブラウザ内で行える無料ツールです。",
+    seoKeywords: [
+      "営業日計算",
+      "営業日 何日後",
+      "土日祝日を除く日付計算",
+      "納期計算",
+      "締め切り 営業日",
+    ],
+    category: "日常生活",
+    keywords: ["営業日", "祝日", "納期", "締め切り", "日付"],
+    icon: "date",
+    isMvp: false,
+    status: "available",
+    component: BusinessDayCalculator,
+    details: {
+      overview:
+        "営業日計算は、土日と日本の祝日・休日を除いて、指定した営業日数後または前の日付を計算するツールです。",
+      example:
+        "申込日から10営業日後の確認期限や、納品予定日から5営業日前の準備開始日を確認します。",
+      howToUse: [
+        "基準日と営業日数を入力します。",
+        "営業日を足すか引くかを選びます。",
+        "営業日を計算するを押して、結果の日付を確認します。",
+      ],
+      notes: [
+        "2000〜2099年に対応しています。土日と日本の祝日・休日を除き、基準日は営業日数に含めません。",
+        "会社独自の休日、地域の休日、臨時休業日は含みません。",
+      ],
+      faq: [
+        {
+          question: "祝日も除いて計算できますか？",
+          answer: "はい。日本の祝日・振替休日・祝日に挟まれた休日を除いて計算します。",
+        },
+        {
+          question: "基準日を1営業日目として数えられますか？",
+          answer:
+            "基準日は含めず、翌日以降の営業日を1日目として数えます。基準日を含める場合は、営業日数を1日少なくして確認してください。",
+        },
+      ],
+    },
+  },
+  {
+    slug: "fuel-cost-calculator",
+    name: "ガソリン代・燃費計算",
+    description: "走行距離、燃費、燃料単価から、移動にかかる燃料費を計算します。",
+    seoTitle: "ガソリン代・燃費計算｜走行距離から燃料費を計算",
+    seoDescription:
+      "走行距離、車の燃費、ガソリン単価を入力して、片道・往復の燃料費と必要な燃料の量を計算できます。ドライブや通勤の費用確認に使える無料ツールです。",
+    seoKeywords: [
+      "ガソリン代計算",
+      "燃費計算",
+      "燃料費計算",
+      "車 交通費 計算",
+      "往復 ガソリン代",
+    ],
+    category: "日常生活",
+    keywords: ["ガソリン", "燃費", "燃料費", "車", "交通費"],
+    icon: "fuel",
+    isMvp: false,
+    status: "available",
+    component: FuelCostCalculator,
+    details: {
+      overview:
+        "ガソリン代・燃費計算は、走行距離、燃費、燃料単価から、必要な燃料の量と燃料費の目安を計算するツールです。",
+      example:
+        "片道50kmの場所へ車で出かけるとき、燃費とガソリン単価から往復の費用を確認します。",
+      howToUse: [
+        "片道の走行距離を入力します。",
+        "往復か片道かを選び、燃費と燃料単価を入力します。",
+        "燃料費を計算するを押して、費用の目安を確認します。",
+      ],
+      notes: [
+        "実際の燃料費は、渋滞、運転方法、エアコン使用、道路状況などによって変わります。",
+      ],
+      faq: [
+        {
+          question: "往復のガソリン代を計算できますか？",
+          answer: "はい。走行方法で往復を選ぶと、入力した片道距離を2倍にして計算します。",
+        },
+        {
+          question: "電気自動車の電気代も計算できますか？",
+          answer:
+            "現在は燃費をkm/L、単価を円/Lとして計算します。電費や充電料金を使う場合は、同じ単位に換算して目安として入力してください。",
+        },
+      ],
+    },
+  },
+  {
+    slug: "household-budget-calculator",
+    name: "家計予算計算",
+    description: "手取り、支出、貯金額から、1か月に使える残りの予算を計算します。",
+    seoTitle: "家計予算計算｜手取りと支出から残りの予算を計算",
+    seoDescription:
+      "月の手取り、固定費、変動費、貯金額を入力して、残りの予算と1日あたりの支出目安を計算できます。入力内容はブラウザ内で処理します。",
+    seoKeywords: [
+      "家計予算計算",
+      "家計簿 予算",
+      "手取り 支出 計算",
+      "1日いくら使えるか",
+      "生活費 予算計算",
+    ],
+    category: "日常生活",
+    keywords: ["家計", "予算", "手取り", "支出", "生活費"],
+    icon: "wallet",
+    isMvp: false,
+    status: "available",
+    component: HouseholdBudgetCalculator,
+    details: {
+      overview:
+        "家計予算計算は、月の手取りから固定費、変動費、貯金額を差し引き、残りの予算と1日あたりの目安を計算するツールです。",
+      example:
+        "今月の手取りと家賃などの固定費、食費などの変動費、貯金額を入力して、自由に使える残りの予算を確認します。",
+      howToUse: [
+        "対象月と月の手取りを入力します。",
+        "固定費、変動費、今月の貯金額を入力します。",
+        "家計の予算を計算するを押して、残りの予算を確認します。",
+      ],
+      notes: [
+        "1日あたりの金額は、残りの予算を対象月の日数で割った単純な目安です。家計の状況や支出の優先順位を判断するものではありません。",
+      ],
+      faq: [
+        {
+          question: "支出が手取りを超えた場合も計算できますか？",
+          answer: "はい。不足している金額をマイナスの結果として表示します。",
+        },
+        {
+          question: "給料の手取り計算と何が違いますか？",
+          answer:
+            "給料の手取り計算は額面から手取り額を概算するツールです。家計予算計算は、すでに分かっている手取り額から月の支出予算を計算します。",
+        },
+      ],
+    },
+  },
+  {
+    slug: "unit-price-comparator",
+    name: "買い物の単価比較",
+    description: "商品の価格と内容量をそろえて、どちらが割安か比較します。",
+    seoTitle: "買い物の単価比較｜100g・1Lあたりの価格を計算",
+    seoDescription:
+      "2つの商品の価格と内容量を入力して、g、kg、ml、Lなどの単位あたりの価格を比較できます。まとめ買いの割安さを確認する無料ツールです。",
+    seoKeywords: [
+      "単価比較",
+      "100gあたり 価格",
+      "どっちが安い 計算",
+      "商品の単価計算",
+      "買い物 比較",
+    ],
+    category: "日常生活",
+    keywords: ["単価", "買い物", "比較", "価格", "内容量"],
+    icon: "ruler",
+    isMvp: false,
+    status: "available",
+    component: UnitPriceComparator,
+    details: {
+      overview:
+        "買い物の単価比較は、商品の価格と内容量を同じ基準にそろえ、単位あたりの価格が安い商品を比較するツールです。",
+      example: "500gで398円の商品と1kgで698円の商品を比べ、どちらが安いか確認します。",
+      howToUse: [
+        "商品Aと商品Bの価格、内容量、単位を入力します。",
+        "単価を比較するを押します。",
+        "単位あたりの価格と、安い商品の結果を確認します。",
+      ],
+      notes: [
+        "gとkg、mlとL、cmとmは自動で換算します。単位の種類が異なる商品、税込・割引条件が異なる商品は比較できません。",
+      ],
+      faq: [
+        {
+          question: "500gと1kgの商品を比較できますか？",
+          answer: "はい。gとkgを自動でそろえて、同じ重さあたりの単価を比較します。",
+        },
+        {
+          question: "税込価格と税抜価格を混ぜて比較できますか？",
+          answer:
+            "入力した価格をそのまま比較するため、税込・税抜などの条件をそろえてから入力してください。",
+        },
+      ],
+    },
+  },
+  {
+    slug: "travel-budget-calculator",
+    name: "旅行予算計算",
+    description: "人数、宿泊数、交通費、宿泊費などから旅行費用を見積もります。",
+    seoTitle: "旅行予算計算｜交通費・宿泊費・食費の合計を見積もり",
+    seoDescription:
+      "旅行の人数と宿泊数、1人あたりの交通費・食費、宿泊費、レジャー費を入力して、旅行費用の合計と1人あたりの目安を計算できます。",
+    seoKeywords: [
+      "旅行予算計算",
+      "旅行費用 計算",
+      "旅行 いくらかかる",
+      "宿泊旅行 予算",
+      "旅行費 1人あたり",
+    ],
+    category: "日常生活",
+    keywords: ["旅行", "予算", "交通費", "宿泊費", "食費"],
+    icon: "wallet",
+    isMvp: false,
+    status: "available",
+    component: TravelBudgetCalculator,
+    details: {
+      overview:
+        "旅行予算計算は、人数と宿泊数、交通費、宿泊費、食費などから旅行費用の合計と1人あたりの目安を計算するツールです。",
+      example:
+        "2人2泊の旅行で、交通費、ホテル代、食費、レジャー費を入力し、予算内に収まるか確認します。",
+      howToUse: [
+        "人数と宿泊数を入力します。",
+        "交通費、宿泊費、食費、レジャー費などの目安を入力します。",
+        "必要に応じて予算上限を入力し、旅行の予算を計算するを押します。",
+      ],
+      notes: [
+        "食費は宿泊数＋1日分、宿泊費は1泊あたりとして計算します。料金、為替、季節による変動やキャンセル料は考慮しません。",
+      ],
+      faq: [
+        {
+          question: "日帰り旅行も計算できますか？",
+          answer: "はい。宿泊数を0泊にすると、食費は1日分、宿泊費は0円として計算します。",
+        },
+        {
+          question: "予算上限を入力しなくても使えますか？",
+          answer:
+            "はい。予算上限を空欄にすると、費用の合計と1人あたりの目安だけを表示します。",
         },
       ],
     },
@@ -1527,9 +2010,19 @@ export const purposeRegistry: ToolPurpose[] = [
       "percentage-calculator",
       "salary-take-home",
       "bill-splitter",
+      "savings-goal-calculator",
       "tax-calculator",
       "date-calculator",
       "unit-converter",
+      "recipe-portion-calculator",
+      "sleep-time-calculator",
+      "sale-price-calculator",
+      "holiday-calendar",
+      "business-day-calculator",
+      "fuel-cost-calculator",
+      "household-budget-calculator",
+      "unit-price-comparator",
+      "travel-budget-calculator",
     ],
   },
   {
