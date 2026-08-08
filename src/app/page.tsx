@@ -3,8 +3,13 @@ import { AdSlot } from "@/components/ads";
 import { PrivacyNote } from "@/components/layout";
 import { PurposeFinder, type PurposeFinderGroup } from "@/components/search";
 import { ToolIcon } from "@/components/tools";
-import { getCategories, getPurposeGroups, getTools } from "@/features/tools/registry";
-import { ArrowRight } from "lucide-react";
+import {
+  getCategories,
+  getPurposeGroups,
+  getTools,
+  getToolsByCategory,
+} from "@/features/tools/registry";
+import { ArrowRight, FolderTree } from "lucide-react";
 import Link from "next/link";
 
 import { createPageMetadata } from "@/lib/seo";
@@ -93,15 +98,30 @@ export default function HomePage() {
               <CardTitle>カテゴリ別のツール</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="category-link-list">
+              <div className="category-grid" aria-label="ツールカテゴリ一覧">
                 {getCategories().map((category) => (
                   <Link
                     key={category.slug}
-                    className="category-link-item"
                     href={`/categories/${category.slug}/`}
+                    className="category-card-link"
                   >
-                    <span>{category.name}</span>
-                    <span>{category.description}</span>
+                    <Card>
+                      <CardHeader className="category-card-header">
+                        <span className="category-icon" aria-hidden="true">
+                          <FolderTree size={17} strokeWidth={1.8} />
+                        </span>
+                        <div>
+                          <CardTitle>{category.name}</CardTitle>
+                          <p className="category-description">{category.description}</p>
+                        </div>
+                      </CardHeader>
+                      <CardContent className="category-card-footer">
+                        <Badge>
+                          {getToolsByCategory(category.name).length}件のツール
+                        </Badge>
+                        <ArrowRight size={16} aria-hidden="true" />
+                      </CardContent>
+                    </Card>
                   </Link>
                 ))}
               </div>
