@@ -97,7 +97,7 @@
 - 25件すべてのツールに固有の概要、利用例、使い方、入力データの扱い、注意事項、FAQ、関連ツールを表示するようにしました。
 - 未実装ツールの準備中画面を公開せず、実装されていない詳細URLは404にする方針へ変更しました。
 - `/404.html`を生成する404画面を追加しました。
-- Analyticsは`NEXT_PUBLIC_GA_MEASUREMENT_ID`が設定された場合だけ読み込みます。現在の検証ビルドでは未設定です。
+- Analyticsは`NEXT_PUBLIC_GA_MEASUREMENT_ID`が設定された場合だけ読み込みます。本番のGitHub ActionsではActions Variablesから測定IDをビルドへ渡し、ローカルの未設定時は読み込みません。
 - AdSenseは本番かつ`NEXT_PUBLIC_ADS_ENABLED=true`、実在するPublisher IDが設定された場合だけスクリプトを読み込みます。広告枠IDがない場合は空広告やダミー表示を出しません。実在するIDは追加していません。
 - 本番URL用の検証ビルドで、20ツールページ、固定ページ、各ページのtitle・description・canonical、robots、sitemap、内部リンクを確認しました。
 
@@ -106,7 +106,7 @@
 - [ ] お問い合わせ先として使用するGitHubリポジトリとIssuesの運用担当・返信方針を確認する。
 - [ ] 「運営者情報」の公開範囲（運営者名、個人・法人の表記、必要な連絡先）を実際の運営体制に合わせて確定する。
 - [ ] 本番のGitHub Pagesで固定ページ、主要ツール、404、robots、sitemap、canonical、OGPを確認する。
-- [ ] Google Analyticsを使う場合だけ`NEXT_PUBLIC_GA_MEASUREMENT_ID`を設定し、プライバシーポリシーの記載と一致させる。使わない場合は空欄のままにする。
+- [ ] Google Analyticsを使う場合はGitHub Actions Variablesの`NEXT_PUBLIC_GA_MEASUREMENT_ID`、公開サイトのタグ、プライバシーポリシーの記載が一致していることを本番デプロイ後に確認する。使わない場合は空欄のままにする。
 - [ ] AdSenseの利用規約、プライバシー告知、Cookie・同意要件、広告配置を確認する。
 - [ ] 公開前に、重要な判断に使うツール（税金、給与、年齢など）の注意書きが実際の仕様と合っているか確認する。
 

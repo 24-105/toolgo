@@ -20,7 +20,8 @@ export type ToolIcon =
   | "tax"
   | "date"
   | "ruler"
-  | "percent";
+  | "percent"
+  | "fuel";
 export type ToolStatus = "available" | "planned";
 
 export type ToolPurpose = {
