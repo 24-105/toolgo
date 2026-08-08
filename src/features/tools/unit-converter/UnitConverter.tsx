@@ -86,7 +86,7 @@ export function UnitConverter({}: ToolComponentProps) {
               onChange={(event) => setValue(event.target.value)}
             />
           </div>
-          <label className="space-y-2 text-sm font-semibold">
+          <label className="block space-y-2 text-sm font-semibold">
             <span className="tool-editor-field-label">変換前</span>
             <Select value={from} onChange={(event) => setFrom(event.target.value)}>
               {options.map((unit) => (
@@ -96,7 +96,7 @@ export function UnitConverter({}: ToolComponentProps) {
               ))}
             </Select>
           </label>
-          <label className="space-y-2 text-sm font-semibold">
+          <label className="block space-y-2 text-sm font-semibold">
             <span className="tool-editor-field-label">変換後</span>
             <Select value={to} onChange={(event) => setTo(event.target.value)}>
               {options.map((unit) => (

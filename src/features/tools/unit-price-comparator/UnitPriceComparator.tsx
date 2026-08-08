@@ -161,7 +161,7 @@ function ProductFields({
             onChange={(event) => onQuantityChange(event.target.value)}
           />
         </div>
-        <label className="space-y-2 text-sm font-semibold">
+        <label className="block space-y-2 text-sm font-semibold">
           <span className="tool-editor-field-label">単位</span>
           <Select
             value={unit}

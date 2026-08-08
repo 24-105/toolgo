@@ -59,7 +59,7 @@ export function FuelCostCalculator({}: ToolComponentProps) {
               onChange={(event) => setDistance(event.target.value)}
             />
           </div>
-          <label className="space-y-2 text-sm font-semibold">
+          <label className="block space-y-2 text-sm font-semibold">
             <span className="tool-editor-field-label">走行方法</span>
             <Select
               value={tripType}
