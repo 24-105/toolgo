@@ -108,7 +108,7 @@
 - [ ] 本番のGitHub Pagesで固定ページ、主要ツール、404、robots、sitemap、canonical、OGPを確認する。
 - [ ] Google Analyticsを使う場合はGitHub Actions Variablesの`NEXT_PUBLIC_GA_MEASUREMENT_ID`、公開サイトのタグ、プライバシーポリシーの記載が一致していることを本番デプロイ後に確認する。使わない場合は空欄のままにする。
 - [ ] AdSenseの利用規約、プライバシー告知、Cookie・同意要件、広告配置を確認する。
-- [ ] 公開前に、重要な判断に使うツール（税金、給与、年齢など）の注意書きが実際の仕様と合っているか確認する。
+- [ ] 公開前に、重要な判断に使うツール（税金、給与、年齢、NISA、投資、iDeCoなど）の注意書きが実際の仕様と合っているか確認する。
 
 ## AdSense申請前の最終チェックリスト
 
