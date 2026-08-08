@@ -1338,10 +1338,10 @@ const toolMetadata: ToolDefinition[] = [
   {
     slug: "recipe-portion-calculator",
     name: "料理の分量換算",
-    description: "レシピの人数を変えて、材料の分量をまとめて換算します。",
+    description: "レシピの人数を変えて、材料ごとの分量をまとめて換算します。",
     seoTitle: "料理の分量換算｜レシピを人数分に合わせて計算",
     seoDescription:
-      "元の人数と作る人数を入力して、レシピの材料を必要な人数分へ換算できます。料理の分量はブラウザ内で計算し、入力内容を外部へ送信しません。",
+      "レシピの人数と作りたい人数を入力し、材料ごとの分量を必要な人数分へ換算できます。料理の分量はブラウザ内で計算し、入力内容を外部へ送信しません。",
     seoKeywords: [
       "料理 分量換算",
       "レシピ 人数変更",
@@ -1357,27 +1357,33 @@ const toolMetadata: ToolDefinition[] = [
     component: RecipePortionCalculator,
     details: {
       overview:
-        "料理の分量換算は、2人分のレシピを4人分にするなど、元の人数に合わせて材料の分量をまとめて計算するツールです。",
+        "料理の分量換算は、2人分のレシピを4人分にするなど、レシピの人数を作りたい人数に合わせて材料の分量を計算するツールです。",
       example:
         "レシピが2人分なのに5人分作りたいとき、材料を入力して必要な分量を確認します。",
       howToUse: [
-        "レシピに書かれている元の人数と、作る人数を入力します。",
-        "材料を1行に1つずつ「材料名, 分量, 単位」の形式で入力します。",
+        "レシピに書かれている人数と、作りたい人数を入力します。",
+        "材料名・分量・単位を、材料ごとの入力欄に入力します。",
+        "材料が足りなければ「材料を追加」で入力欄を増やします。",
         "分量を換算するを押し、結果を確認またはコピーします。",
       ],
       notes: [
-        "分量は数値または分数で入力します。少々、適量など数値にできない分量は換算できません。",
+        "数字や分数は人数に合わせて換算します。少々、適量など数字でない分量はそのまま表示します。",
       ],
       faq: [
         {
-          question: "大さじや小さじも換算できますか？",
+          question: "材料はどのように入力しますか？",
           answer:
-            "はい。単位をそのまま文字として入力すれば、分量の数値だけを人数に合わせて換算できます。大さじをmlへ変換する機能ではありません。",
+            "材料ごとに、材料名・分量・単位をそれぞれの入力欄へ入力します。単位は任意で、g、ml、大さじ、個などを入力できます。",
         },
         {
-          question: "材料の単位も自動で変わりますか？",
+          question: "大さじや小さじも換算できますか？",
           answer:
-            "いいえ。g、ml、大さじなどの単位は入力したまま表示します。単位の変換には単位換算を使ってください。",
+            "はい。大さじや小さじを単位欄に入力すると、分量の数値だけを人数に合わせて換算します。大さじをmlへ変換する機能ではありません。",
+        },
+        {
+          question: "少々や適量は入力できますか？",
+          answer:
+            "はい。分量欄に少々や適量などを入力すると、数値としては換算せず、そのまま結果に表示します。",
         },
       ],
     },
@@ -1998,7 +2004,13 @@ export const purposeRegistry: ToolPurpose[] = [
     name: "文章や文字を整える",
     description: "文字数を数えたり、文章の違いを確認します。",
     icon: "text",
-    toolSlugs: ["character-counter", "text-transformer", "text-diff", "markdown-preview"],
+    toolSlugs: [
+      "character-counter",
+      "text-transformer",
+      "text-diff",
+      "markdown-preview",
+      "unicode-normalizer-checker",
+    ],
   },
   {
     slug: "calculate-daily",
@@ -2027,8 +2039,8 @@ export const purposeRegistry: ToolPurpose[] = [
   },
   {
     slug: "work-with-data",
-    name: "データやコードを整える",
-    description: "JSON、URL、CSVなどを見やすく整えます。",
+    name: "データやコードを扱う",
+    description: "JSON、URL、CSV、Cron、ネットワーク設定などを確認・整形します。",
     icon: "code",
     toolSlugs: [
       "json-formatter",
@@ -2038,6 +2050,8 @@ export const purposeRegistry: ToolPurpose[] = [
       "uuid-generator",
       "regex-tester",
       "csv-tsv-converter",
+      "vlsm-subnet-planner",
+      "cron-debugger",
     ],
   },
   {

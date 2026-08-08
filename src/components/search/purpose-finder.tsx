@@ -81,7 +81,9 @@ export function PurposeFinder({ purposes }: { purposes: PurposeFinderGroup[] }) 
               </h3>
               <p>{selectedPurpose.description}</p>
             </div>
-            <Badge variant="success">{selectedPurpose.tools.length}件</Badge>
+            <Badge variant="success" className="purpose-results-count">
+              {selectedPurpose.tools.length}件
+            </Badge>
           </div>
 
           <div className="tool-list" aria-label={selectedPurpose.name + "に合うツール"}>
