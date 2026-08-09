@@ -51,7 +51,20 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
       title={category.seoHeading}
       description={`${category.seoDescription} 用途に合うツールを選び、各ページで使い方や注意事項を確認できます。`}
       category="カテゴリ"
+      currentPath={`/categories/${category.slug}/`}
     >
+      <Card className="mb-4">
+        <CardHeader>
+          <CardTitle>{category.name}カテゴリでできること</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-3 text-sm leading-6 text-muted">
+          <p>{category.seoIntro}</p>
+          <p>
+            このカテゴリには{tools.length}
+            件のツールがあります。目的に近いツールを選ぶと、使い方・利用例・注意事項を確認してから利用できます。
+          </p>
+        </CardContent>
+      </Card>
       <Card>
         <CardHeader>
           <CardTitle>{category.seoHeading}</CardTitle>

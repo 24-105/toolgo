@@ -97,7 +97,7 @@ export type ToolMetadata = {
 
 `slug` は英小文字とハイフンに統一し、変更時はリダイレクトまたは旧URLの扱いを決めます。SEO文言を画面コンポーネントへ重複記述せず、metadataを情報源にします。`status` は `planned` と `available` を持ち、実装前のMVPツールも同じregistryで公開予定として扱えます。
 
-`src/features/tools/registry.ts` が一覧、カテゴリ、動的ルート、metadata、sitemapの共通情報源です。公開するツールは実装済みの`available`だけとし、コンポーネントのないツール詳細URLは404にします。未完成ツールを公開ナビゲーションやsitemapへ残しません。新しいツールの追加で `app/tools/page.tsx` や `sitemap.ts` を個別に変更しないことを基準にします。
+`src/features/tools/registry.ts` が一覧、カテゴリ、動的ルート、metadata、sitemapの共通情報源です。カテゴリには検索結果の説明だけでなく、カテゴリページ本文に表示する固有の導入文も登録します。公開するツールは実装済みの`available`だけとし、コンポーネントのないツール詳細URLは404にします。未完成ツールを公開ナビゲーションやsitemapへ残しません。新しいツールの追加で `app/tools/page.tsx` や `sitemap.ts` を個別に変更しないことを基準にします。
 
 目的別の探索グループも同じregistryで管理し、公開ツールをいずれかの目的へ割り当てるslugを参照します。目的別グループの合計は公開ツール数と一致させ、ホームから全ツールを目的別に探せるようにします。ホームへ渡すデータはslug、名前、説明、アイコン、公開状態だけに絞り、Client Componentへツール画面やロジックを渡しません。
 
@@ -107,7 +107,11 @@ QRコード生成には `qrcode` を使います。エンコードとPNG生成�
 
 ツールごとに一意のtitle、description、canonical、OGPを生成します。静的exportで生成できる情報のみを使い、ユーザー入力をmetadataへ含めません。共通のURL生成とページmetadataは `src/lib/seo.ts` に集約します。
 
+ホームにはサイト名を示す `WebSite`、一覧・カテゴリ・ツールページにはページ内容とパンくずを示す `WebPage`・`BreadcrumbList` のJSON-LDを、表示内容と一致する範囲で出力します。FAQを登録したツールには、画面に表示しているFAQと同じ内容だけを `FAQPage` として出力します。構造化データは検索結果への表示を保証するものではないため、内容の正確さと本文の充実を優先します。
+
 `src/app/sitemap.ts` と `src/app/robots.ts` は公開対象の静的ルートから生成します。現在の公開対象はホーム、ツール一覧、カテゴリ、About、Contact、規約、プライバシーポリシー、registryに登録されたツール詳細ページです。404やnoindexにすべき内部ページは公開対象へ追加しません。
+
+サイトマップの `lastModified` は、実際のページ更新日を管理できる場合だけ付与します。全ページにビルド日時を一律で設定すると、未変更ページまで更新されたように見えるため、現在の静的サイトマップでは省略しています。
 
 canonical、OGP、sitemap、robotsの絶対URLは `NEXT_PUBLIC_SITE_URL` と `NEXT_PUBLIC_BASE_PATH` から生成します。GitHub Pagesへ公開するときは `.env.example` を参考に本番URLを設定し、ローカルでは未設定時の `http://localhost:3000` を使います。
 

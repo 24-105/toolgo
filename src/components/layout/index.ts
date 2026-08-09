@@ -7,3 +7,4 @@ export * from "./theme-toggle";
 export * from "./tool-layout";
 export * from "./privacy-note";
 export * from "./related-tools";
+export * from "./structured-data";

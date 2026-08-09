@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui";
 import type { ToolDetails } from "@/features/tools/types";
 
 import { PrivacyNote } from "./privacy-note";
+import { FaqStructuredData, PageStructuredData } from "./structured-data";
 
 type ToolBreadcrumb = {
   label: string;
@@ -22,6 +23,7 @@ export type ToolLayoutProps = {
   help?: ReactNode;
   details?: ToolDetails;
   relatedTools?: ReactNode;
+  currentPath: string;
 };
 
 function Breadcrumbs({ items }: { items: ToolBreadcrumb[] }) {
@@ -54,6 +56,7 @@ export function ToolLayout({
   help,
   details,
   relatedTools,
+  currentPath,
 }: ToolLayoutProps) {
   const breadcrumbItems =
     breadcrumbs.at(-1)?.label === title
@@ -64,6 +67,12 @@ export function ToolLayout({
     <main className="tool-layout">
       <div className="site-container">
         <Breadcrumbs items={breadcrumbItems} />
+        <PageStructuredData
+          title={title}
+          description={description}
+          currentPath={currentPath}
+          breadcrumbs={breadcrumbItems}
+        />
         <header className="tool-header">
           {category && (
             <p className="eyebrow">
@@ -113,21 +122,6 @@ export function ToolLayout({
 }
 
 function ToolExplanation({ title, details }: { title: string; details: ToolDetails }) {
-  const faqSchema = details.faq?.length
-    ? {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        mainEntity: details.faq.map((item) => ({
-          "@type": "Question",
-          name: item.question,
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: item.answer,
-          },
-        })),
-      }
-    : null;
-
   return (
     <section className="tool-explanation" aria-label={`${title}の詳しい説明`}>
       <details open>
@@ -187,9 +181,7 @@ function ToolExplanation({ title, details }: { title: string; details: ToolDetai
           )}
         </div>
       </details>
-      {faqSchema && (
-        <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
-      )}
+      {details.faq && details.faq.length > 0 && <FaqStructuredData faqs={details.faq} />}
     </section>
   );
 }

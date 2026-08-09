@@ -20,6 +20,7 @@ export default function CategoriesPage() {
       title="無料ツールをカテゴリから探す｜ブラウザツール一覧"
       description="開発、文章、生成、計算、デザイン、日常生活など、目的に合う無料ツールをカテゴリから探せます。各カテゴリでは、用途と入力データの扱いを確認しながらツールを選べます。"
       category="ツール一覧"
+      currentPath="/categories/"
     >
       <div className="category-grid" aria-label="ツールカテゴリ一覧">
         {getCategories().map((category) => (

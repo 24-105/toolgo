@@ -6,6 +6,7 @@ export const NISA_RULES = {
 
 export const NISA_INPUT_LIMITS = {
   maxCurrentValue: 100_000_000,
+  maxAcquisitionCost: 100_000_000,
   maxMonthlyAmount: 100_000,
   maxBonusAmount: NISA_RULES.annualTsumitateLimit,
   maxYears: 50,
@@ -18,6 +19,7 @@ export type NisaSimulationInput = {
   monthlyAmount: number;
   annualRate: number;
   initialAmount?: number;
+  initialCostBasis?: number;
   bonusAmount?: number;
   bonusMonths?: number[];
 };
@@ -32,6 +34,7 @@ export type NisaSimulationPoint = {
 
 export type NisaSimulationResult = {
   startingValue: number;
+  startingCostBasis: number;
   finalValue: number;
   totalInvested: number;
   totalScheduledContribution: number;
@@ -47,8 +50,13 @@ export function simulateNisa(input: NisaSimulationInput): NisaSimulationResult {
   validateAmount(input.monthlyAmount, "毎月の積立額", NISA_INPUT_LIMITS.maxMonthlyAmount);
   validateAmount(
     input.initialAmount ?? 0,
-    "現在のNISA運用額",
+    "現在のNISA評価額",
     NISA_INPUT_LIMITS.maxCurrentValue,
+  );
+  validateAmount(
+    input.initialCostBasis ?? 0,
+    "現在の取得価額",
+    NISA_INPUT_LIMITS.maxAcquisitionCost,
   );
   validateAmount(
     input.bonusAmount ?? 0,
@@ -77,6 +85,7 @@ export function simulateNisa(input: NisaSimulationInput): NisaSimulationResult {
 
   const monthlyRate = Math.pow(1 + input.annualRate / 100, 1 / 12) - 1;
   const startingValue = input.initialAmount ?? 0;
+  const startingCostBasis = input.initialCostBasis ?? startingValue;
   const bonusAmount = input.bonusAmount ?? 0;
 
   let balance = startingValue;
@@ -85,7 +94,8 @@ export function simulateNisa(input: NisaSimulationInput): NisaSimulationResult {
   let excludedContribution = 0;
   let annualContribution = 0;
   let currentYear = 1;
-  let lifetimeLimitReachYear: number | undefined;
+  let lifetimeLimitReachYear: number | undefined =
+    startingCostBasis >= NISA_RULES.lifetimeLimit ? 0 : undefined;
 
   const points: NisaSimulationPoint[] = [
     createPoint(0, totalInvested, startingValue, balance),
@@ -105,7 +115,10 @@ export function simulateNisa(input: NisaSimulationInput): NisaSimulationResult {
       NISA_RULES.annualTsumitateLimit - annualContribution,
       0,
     );
-    const lifetimeRemaining = Math.max(NISA_RULES.lifetimeLimit - totalInvested, 0);
+    const lifetimeRemaining = Math.max(
+      NISA_RULES.lifetimeLimit - startingCostBasis - totalInvested,
+      0,
+    );
     const acceptedContribution = Math.min(
       scheduledContribution,
       annualRemaining,
@@ -119,7 +132,7 @@ export function simulateNisa(input: NisaSimulationInput): NisaSimulationResult {
 
     if (
       lifetimeLimitReachYear === undefined &&
-      totalInvested >= NISA_RULES.lifetimeLimit
+      startingCostBasis + totalInvested >= NISA_RULES.lifetimeLimit
     ) {
       lifetimeLimitReachYear = year;
     }
@@ -139,12 +152,13 @@ export function simulateNisa(input: NisaSimulationInput): NisaSimulationResult {
 
   return {
     startingValue,
+    startingCostBasis,
     finalValue: balance,
     totalInvested,
     totalScheduledContribution,
     excludedContribution,
     gain: balance - (startingValue + totalInvested),
-    lifetimeLimitReached: totalInvested >= NISA_RULES.lifetimeLimit,
+    lifetimeLimitReached: startingCostBasis + totalInvested >= NISA_RULES.lifetimeLimit,
     lifetimeLimitReachYear,
     points,
   };
