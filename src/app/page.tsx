@@ -1,6 +1,6 @@
 import { Badge, Card, CardContent, CardHeader, CardTitle } from "@/components/ui";
 import { AdSlot } from "@/components/ads";
-import { PrivacyNote } from "@/components/layout";
+import { PrivacyNote, WebsiteStructuredData } from "@/components/layout";
 import { PurposeFinder, type PurposeFinderGroup } from "@/components/search";
 import { ToolIcon } from "@/components/tools";
 import {
@@ -39,6 +39,7 @@ export default function HomePage() {
 
   return (
     <main className="dashboard-page">
+      <WebsiteStructuredData />
       <div className="content-container">
         <header className="content-heading">
           <div>

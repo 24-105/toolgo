@@ -61,7 +61,10 @@ export function TaxableInvestmentSimulator({}: ToolComponentProps) {
           years: period,
           annualRate: rate,
           initialValue: toNumber(initialValue) ?? 0,
-          initialCostBasis: toNumber(initialCostBasis) ?? 0,
+          initialCostBasis:
+            mode === "simple"
+              ? (toNumber(initialValue) ?? 0)
+              : (toNumber(initialCostBasis) ?? 0),
           bonusAmount: toNumber(bonusAmount) ?? 0,
           bonusMonths,
         }),
@@ -80,6 +83,7 @@ export function TaxableInvestmentSimulator({}: ToolComponentProps) {
     initialCostBasis,
     initialValue,
     monthlyAmount,
+    mode,
     years,
   ]);
 
@@ -155,6 +159,17 @@ export function TaxableInvestmentSimulator({}: ToolComponentProps) {
             </div>
           </div>
 
+          <div className="sm:max-w-[calc(50%-0.5rem)]">
+            <MoneyField
+              id="taxable-initial-value"
+              label="現在の評価額（任意）"
+              value={initialValue}
+              onChange={setInitialValue}
+              hint="保有中の投資信託の評価額。かんたんでは取得価額も同額と仮定"
+              maxAmount={TAXABLE_INVESTMENT_INPUT_LIMITS.maxCurrentValue}
+            />
+          </div>
+
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="space-y-2">
               <Label htmlFor="taxable-rate-preset">参考する運用タイプ</Label>
@@ -205,14 +220,6 @@ export function TaxableInvestmentSimulator({}: ToolComponentProps) {
                 </p>
               </div>
               <div className="grid gap-4 sm:grid-cols-2">
-                <MoneyField
-                  id="taxable-initial-value"
-                  label="現在の評価額（任意）"
-                  value={initialValue}
-                  onChange={setInitialValue}
-                  hint="すでに保有している投資信託の現在の評価額"
-                  maxAmount={TAXABLE_INVESTMENT_INPUT_LIMITS.maxCurrentValue}
-                />
                 <MoneyField
                   id="taxable-cost-basis"
                   label="現在の取得価額（任意）"

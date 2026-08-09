@@ -9,9 +9,8 @@
 | 文書                                                               | 内容                                                         |
 | ------------------------------------------------------------------ | ------------------------------------------------------------ |
 | [roadmap.md](roadmap.md)                                           | Phase 0〜10、MVP、将来拡張、次に実施するPhase                |
-| [mvp.md](mvp.md)                                                   | MVP対象5ツールの必須機能、対象外、将来機能                   |
 | [release-checklist.md](release-checklist.md)                       | GitHub Pages公開前後の確認項目                               |
-| [adsense-readiness.md](adsense-readiness.md)                       | AdSense申請前の調査、対応、最終確認                          |
+| [adsense-readiness.md](adsense-readiness.md)                       | AdSense審査中の確認、対応、運用チェック                      |
 | [terms.md](terms.md)                                               | ToolGo利用規約の本文と公開時の確認事項                       |
 | [privacy-policy.md](privacy-policy.md)                             | ToolGoプライバシーポリシーの本文と確認事項                   |
 | [nisa-simulator.md](nisa-simulator.md)                             | NISA積立シミュレーターの制度前提、入力、計算ルール           |
@@ -38,12 +37,6 @@
 | 文書                               | 内容                                           |
 | ---------------------------------- | ---------------------------------------------- |
 | [contributing.md](contributing.md) | 新しいツールの追加、テスト、レビュー、禁止事項 |
-
-## 監査レポート
-
-| 文書                                     | 内容                                                                                |
-| ---------------------------------------- | ----------------------------------------------------------------------------------- |
-| [seo-title-audit.md](seo-title-audit.md) | 全公開ページのtitle、description、H1、URL、本文、キーワード、カニバリゼーション監査 |
 
 ## 文書の追加ルール
 

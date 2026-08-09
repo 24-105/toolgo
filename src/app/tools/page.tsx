@@ -30,6 +30,7 @@ export default function ToolsPage() {
       title="無料オンラインツール一覧｜ブラウザで使える便利ツール"
       description="目的に合う無料のブラウザツールを、ここから選べます。"
       category="ツール一覧"
+      currentPath="/tools/"
       help={
         <div className="tool-support-copy text-sm leading-6 text-muted">
           <p>

@@ -11,7 +11,6 @@
 ### プロジェクトの基本情報
 
 - [プロジェクト計画・Phase](docs/roadmap.md)
-- [MVP要件](docs/mvp.md)
 - [アーキテクチャ設計](docs/architecture.md)
 - [UI・ブランド方針](docs/design-principles.md)
 - [日本語UI文言方針](docs/language-policy.md)
@@ -19,9 +18,8 @@
 - [広告方針](docs/advertising-policy.md)
 - [利用規約](docs/terms.md)
 - [プライバシーポリシー](docs/privacy-policy.md)
-- [MVP公開チェックリスト](docs/release-checklist.md)
-- [AdSense申請準備](docs/adsense-readiness.md)
-- [SEO title監査](docs/seo-title-audit.md)
+- [本番公開チェックリスト](docs/release-checklist.md)
+- [AdSense審査・運用チェック](docs/adsense-readiness.md)
 - [開発・ツール追加ルール](docs/contributing.md)
 - [NISA積立シミュレーター仕様](docs/nisa-simulator.md)
 - [投資信託の税引き後シミュレーター仕様](docs/taxable-investment-simulator.md)
@@ -33,7 +31,6 @@
 | 作業内容                           | 最初に読む文書                                                             |
 | ---------------------------------- | -------------------------------------------------------------------------- |
 | Phaseやリリース計画を確認する      | [docs/roadmap.md](docs/roadmap.md)                                         |
-| MVPツールを実装する                | [docs/mvp.md](docs/mvp.md)                                                 |
 | ディレクトリや共通基盤を変更する   | [docs/architecture.md](docs/architecture.md)                               |
 | UI、ロゴ、レイアウトを変更する     | [docs/design-principles.md](docs/design-principles.md)                     |
 | UI文言や日本語化を変更する         | [docs/language-policy.md](docs/language-policy.md)                         |
@@ -50,7 +47,7 @@ ToolGoは、一般ユーザー、エンジニア、デザイナー、学生が�
 - GitHub Pagesで静的ホスティング
 - 将来的に100〜200以上のツールを追加可能なプラットフォーム設計
 
-## MVP
+## MVP（完了済み）
 
 最初のMVPでは、次の5ツールを提供します。
 
@@ -78,7 +75,7 @@ npm run start
 
 本番のcanonical、OGP、sitemap、robotsのURLを正しく生成するには、`.env.example` を参考に `NEXT_PUBLIC_SITE_URL` と `NEXT_PUBLIC_BASE_PATH` を設定します。
 
-Google Analyticsは`NEXT_PUBLIC_GA_MEASUREMENT_ID`を設定した場合だけ読み込みます。広告は`NEXT_PUBLIC_ADS_ENABLED=false`を維持し、Publisher ID発行後に別途確認します。
+Google Analyticsは`NEXT_PUBLIC_GA_MEASUREMENT_ID`を設定した場合だけ読み込みます。広告は本番デプロイ設定を用意していますが、現在は審査中のため、掲載状況と同意要件を確認して運用します。
 
 品質確認には次を使用します。
 

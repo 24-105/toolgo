@@ -60,6 +60,7 @@ export function IdecoSimulator({}: ToolComponentProps) {
   const [incomeTaxRate, setIncomeTaxRate] = useState("10");
   const [dependentFamilyAges, setDependentFamilyAges] = useState("");
   const [initialAsset, setInitialAsset] = useState("0");
+  const [initialCostBasis, setInitialCostBasis] = useState("");
   const [corporatePensionAmount, setCorporatePensionAmount] = useState("0");
   const [otherPublicPensionContribution, setOtherPublicPensionContribution] =
     useState("0");
@@ -112,6 +113,8 @@ export function IdecoSimulator({}: ToolComponentProps) {
           dependentFamilyAges: familyAges,
           incomeTaxRate: incomeRate,
           initialAsset: toNumber(initialAsset) ?? 0,
+          initialCostBasis:
+            mode === "detail" ? (toNumber(initialCostBasis) ?? undefined) : undefined,
           corporatePensionAmount: toNumber(corporatePensionAmount) ?? 0,
           otherPublicPensionContribution: toNumber(otherPublicPensionContribution) ?? 0,
           monthlyFee: toNumber(monthlyFee) ?? IDECO_RULES.contributionFee,
@@ -195,6 +198,17 @@ export function IdecoSimulator({}: ToolComponentProps) {
               min={IDECO_INPUT_LIMITS.minReceivingAge}
               max={IDECO_INPUT_LIMITS.maxReceivingAge}
               hint="60歳〜75歳。通算加入期間により開始年齢が変わる場合があります"
+            />
+          </div>
+
+          <div className="sm:max-w-[calc(50%-0.5rem)]">
+            <MoneyField
+              id="ideco-initial-asset"
+              label="現在のiDeCo評価額（任意）"
+              value={initialAsset}
+              onChange={setInitialAsset}
+              hint="保有中のiDeCo資産の評価額"
+              maxAmount={IDECO_INPUT_LIMITS.maxInitialAsset}
             />
           </div>
 
@@ -356,9 +370,17 @@ export function IdecoSimulator({}: ToolComponentProps) {
               <div>
                 <h3 className="text-sm font-semibold">詳細オプション</h3>
                 <p className="mt-1 text-xs leading-5 text-muted">
-                  現在の資産、扶養親族、企業年金等との合算、金融機関の手数料を反映します。
+                  現在の取得価額、扶養親族、企業年金等との合算、金融機関の手数料を反映します。
                 </p>
               </div>
+              <MoneyField
+                id="ideco-initial-cost-basis"
+                label="現在の取得価額（任意）"
+                value={initialCostBasis}
+                onChange={setInitialCostBasis}
+                hint="現在のiDeCo評価額に対応する拠出元本の目安。元本・運用益の表示に使用"
+                maxAmount={IDECO_INPUT_LIMITS.maxInitialCostBasis}
+              />
               {taxCalculationMode === "income" && (
                 <div className="space-y-2">
                   <Label htmlFor="ideco-dependent-family-ages">
@@ -377,25 +399,15 @@ export function IdecoSimulator({}: ToolComponentProps) {
                   </p>
                 </div>
               )}
-              <div className="grid gap-4 sm:grid-cols-2">
-                <MoneyField
-                  id="ideco-initial-asset"
-                  label="現在のiDeCo資産（任意）"
-                  value={initialAsset}
-                  onChange={setInitialAsset}
-                  hint="すでに保有しているiDeCo資産の評価額"
-                  maxAmount={IDECO_INPUT_LIMITS.maxInitialAsset}
-                />
-                <MoneyField
-                  id="ideco-monthly-fee"
-                  label="毎月の手数料（合計）"
-                  value={monthlyFee}
-                  onChange={setMonthlyFee}
-                  hint={`初期値は連合会分${formatYen(IDECO_RULES.contributionFee)}。金融機関等の手数料を含む合計を確認`}
-                  maxAmount={IDECO_INPUT_LIMITS.maxMonthlyFee}
-                  step="1"
-                />
-              </div>
+              <MoneyField
+                id="ideco-monthly-fee"
+                label="毎月の手数料（合計）"
+                value={monthlyFee}
+                onChange={setMonthlyFee}
+                hint={`初期値は連合会分${formatYen(IDECO_RULES.contributionFee)}。金融機関等の手数料を含む合計を確認`}
+                maxAmount={IDECO_INPUT_LIMITS.maxMonthlyFee}
+                step="1"
+              />
               {(category === "employee-with-pension" ||
                 category === "public-servant") && (
                 <MoneyField

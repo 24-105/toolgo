@@ -53,9 +53,10 @@ export default async function ToolPage({ params }: ToolPageProps) {
   return (
     <ToolLayout
       title={tool.name}
-      description={tool.description}
+      description={tool.seoDescription ?? tool.description}
       category={tool.category}
       categoryHref={category ? `/categories/${category.slug}/` : undefined}
+      currentPath={`/tools/${tool.slug}/`}
       details={tool.details}
       relatedTools={<RelatedTools tools={getRelatedTools(tool)} />}
     >

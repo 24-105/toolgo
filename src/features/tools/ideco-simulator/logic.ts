@@ -25,6 +25,7 @@ export const IDECO_INPUT_LIMITS = {
   minReceivingAge: 60,
   maxReceivingAge: 75,
   maxInitialAsset: 100_000_000,
+  maxInitialCostBasis: 100_000_000,
   maxAnnualIncome: 100_000_000,
   maxCorporatePensionAmount: IDECO_RULES.corporatePensionCombinedLimit,
   maxOtherPublicPensionContribution: IDECO_RULES.selfEmployedLimit,
@@ -58,6 +59,7 @@ export type IdecoSimulationInput = {
   dependentFamilyAges?: number[];
   incomeTaxRate?: number;
   initialAsset?: number;
+  initialCostBasis?: number;
   corporatePensionAmount?: number;
   otherPublicPensionContribution?: number;
   monthlyFee?: number;
@@ -90,6 +92,7 @@ export type IdecoSimulationResult = {
   taxCalculationMode: IdecoTaxCalculationMode;
   firstYearTaxSaving: IdecoTaxSavingBreakdown;
   initialAsset: number;
+  initialCostBasis: number;
   totalContribution: number;
   totalPrincipal: number;
   totalFees: number;
@@ -189,6 +192,7 @@ export function simulateIdeco(input: IdecoSimulationInput): IdecoSimulationResul
   }
 
   const initialAsset = input.initialAsset ?? 0;
+  const initialCostBasis = input.initialCostBasis ?? initialAsset;
   const corporatePensionAmount = input.corporatePensionAmount ?? 0;
   const otherPublicPensionContribution = input.otherPublicPensionContribution ?? 0;
   const monthlyFee = input.monthlyFee ?? IDECO_RULES.contributionFee;
@@ -197,6 +201,11 @@ export function simulateIdeco(input: IdecoSimulationInput): IdecoSimulationResul
   const dependentFamilyAges = input.dependentFamilyAges ?? [];
 
   validateAmount(initialAsset, "現在のiDeCo資産", IDECO_INPUT_LIMITS.maxInitialAsset);
+  validateAmount(
+    initialCostBasis,
+    "現在の取得価額",
+    IDECO_INPUT_LIMITS.maxInitialCostBasis,
+  );
   validateAmount(annualIncome, "年収または課税所得", IDECO_INPUT_LIMITS.maxAnnualIncome);
   validateAmount(
     corporatePensionAmount,
@@ -259,7 +268,7 @@ export function simulateIdeco(input: IdecoSimulationInput): IdecoSimulationResul
     total: 0,
   };
   const points: IdecoSimulationPoint[] = [
-    createPoint(0, input.currentAge, balance, initialAsset, 0, 0, 0, 0),
+    createPoint(0, input.currentAge, balance, initialCostBasis, 0, 0, 0, 0),
   ];
 
   for (let month = 1; month <= totalMonths; month += 1) {
@@ -299,7 +308,7 @@ export function simulateIdeco(input: IdecoSimulationInput): IdecoSimulationResul
           year,
           input.currentAge + year,
           balance,
-          initialAsset + totalContribution,
+          initialCostBasis + totalContribution,
           annualContribution,
           taxSaving.total,
           cumulativeTaxSaving,
@@ -324,8 +333,9 @@ export function simulateIdeco(input: IdecoSimulationInput): IdecoSimulationResul
     taxCalculationMode: input.taxCalculationMode,
     firstYearTaxSaving,
     initialAsset,
+    initialCostBasis,
     totalContribution,
-    totalPrincipal: initialAsset + totalContribution,
+    totalPrincipal: initialCostBasis + totalContribution,
     totalFees,
     finalValue: finalPoint.value,
     gain: finalPoint.gain,

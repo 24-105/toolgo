@@ -38,6 +38,7 @@ export function NisaTsumitateSimulator({}: ToolComponentProps) {
   const [annualRate, setAnnualRate] = useState("5.0");
   const [ratePreset, setRatePreset] = useState("all-world");
   const [initialAmount, setInitialAmount] = useState("0");
+  const [initialCostBasis, setInitialCostBasis] = useState("");
   const [bonusAmount, setBonusAmount] = useState("0");
   const [bonusMonths, setBonusMonths] = useState<number[]>([6, 12]);
 
@@ -60,6 +61,8 @@ export function NisaTsumitateSimulator({}: ToolComponentProps) {
           years: period,
           annualRate: rate,
           initialAmount: toNumber(initialAmount) ?? 0,
+          initialCostBasis:
+            mode === "detail" ? (toNumber(initialCostBasis) ?? undefined) : undefined,
           bonusAmount: toNumber(bonusAmount) ?? 0,
           bonusMonths,
         }),
@@ -71,7 +74,16 @@ export function NisaTsumitateSimulator({}: ToolComponentProps) {
         error: cause instanceof Error ? cause.message : "計算できませんでした。",
       };
     }
-  }, [annualRate, bonusAmount, bonusMonths, initialAmount, monthlyAmount, years]);
+  }, [
+    annualRate,
+    bonusAmount,
+    bonusMonths,
+    initialAmount,
+    initialCostBasis,
+    mode,
+    monthlyAmount,
+    years,
+  ]);
 
   function changeRatePreset(value: string) {
     setRatePreset(value);
@@ -152,10 +164,10 @@ export function NisaTsumitateSimulator({}: ToolComponentProps) {
           <div className="sm:max-w-[calc(50%-0.5rem)]">
             <MoneyField
               id="nisa-initial"
-              label="現在のNISA運用額（任意）"
+              label="現在のNISA評価額（任意）"
               value={initialAmount}
               onChange={setInitialAmount}
-              hint="途中から始める場合に入力。最大1億円"
+              hint="保有中のNISA資産の評価額。最大1億円"
               maxAmount={NISA_INPUT_LIMITS.maxCurrentValue}
             />
           </div>
@@ -206,10 +218,18 @@ export function NisaTsumitateSimulator({}: ToolComponentProps) {
               <div>
                 <h3 className="text-sm font-semibold">詳細オプション</h3>
                 <p className="mt-1 text-xs leading-5 text-muted">
-                  毎月の積立に加えるボーナス投資を設定できます。
+                  現在の取得価額や、毎月の積立に加えるボーナス投資を設定できます。
                 </p>
               </div>
               <div className="space-y-4">
+                <MoneyField
+                  id="nisa-initial-cost-basis"
+                  label="現在の取得価額（任意）"
+                  value={initialCostBasis}
+                  onChange={setInitialCostBasis}
+                  hint="現在のNISA評価額を購入したときの金額。生涯投資枠の計算に使用"
+                  maxAmount={NISA_INPUT_LIMITS.maxAcquisitionCost}
+                />
                 <MoneyField
                   id="nisa-bonus"
                   label="ボーナス投資額（1回分）"
@@ -253,7 +273,7 @@ export function NisaTsumitateSimulator({}: ToolComponentProps) {
             <p className="mt-1 text-muted">
               つみたて投資枠は年間{formatYen(NISA_RULES.annualTsumitateLimit)}
               、これからの積立に使える計算上の総枠は{formatYen(NISA_RULES.lifetimeLimit)}
-              です。現在の運用額は評価額として別に計算し、上限を超える新しい積立分は除外します。非課税保有期間は
+              です。現在の取得価額を入力した場合は、その分も生涯投資枠の使用額に反映し、上限を超える新しい積立分は除外します。非課税保有期間は
               {NISA_RULES.nonTaxableHoldingPeriod}です。
             </p>
           </div>
