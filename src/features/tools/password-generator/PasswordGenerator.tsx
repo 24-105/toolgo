@@ -64,7 +64,7 @@ export function PasswordGenerator({}: ToolComponentProps) {
         </div>
         <fieldset className="space-y-3">
           <legend className="text-sm font-semibold">使う文字</legend>
-          <div className="grid gap-3 sm:grid-cols-2">
+          <div className="tool-form-grid grid gap-3 sm:grid-cols-2">
             {choices.map(([key, label]) => (
               <label key={key} className="flex items-center gap-2 text-sm">
                 <input

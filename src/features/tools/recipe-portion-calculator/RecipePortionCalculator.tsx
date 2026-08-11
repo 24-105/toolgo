@@ -76,7 +76,7 @@ export function RecipePortionCalculator({}: ToolComponentProps) {
           </p>
         </CardHeader>
         <CardContent className="space-y-5">
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="tool-form-grid grid gap-4 sm:grid-cols-2">
             <div className="space-y-2">
               <Label htmlFor="recipe-original-servings">レシピの人数</Label>
               <div className="flex items-center gap-2">

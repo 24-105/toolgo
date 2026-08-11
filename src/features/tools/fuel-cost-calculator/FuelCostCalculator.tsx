@@ -46,7 +46,7 @@ export function FuelCostCalculator({}: ToolComponentProps) {
         <CardTitle>走行条件を入力</CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="tool-form-grid grid gap-4 sm:grid-cols-2">
           <div className="space-y-2">
             <Label htmlFor="fuel-distance">片道の走行距離（km）</Label>
             <Input
@@ -70,7 +70,7 @@ export function FuelCostCalculator({}: ToolComponentProps) {
             </Select>
           </label>
         </div>
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="tool-form-grid grid gap-4 sm:grid-cols-2">
           <div className="space-y-2">
             <Label htmlFor="fuel-efficiency">燃費（km/L）</Label>
             <Input

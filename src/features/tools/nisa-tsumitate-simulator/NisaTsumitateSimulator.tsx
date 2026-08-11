@@ -134,7 +134,7 @@ export function NisaTsumitateSimulator({}: ToolComponentProps) {
           </div>
         </CardHeader>
         <CardContent className="space-y-5">
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="tool-form-grid grid gap-4 sm:grid-cols-2">
             <MoneyField
               id="nisa-monthly"
               label="毎月の積立額"
@@ -172,7 +172,7 @@ export function NisaTsumitateSimulator({}: ToolComponentProps) {
             />
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="tool-form-grid grid gap-4 sm:grid-cols-2">
             <div className="space-y-2">
               <Label htmlFor="nisa-rate-preset">参考する運用タイプ</Label>
               <Select

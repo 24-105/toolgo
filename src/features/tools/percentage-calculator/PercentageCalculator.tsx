@@ -83,7 +83,7 @@ export function PercentageCalculator({}: ToolComponentProps) {
             ))}
           </Select>
         </label>
-        <div className="grid gap-3 sm:grid-cols-2">
+        <div className="tool-form-grid grid gap-3 sm:grid-cols-2">
           <div className="space-y-2">
             <Label htmlFor="percentage-first">{labels[0]}</Label>
             <Input

@@ -76,7 +76,7 @@ export function UnitConverter({}: ToolComponentProps) {
             <option value="volume">容量</option>
           </Select>
         </label>
-        <div className="grid gap-4 sm:grid-cols-3">
+        <div className="tool-form-grid grid gap-4 sm:grid-cols-3">
           <div className="space-y-2">
             <Label htmlFor="unit-value">数値</Label>
             <Input

@@ -132,7 +132,7 @@ export function TaxableInvestmentSimulator({}: ToolComponentProps) {
           </div>
         </CardHeader>
         <CardContent className="space-y-5">
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="tool-form-grid grid gap-4 sm:grid-cols-2">
             <MoneyField
               id="taxable-monthly"
               label="毎月の積立額"
@@ -170,7 +170,7 @@ export function TaxableInvestmentSimulator({}: ToolComponentProps) {
             />
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="tool-form-grid grid gap-4 sm:grid-cols-2">
             <div className="space-y-2">
               <Label htmlFor="taxable-rate-preset">参考する運用タイプ</Label>
               <Select
@@ -219,7 +219,7 @@ export function TaxableInvestmentSimulator({}: ToolComponentProps) {
                   保有中の投資信託や、毎月以外の追加投資も計算できます。
                 </p>
               </div>
-              <div className="grid gap-4 sm:grid-cols-2">
+              <div className="tool-form-grid grid gap-4 sm:grid-cols-2">
                 <MoneyField
                   id="taxable-cost-basis"
                   label="現在の取得価額（任意）"

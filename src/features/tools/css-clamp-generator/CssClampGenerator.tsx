@@ -67,7 +67,7 @@ export function CssClampGenerator({}: ToolComponentProps) {
         <CardTitle>CSSのclamp()を生成</CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
-        <div className="grid gap-3 sm:grid-cols-2">
+        <div className="tool-form-grid grid gap-3 sm:grid-cols-2">
           <label className="block space-y-2 text-sm font-semibold">
             <span className="tool-editor-field-label">CSSプロパティ</span>
             <Select
@@ -92,7 +92,7 @@ export function CssClampGenerator({}: ToolComponentProps) {
             </Select>
           </label>
         </div>
-        <div className="grid gap-3 sm:grid-cols-2">
+        <div className="tool-form-grid grid gap-3 sm:grid-cols-2">
           <div className="space-y-2">
             <Label htmlFor="clamp-min-viewport">最小画面幅（px）</Label>
             <Input

@@ -36,7 +36,7 @@ export function DateCalculator({}: ToolComponentProps) {
         <CardTitle>日付を入力</CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="tool-form-grid grid gap-4 sm:grid-cols-2">
           <div className="space-y-2">
             <Label htmlFor="date-start">基準日</Label>
             <Input
@@ -56,7 +56,7 @@ export function DateCalculator({}: ToolComponentProps) {
             />
           </div>
         </div>
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="tool-form-grid grid gap-4 sm:grid-cols-2">
           <div className="space-y-2">
             <Label htmlFor="date-days">日数</Label>
             <Input

@@ -41,7 +41,7 @@ export function JsonDiff({}: ToolComponentProps) {
           <CardTitle className="tool-editor-card-title">比較するJSON</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
-          <div className="grid gap-3 sm:grid-cols-2">
+          <div className="tool-form-grid grid gap-3 sm:grid-cols-2">
             <label className="block space-y-2 text-sm font-semibold">
               <span className="tool-editor-field-label">変更前</span>
               <Textarea
