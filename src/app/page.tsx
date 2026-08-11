@@ -5,6 +5,7 @@ import { PurposeFinder, type PurposeFinderGroup } from "@/components/search";
 import { ToolIcon } from "@/components/tools";
 import {
   getCategories,
+  getRecentlyAddedTools,
   getPurposeGroups,
   getTools,
   getToolsByCategory,
@@ -69,6 +70,46 @@ export default function HomePage() {
 
         <section className="dashboard-section" aria-label="目的から探す">
           <PurposeFinder purposes={purposes} />
+        </section>
+
+        <section className="dashboard-section" aria-label="最近追加したツール">
+          <Card>
+            <CardHeader className="card-header-row">
+              <div>
+                <p className="section-kicker">新着ツール</p>
+                <CardTitle>最近追加したツール</CardTitle>
+                <p className="discovery-section-description">
+                  新しく公開したツールから、目的に合うものをすぐに試せます。
+                </p>
+              </div>
+              <Link className="text-link" href="/tools">
+                ツールを探す <ArrowRight size={15} aria-hidden="true" />
+              </Link>
+            </CardHeader>
+            <CardContent>
+              <div className="new-tool-grid" aria-label="最近追加したツール一覧">
+                {getRecentlyAddedTools().map((tool) => (
+                  <Link
+                    key={tool.slug}
+                    href={`/tools/${tool.slug}/`}
+                    className="new-tool-card"
+                  >
+                    <span className="new-tool-card-header">
+                      <span className="quick-tool-icon" aria-hidden="true">
+                        <ToolIcon icon={tool.icon} />
+                      </span>
+                      <span className="new-tool-card-category">{tool.category}</span>
+                    </span>
+                    <span className="new-tool-card-name">{tool.name}</span>
+                    <span className="new-tool-card-description">{tool.description}</span>
+                    <span className="new-tool-card-link">
+                      使ってみる <ArrowRight size={15} aria-hidden="true" />
+                    </span>
+                  </Link>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
         </section>
 
         <section className="dashboard-grid dashboard-section" aria-label="よく使うツール">

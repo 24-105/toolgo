@@ -622,6 +622,78 @@ a {
   line-height: 1.6;
 }
 
+.discovery-section-description {
+  margin: 0.625rem 0 0;
+  color: var(--muted);
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.new-tool-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.new-tool-card {
+  display: flex;
+  min-width: 0;
+  min-height: 12rem;
+  flex-direction: column;
+  gap: 0.625rem;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  color: var(--foreground);
+  text-decoration: none;
+  transition:
+    border-color 120ms ease,
+    background-color 120ms ease;
+}
+
+.new-tool-card:hover {
+  border-color: var(--border-strong);
+  background: var(--surface-muted);
+}
+
+.new-tool-card:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.new-tool-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+.new-tool-card-category {
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 650;
+}
+
+.new-tool-card-name {
+  font-size: 1rem;
+  font-weight: 750;
+}
+
+.new-tool-card-description {
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+
+.new-tool-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-top: auto;
+  color: var(--primary);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
 .purpose-finder-content {
   display: grid;
   gap: 1.5rem;
@@ -1459,6 +1531,10 @@ a {
 
   .recipe-ingredients-header {
     flex-direction: column;
+  }
+
+  .new-tool-grid {
+    grid-template-columns: 1fr;
   }
 
   .recipe-ingredient-row {

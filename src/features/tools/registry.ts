@@ -44,6 +44,7 @@ import { VlsmSubnetPlanner } from "./vlsm-subnet-planner/VlsmSubnetPlanner";
 import { NisaTsumitateSimulator } from "./nisa-tsumitate-simulator/NisaTsumitateSimulator";
 import { TaxableInvestmentSimulator } from "./taxable-investment-simulator/TaxableInvestmentSimulator";
 import { IdecoSimulator } from "./ideco-simulator/IdecoSimulator";
+import { getRecentlyAddedTools as selectRecentlyAddedTools } from "./registry-utils";
 import type { ToolDefinition, ToolPurpose } from "./types";
 
 export const categoryRegistry = [
@@ -155,6 +156,7 @@ export const categoryRegistry = [
   },
 ] as const;
 
+// Keep tool metadata in addition order so discovery surfaces can highlight recent tools.
 const toolMetadata: ToolDefinition[] = [
   {
     slug: "json-formatter",
@@ -2430,6 +2432,10 @@ export const purposeRegistry: ToolPurpose[] = [
 
 export function getTools() {
   return toolRegistry;
+}
+
+export function getRecentlyAddedTools(limit = 3) {
+  return selectRecentlyAddedTools(toolRegistry, limit);
 }
 
 export function getPurposeGroups() {
