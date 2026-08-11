@@ -32,6 +32,7 @@ export function UnixTimestampConverter({}: ToolComponentProps) {
   const [dateTime, setDateTime] = useState("");
   const [dateResult, setDateResult] = useState<DateTimeToTimestampResult | null>(null);
   const [dateError, setDateError] = useState("");
+  const [dateValue, timeValue = ""] = dateTime.split("T");
 
   function convertTimestamp() {
     try {
@@ -111,15 +112,27 @@ export function UnixTimestampConverter({}: ToolComponentProps) {
           <CardTitle className="tool-editor-card-title">日時から変換</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
-          <div className="space-y-2">
-            <Label htmlFor="unix-date-input">日時（お使いの端末の現地時間）</Label>
-            <Input
-              id="unix-date-input"
-              className="min-w-0"
-              type="datetime-local"
-              value={dateTime}
-              onChange={(event) => setDateTime(event.target.value)}
-            />
+          <div className="grid min-w-0 gap-3 sm:grid-cols-2">
+            <div className="min-w-0 space-y-2">
+              <Label htmlFor="unix-date-input">日付（お使いの端末の現地時間）</Label>
+              <Input
+                id="unix-date-input"
+                className="min-w-0 max-w-full"
+                type="date"
+                value={dateValue}
+                onChange={(event) => setDateTime(`${event.target.value}T${timeValue}`)}
+              />
+            </div>
+            <div className="min-w-0 space-y-2">
+              <Label htmlFor="unix-time-input">時刻</Label>
+              <Input
+                id="unix-time-input"
+                className="min-w-0 max-w-full"
+                type="time"
+                value={timeValue}
+                onChange={(event) => setDateTime(`${dateValue}T${event.target.value}`)}
+              />
+            </div>
           </div>
           <Button onClick={convertDateTime}>タイムスタンプに変換</Button>
           {dateError && (
