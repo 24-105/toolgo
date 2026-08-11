@@ -13,8 +13,7 @@ import {
   Textarea,
 } from "@/components/ui";
 import type { ToolComponentProps } from "../types";
-
-const MAX_INPUT_LENGTH = 2000;
+import { getQrCodeInputError } from "./logic";
 
 export function QrCodeGenerator({}: ToolComponentProps) {
   const [input, setInput] = useState("");
@@ -24,7 +23,7 @@ export function QrCodeGenerator({}: ToolComponentProps) {
   useEffect(() => {
     let active = true;
 
-    if (!input || input.length > MAX_INPUT_LENGTH) {
+    if (!input || getQrCodeInputError(input)) {
       return () => {
         active = false;
       };
@@ -54,11 +53,9 @@ export function QrCodeGenerator({}: ToolComponentProps) {
     if (!value) {
       setDataUrl("");
       setError("");
-    } else if (value.length > MAX_INPUT_LENGTH) {
+    } else if (getQrCodeInputError(value)) {
       setDataUrl("");
-      setError(
-        `入力は${MAX_INPUT_LENGTH.toLocaleString("ja-JP")}文字以内にしてください。`,
-      );
+      setError(getQrCodeInputError(value));
     } else {
       setError("");
     }

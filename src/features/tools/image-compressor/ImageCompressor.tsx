@@ -11,9 +11,7 @@ import {
   Label,
 } from "@/components/ui";
 import type { ToolComponentProps } from "../types";
-
-const MAX_FILE_SIZE = 10 * 1024 * 1024;
-const MAX_DIMENSION = 4_096;
+import { validateCompressionInput } from "./logic";
 
 export function ImageCompressor({}: ToolComponentProps) {
   const [file, setFile] = useState<File | null>(null);
@@ -34,17 +32,11 @@ export function ImageCompressor({}: ToolComponentProps) {
       setError("画像ファイルを選択してください。");
       return;
     }
-    if (!file.type.startsWith("image/")) {
-      setError("画像ファイルを選択してください。");
-      return;
-    }
-    if (file.size > MAX_FILE_SIZE) {
-      setError("画像ファイルは10MB以下にしてください。");
-      return;
-    }
     const parsedQuality = Number(quality);
-    if (!Number.isFinite(parsedQuality) || parsedQuality < 0.1 || parsedQuality > 1) {
-      setError("画質は0.1〜1.0の範囲で指定してください。");
+    try {
+      validateCompressionInput(file, parsedQuality);
+    } catch (cause) {
+      setError(cause instanceof Error ? cause.message : "画像を処理できませんでした。");
       return;
     }
     const operation = ++operationRef.current;
@@ -55,14 +47,19 @@ export function ImageCompressor({}: ToolComponentProps) {
         URL.revokeObjectURL(url);
         return;
       }
-      const canvas = document.createElement("canvas");
-      if (image.naturalWidth > MAX_DIMENSION || image.naturalHeight > MAX_DIMENSION) {
-        URL.revokeObjectURL(url);
-        setError(
-          `画像の縦横は${MAX_DIMENSION.toLocaleString("ja-JP")}px以内にしてください。`,
+      try {
+        validateCompressionInput(
+          file,
+          parsedQuality,
+          image.naturalWidth,
+          image.naturalHeight,
         );
+      } catch (cause) {
+        URL.revokeObjectURL(url);
+        setError(cause instanceof Error ? cause.message : "画像を処理できませんでした。");
         return;
       }
+      const canvas = document.createElement("canvas");
       canvas.width = image.naturalWidth;
       canvas.height = image.naturalHeight;
       const context = canvas.getContext("2d");
