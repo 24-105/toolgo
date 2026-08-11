@@ -35,7 +35,7 @@ export function TaxCalculator({}: ToolComponentProps) {
         <CardTitle>金額を入力</CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
-        <div className="grid gap-4 sm:grid-cols-3">
+        <div className="tool-form-grid grid gap-4 sm:grid-cols-3">
           <div className="space-y-2">
             <Label htmlFor="tax-amount">金額</Label>
             <Input

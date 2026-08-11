@@ -180,7 +180,7 @@ export function IdecoSimulator({}: ToolComponentProps) {
           </div>
         </CardHeader>
         <CardContent className="space-y-5">
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="tool-form-grid grid gap-4 sm:grid-cols-2">
             <AgeField
               id="ideco-current-age"
               label="現在の年齢"
@@ -212,7 +212,7 @@ export function IdecoSimulator({}: ToolComponentProps) {
             />
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="tool-form-grid grid gap-4 sm:grid-cols-2">
             <div className="space-y-2">
               <Label htmlFor="ideco-category">加入区分</Label>
               <Select
@@ -237,7 +237,7 @@ export function IdecoSimulator({}: ToolComponentProps) {
             />
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="tool-form-grid grid gap-4 sm:grid-cols-2">
             <div className="space-y-2">
               <Label htmlFor="ideco-rate-preset">参考する運用タイプ</Label>
               <Select
@@ -277,7 +277,7 @@ export function IdecoSimulator({}: ToolComponentProps) {
             </div>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="tool-form-grid grid gap-4 sm:grid-cols-2">
             <div className="space-y-2">
               <Label htmlFor="ideco-tax-calculation-mode">節税額の計算方法</Label>
               <Select
@@ -329,7 +329,7 @@ export function IdecoSimulator({}: ToolComponentProps) {
           </div>
 
           {taxCalculationMode === "income" && (
-            <div className="grid gap-4 sm:grid-cols-2">
+            <div className="tool-form-grid grid gap-4 sm:grid-cols-2">
               <div className="space-y-2">
                 <Label htmlFor="ideco-dependent-spouse">扶養配偶者</Label>
                 <Select

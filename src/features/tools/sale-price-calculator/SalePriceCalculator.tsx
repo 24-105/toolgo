@@ -48,7 +48,7 @@ export function SalePriceCalculator({}: ToolComponentProps) {
         <CardTitle>商品の条件を入力</CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="tool-form-grid grid gap-4 sm:grid-cols-2">
           <div className="space-y-2">
             <Label htmlFor="sale-price">1個あたりの価格</Label>
             <Input
@@ -74,7 +74,7 @@ export function SalePriceCalculator({}: ToolComponentProps) {
             />
           </div>
         </div>
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="tool-form-grid grid gap-4 sm:grid-cols-2">
           <div className="space-y-2">
             <Label htmlFor="sale-discount">割引率</Label>
             <Input

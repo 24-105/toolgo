@@ -78,7 +78,7 @@ export function SalaryTakeHome({}: ToolComponentProps) {
           </div>
         </fieldset>
 
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="tool-form-grid grid gap-4 sm:grid-cols-2">
           <div className="space-y-2">
             <Label htmlFor="salary-gross">額面月収</Label>
             <Input
@@ -110,7 +110,7 @@ export function SalaryTakeHome({}: ToolComponentProps) {
           </div>
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="tool-form-grid grid gap-4 sm:grid-cols-2">
           <div className="space-y-2">
             <Label htmlFor="salary-resident-tax">住民税（月額・任意）</Label>
             <Input
@@ -155,7 +155,7 @@ export function SalaryTakeHome({}: ToolComponentProps) {
                 分かる項目だけ入力すると、概算値より入力値を優先します。
               </p>
             </div>
-            <div className="grid gap-4 sm:grid-cols-3">
+            <div className="tool-form-grid grid gap-4 sm:grid-cols-3">
               <div className="space-y-2">
                 <Label htmlFor="salary-social">社会保険料（月額）</Label>
                 <Input

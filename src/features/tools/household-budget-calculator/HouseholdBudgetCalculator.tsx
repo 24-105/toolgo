@@ -49,7 +49,7 @@ export function HouseholdBudgetCalculator({}: ToolComponentProps) {
         <CardTitle>1か月の家計を入力</CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="tool-form-grid grid gap-4 sm:grid-cols-2">
           <div className="space-y-2">
             <Label htmlFor="budget-month">対象月</Label>
             <Input
@@ -72,7 +72,7 @@ export function HouseholdBudgetCalculator({}: ToolComponentProps) {
             />
           </div>
         </div>
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="tool-form-grid grid gap-4 sm:grid-cols-2">
           <div className="space-y-2">
             <Label htmlFor="budget-fixed">固定費</Label>
             <Input

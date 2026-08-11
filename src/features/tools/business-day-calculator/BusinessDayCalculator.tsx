@@ -42,7 +42,7 @@ export function BusinessDayCalculator({}: ToolComponentProps) {
         <CardTitle>基準日と営業日数を入力</CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="tool-form-grid grid gap-4 sm:grid-cols-2">
           <div className="space-y-2">
             <Label htmlFor="business-day-start">基準日</Label>
             <Input

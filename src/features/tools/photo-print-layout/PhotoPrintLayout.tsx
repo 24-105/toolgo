@@ -133,7 +133,7 @@ export function PhotoPrintLayout({}: ToolComponentProps) {
             画像は外部へ送信せず、このブラウザ内で処理します。
           </p>
         </div>
-        <div className="grid gap-3 sm:grid-cols-2">
+        <div className="tool-form-grid grid gap-3 sm:grid-cols-2">
           <label className="block space-y-2 text-sm font-semibold">
             <span className="tool-editor-field-label">用紙サイズ</span>
             <Select

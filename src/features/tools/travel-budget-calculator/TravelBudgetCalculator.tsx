@@ -55,7 +55,7 @@ export function TravelBudgetCalculator({}: ToolComponentProps) {
         <CardTitle>旅行の条件を入力</CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="tool-form-grid grid gap-4 sm:grid-cols-2">
           <div className="space-y-2">
             <Label htmlFor="travel-people">人数</Label>
             <Input
@@ -81,7 +81,7 @@ export function TravelBudgetCalculator({}: ToolComponentProps) {
             />
           </div>
         </div>
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="tool-form-grid grid gap-4 sm:grid-cols-2">
           <MoneyField
             id="travel-transport"
             label="交通費（1人分）"

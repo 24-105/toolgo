@@ -83,7 +83,7 @@ export function SavingsGoalCalculator({}: ToolComponentProps) {
             <option value="deadline">目標日から必要な積立額を計算</option>
           </Select>
         </label>
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="tool-form-grid grid gap-4 sm:grid-cols-2">
           <div className="space-y-2">
             <Label htmlFor="savings-target">目標金額</Label>
             <Input

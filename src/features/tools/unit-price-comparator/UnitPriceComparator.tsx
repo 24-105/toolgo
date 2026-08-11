@@ -148,7 +148,7 @@ function ProductFields({
           onChange={(event) => onPriceChange(event.target.value)}
         />
       </div>
-      <div className="grid gap-3 sm:grid-cols-2">
+      <div className="tool-form-grid grid gap-3 sm:grid-cols-2">
         <div className="space-y-2">
           <Label htmlFor={`${idPrefix}-quantity`}>内容量・個数</Label>
           <Input

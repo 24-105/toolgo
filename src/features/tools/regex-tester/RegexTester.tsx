@@ -89,7 +89,7 @@ export function RegexTester({}: ToolComponentProps) {
         <CardTitle>正規表現を確認</CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
-        <div className="grid gap-3 sm:grid-cols-[1fr_8rem]">
+        <div className="tool-form-grid grid gap-3 sm:grid-cols-[1fr_8rem]">
           <div className="space-y-2">
             <Label htmlFor="regex-pattern">正規表現</Label>
             <Input

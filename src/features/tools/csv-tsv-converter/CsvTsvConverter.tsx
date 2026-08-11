@@ -44,7 +44,7 @@ export function CsvTsvConverter({}: ToolComponentProps) {
           placeholder="ここにCSVまたはTSVを貼り付けてください"
           className="min-h-48 font-mono text-sm"
         />
-        <div className="grid gap-3 sm:grid-cols-2">
+        <div className="tool-form-grid grid gap-3 sm:grid-cols-2">
           <label className="block space-y-2 text-sm font-semibold">
             <span className="tool-editor-field-label">入力形式</span>
             <Select

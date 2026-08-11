@@ -134,6 +134,13 @@ input[type="checkbox"] {
   accent-color: var(--primary);
 }
 
+input[type="date"],
+input[type="time"],
+input[type="datetime-local"] {
+  min-width: 0;
+  max-width: 100%;
+}
+
 input[type="checkbox"]:focus-visible {
   outline: 2px solid var(--ring);
   outline-offset: 2px;
@@ -609,6 +616,12 @@ a {
 .tool-list {
   display: grid;
   gap: 0.375rem;
+}
+
+@media (min-width: 40rem) {
+  .tool-form-grid {
+    align-items: end;
+  }
 }
 
 .purpose-finder-card {

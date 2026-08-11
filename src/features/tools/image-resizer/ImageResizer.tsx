@@ -194,7 +194,7 @@ export function ImageResizer({}: ToolComponentProps) {
             onChange={(event) => selectFile(event.target.files?.[0] ?? null)}
           />
         </div>
-        <div className="grid gap-3 sm:grid-cols-2">
+        <div className="tool-form-grid grid gap-3 sm:grid-cols-2">
           <div className="space-y-2">
             <Label htmlFor="resize-width">幅（px）</Label>
             <Input
@@ -226,7 +226,7 @@ export function ImageResizer({}: ToolComponentProps) {
           />
           縦横比を維持する
         </label>
-        <div className="grid gap-3 sm:grid-cols-2">
+        <div className="tool-form-grid grid gap-3 sm:grid-cols-2">
           <label className="block space-y-2 text-sm font-semibold">
             <span className="tool-editor-field-label">保存形式</span>
             <Select
