@@ -57,7 +57,7 @@ export function UnixTimestampConverter({}: ToolComponentProps) {
 
   return (
     <div className="grid gap-4 lg:grid-cols-2">
-      <Card>
+      <Card className="min-w-0">
         <CardHeader className="tool-editor-card-header">
           <CardTitle className="tool-editor-card-title">タイムスタンプから変換</CardTitle>
         </CardHeader>
@@ -106,7 +106,7 @@ export function UnixTimestampConverter({}: ToolComponentProps) {
         </CardContent>
       </Card>
 
-      <Card>
+      <Card className="min-w-0">
         <CardHeader className="tool-editor-card-header">
           <CardTitle className="tool-editor-card-title">日時から変換</CardTitle>
         </CardHeader>
@@ -115,6 +115,7 @@ export function UnixTimestampConverter({}: ToolComponentProps) {
             <Label htmlFor="unix-date-input">日時（お使いの端末の現地時間）</Label>
             <Input
               id="unix-date-input"
+              className="min-w-0"
               type="datetime-local"
               value={dateTime}
               onChange={(event) => setDateTime(event.target.value)}
