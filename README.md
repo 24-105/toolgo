@@ -82,6 +82,7 @@ Google Analyticsは`NEXT_PUBLIC_GA_MEASUREMENT_ID`を設定した場合だけ読
 ```bash
 npm run format:check
 npm run lint
+npm run test
 npm run build
 ```
 
