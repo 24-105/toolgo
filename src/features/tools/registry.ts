@@ -10,8 +10,10 @@ import { Base64Converter } from "./base64-converter/Base64Converter";
 import { ColorConverter } from "./color-converter/ColorConverter";
 import { CsvTsvConverter } from "./csv-tsv-converter/CsvTsvConverter";
 import { HashGenerator } from "./hash-generator/HashGenerator";
+import { HtmlEntityConverter } from "./html-entity-converter/HtmlEntityConverter";
 import { ImageCompressor } from "./image-compressor/ImageCompressor";
 import { ImageResizer } from "./image-resizer/ImageResizer";
+import { LineSorter } from "./line-sorter/LineSorter";
 import { JsonDiff } from "./json-diff/JsonDiff";
 import { MarkdownPreview } from "./markdown-preview/MarkdownPreview";
 import { HolidayCalendar } from "./holiday-calendar/HolidayCalendar";
@@ -37,6 +39,7 @@ import { SleepTimeCalculator } from "./sleep-time-calculator/SleepTimeCalculator
 import { TaxCalculator } from "./tax-calculator/TaxCalculator";
 import { UnitConverter } from "./unit-converter/UnitConverter";
 import { UnicodeNormalizerChecker } from "./unicode-normalizer-checker/UnicodeNormalizerChecker";
+import { UnixTimestampConverter } from "./unix-timestamp-converter/UnixTimestampConverter";
 import { VlsmSubnetPlanner } from "./vlsm-subnet-planner/VlsmSubnetPlanner";
 import { NisaTsumitateSimulator } from "./nisa-tsumitate-simulator/NisaTsumitateSimulator";
 import { TaxableInvestmentSimulator } from "./taxable-investment-simulator/TaxableInvestmentSimulator";
@@ -2189,6 +2192,147 @@ const toolMetadata: ToolDefinition[] = [
       ],
     },
   },
+  {
+    slug: "unix-timestamp-converter",
+    name: "Unixタイムスタンプ変換",
+    description: "Unixタイムスタンプと日時を相互に変換します。",
+    seoTitle: "Unixタイムスタンプ変換｜秒・ミリ秒と日時を変換",
+    seoDescription:
+      "Unixタイムスタンプを日時に、日時を秒・ミリ秒のタイムスタンプに変換できる無料ツールです。処理はブラウザ内で完結します。",
+    seoKeywords: [
+      "Unixタイムスタンプ変換",
+      "timestamp converter",
+      "タイムスタンプ 日時変換",
+      "Unix時間 変換",
+      "エポック秒",
+    ],
+    category: "開発",
+    keywords: ["Unix", "タイムスタンプ", "日時", "エポック秒", "開発ツール"],
+    icon: "binary",
+    isMvp: false,
+    status: "available",
+    component: UnixTimestampConverter,
+    details: {
+      overview:
+        "Unixタイムスタンプ変換は、1970年1月1日からの経過時間を表すUnixタイムスタンプと、日時を相互に変換するツールです。APIレスポンスやログの時刻を確認するときに使えます。",
+      example:
+        "ログに記録された10桁のUnixタイムスタンプを日本時間の日時に変換し、発生時刻を確認します。",
+      howToUse: [
+        "タイムスタンプから変換する場合は、数値を入力して単位を選びます。",
+        "「日時に変換」または「タイムスタンプに変換」を押します。",
+        "必要に応じて、ISO 8601形式や秒・ミリ秒の結果をコピーします。",
+      ],
+      notes: [
+        "日時からの変換は、お使いの端末の現地時間として処理します。結果のUnixタイムスタンプはタイムゾーンに依存しません。",
+        "一般的に10桁は秒、13桁はミリ秒のタイムスタンプです。",
+      ],
+      faq: [
+        {
+          question: "10桁と13桁の違いは何ですか？",
+          answer:
+            "10桁前後の数値は秒単位、13桁前後の数値はミリ秒単位で表したUnixタイムスタンプであることが一般的です。入力時に単位を選択してください。",
+        },
+        {
+          question: "入力した日時や数値は送信されますか？",
+          answer: "いいえ。変換はブラウザ内で行い、入力内容を外部へ送信・保存しません。",
+        },
+      ],
+    },
+  },
+  {
+    slug: "html-entity-converter",
+    name: "HTMLエンティティ変換",
+    description: "HTMLで特別な意味を持つ文字をエンティティへ変換・復元します。",
+    seoTitle: "HTMLエンティティ変換｜文字をエスケープ・デコード",
+    seoDescription:
+      "HTMLの特殊文字をエンティティへ変換したり、数値・代表的な名前付きエンティティを元の文字へ戻したりできます。入力データは外部へ送信しません。",
+    seoKeywords: [
+      "HTMLエンティティ変換",
+      "HTMLエスケープ",
+      "HTMLデコード",
+      "HTML特殊文字 変換",
+      "HTML entity converter",
+    ],
+    category: "開発",
+    keywords: ["HTML", "エンティティ", "エスケープ", "デコード", "特殊文字"],
+    icon: "code",
+    isMvp: false,
+    status: "available",
+    component: HtmlEntityConverter,
+    details: {
+      overview:
+        "HTMLエンティティ変換は、HTML内で特別な意味を持つ記号を安全に表記するためのエンティティへ変換するツールです。HTML断片やテンプレートの確認に使えます。",
+      example:
+        "HTMLコードを表示用の文章に貼り付ける前に、山括弧やアンパサンドをHTMLエンティティへ変換します。",
+      howToUse: [
+        "変換したい文字列を入力します。",
+        "HTMLエンティティへ変換するか、エンティティから戻すかを選びます。",
+        "「変換する」を押し、結果を必要に応じてコピーします。",
+      ],
+      notes: [
+        "変換対象はアンパサンド、山括弧、引用符、アポストロフィです。デコードでは代表的な名前付きエンティティと数値エンティティに対応します。",
+        "このツールはHTMLの構文検証やサニタイズを行うものではありません。表示する場所や扱うデータに応じて適切な対策を行ってください。",
+      ],
+      faq: [
+        {
+          question: "日本語も変換されますか？",
+          answer:
+            "日本語などの通常の文字はそのまま残し、HTMLで特別な意味を持つ記号だけを変換します。",
+        },
+        {
+          question: "入力内容は保存されますか？",
+          answer: "いいえ。変換はブラウザ内で行い、入力内容を外部へ送信・保存しません。",
+        },
+      ],
+    },
+  },
+  {
+    slug: "line-sorter",
+    name: "行の並べ替え・重複削除",
+    description: "文章やデータを行単位で並べ替え、重複する行を削除します。",
+    seoTitle: "行の並べ替え・重複削除｜テキストを昇順・降順に整理",
+    seoDescription:
+      "テキストを行単位で昇順・降順に並べ替え、重複行や空行を削除できる無料ツールです。文章やデータの整理をブラウザ内で行えます。",
+    seoKeywords: [
+      "行 並べ替え",
+      "重複行 削除",
+      "テキスト ソート",
+      "行ソート",
+      "重複削除 ツール",
+    ],
+    category: "文章",
+    keywords: ["テキスト", "行", "並べ替え", "重複削除", "ソート", "文章ツール"],
+    icon: "text",
+    isMvp: false,
+    status: "available",
+    component: LineSorter,
+    details: {
+      overview:
+        "行の並べ替え・重複削除は、複数行のテキストを行単位で並べ替え、同じ内容の行を整理するツールです。単語リストやCSVの一部、メモの整理に使えます。",
+      example:
+        "ログやURLの一覧を貼り付け、重複する行を削除してからアルファベット順に整理します。",
+      howToUse: [
+        "行単位のテキストを入力します。",
+        "昇順・降順と、重複行・空行を削除するかどうかを選びます。",
+        "「並べ替える」を押し、結果をコピーします。",
+      ],
+      notes: [
+        "重複判定は行全体の文字列で行います。前後の空白が違う行は別の行として扱います。",
+        "日本語の並べ替えはブラウザのロケール機能を使います。数字は数値として並べ替えます。",
+      ],
+      faq: [
+        {
+          question: "元の順番を保ったまま重複だけ削除できますか？",
+          answer:
+            "このツールは並べ替えと同時に処理する仕様です。重複削除後も並べ替え結果が出力されます。",
+        },
+        {
+          question: "入力した文章は保存されますか？",
+          answer: "いいえ。処理はブラウザ内で行い、入力内容を外部へ送信・保存しません。",
+        },
+      ],
+    },
+  },
 ];
 
 export const toolRegistry: ToolDefinition[] = toolMetadata;
@@ -2205,6 +2349,8 @@ export const purposeRegistry: ToolPurpose[] = [
       "text-diff",
       "markdown-preview",
       "unicode-normalizer-checker",
+      "line-sorter",
+      "html-entity-converter",
     ],
   },
   {
@@ -2248,6 +2394,7 @@ export const purposeRegistry: ToolPurpose[] = [
       "uuid-generator",
       "regex-tester",
       "csv-tsv-converter",
+      "unix-timestamp-converter",
       "vlsm-subnet-planner",
       "cron-debugger",
     ],
